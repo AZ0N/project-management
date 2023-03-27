@@ -2,6 +2,7 @@ package application;
 
 public class Controller {
 
+	// Feilds
     private Model model;
     private View view;
     
