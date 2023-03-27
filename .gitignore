@@ -3,3 +3,8 @@
 
 # VSCode config files
 .vscode/
+
+# Eclipse
+.settings/
+.classpath
+.project
