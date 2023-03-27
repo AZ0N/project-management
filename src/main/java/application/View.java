@@ -15,6 +15,10 @@ public class View extends Application {
 
     Label label;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) {
 
