@@ -1,9 +1,11 @@
 # Project Management System
-Running the main class using Maven:
+Course: 02161 Software Engineering 1
+
+Running the application:
 ```maven
 mvn javafx:run
 ```
-The tests can be run through Maven:
+Running the tests:
 ```maven
 mvn clean test
 ``` 
