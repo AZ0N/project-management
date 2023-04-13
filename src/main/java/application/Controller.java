@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 
 public class Controller {
 
-	// Feilds
+	// Fields
     private Model model;
     private View view;
 
