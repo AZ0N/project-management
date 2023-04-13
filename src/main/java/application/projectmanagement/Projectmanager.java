@@ -11,13 +11,13 @@ public class Projectmanager {
     }
 
     public void AddEmployee(Employee employee) throws Exception {
-        if (GetEmployee(employee.GetInitials()) != null) {
+        if (GetEmployee(employee.getInitials()) != null) {
             throw new Exception("Employee with initials already exists!");
         }
         employees.add(employee);
     }
 
     public Employee GetEmployee(String initials) {
-        return employees.stream().filter(e -> e.GetInitials().equals(initials)).findFirst().orElse(null);
+        return employees.stream().filter(e -> e.getInitials().equals(initials)).findFirst().orElse(null);
     }
 }

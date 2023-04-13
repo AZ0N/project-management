@@ -11,7 +11,7 @@ public class Employee {
 		
 	}
 	
-	public String GetInitials() {
+	public String getInitials() {
 		return initials;
 	}
 	

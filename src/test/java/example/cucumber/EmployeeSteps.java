@@ -45,7 +45,7 @@ public class EmployeeSteps {
 
 		// If we found an employee, check the initials match
 		if (e != null) {
-			assertTrue(e.GetInitials().equals(initials));
+			assertTrue(e.getInitials().equals(initials));
 		}
 	}
 

@@ -1,4 +1,4 @@
-package application;
+package application.projectmanagement;
 
 public class ProjectLeader {
 	
