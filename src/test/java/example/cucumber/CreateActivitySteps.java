@@ -13,7 +13,7 @@ public class CreateActivitySteps {
     private boolean activityCreated;
     
     private Project project;
-    private application.ProjectActivties ProjectActivties;
+    private application.ProjectActivities ProjectActivties;
 	
 	@Given("there is a Project named {string} with Project leader {string}")
 	public void thereIsAProjectNamedWithProjectLeader(String projectName, String projectLeader) {
