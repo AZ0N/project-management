@@ -24,12 +24,12 @@ public class View extends Application {
         Scene scene;
 
         try {
-            // Load outer scene and controller using FXML
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui.fxml"));
             scene = fxmlLoader.load();
             controller = (Controller) fxmlLoader.getController();
         }
         catch (Exception e) {
+            System.out.println(e);
             e.printStackTrace();
             return;
         }

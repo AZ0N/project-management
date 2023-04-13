@@ -1,17 +1,17 @@
-package application.projectmanagement;
+package application;
 
-public class Employee {
+public class Employees {
 
 	private String initials;
 	private int numberOfActivities;
 
 	
-	public Employee(String initials) {
+	public Employees(String initials) {
 		this.initials = initials;
 		
 	}
 	
-	public String GetInitials() {
+	public String getInitials() {
 		return initials;
 	}
 	
