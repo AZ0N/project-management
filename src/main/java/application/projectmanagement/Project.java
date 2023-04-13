@@ -7,9 +7,10 @@ public class Project {
 	
 	public Project(String projectName) {
 		this.projectName = projectName;
+		projectLeader = "";
 	}
 	
-	public void appointProjectLeader (String projectName, String initials) {
+	public void appointProjectLeader (String initials) {
 		if (initials.isEmpty()) {
 			projectLeader = initials;
 		}
