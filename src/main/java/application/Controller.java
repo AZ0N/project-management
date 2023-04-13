@@ -1,19 +1,27 @@
 package application;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+
 public class Controller {
 
 	// Feilds
     private Model model;
     private View view;
-    
-    public Controller(View view, Model model) {
-        this.view = view;
-        this.model = model;
-        // test comments. Delete this
-    }
 
+    @FXML private Label label;
+
+    public void SetModelAndView(Model model, View view) {
+        this.model = model;
+        this.view = view;
+    }
+    
     public void IncrementButton() {
         // Increment value
         model.IncrementValue();
+    }
+
+    public Label GetLabel() {
+        return label;
     }
 }

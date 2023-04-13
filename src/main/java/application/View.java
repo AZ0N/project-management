@@ -1,11 +1,9 @@
 package application;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class View extends Application {
@@ -23,17 +21,22 @@ public class View extends Application {
     public void start(Stage stage) {
 
         model = new Model(this);
-        controller = new Controller(this, model);
+        Scene scene;
 
-        label = new Label();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui.fxml"));
+            scene = fxmlLoader.load();
+            controller = (Controller) fxmlLoader.getController();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            return;
+        }
 
-        Button button = new Button("Click here!");
-        button.setOnAction(event -> {controller.IncrementButton();});
-
-        VBox vbox = new VBox(label, button);
-        vbox.setAlignment(Pos.CENTER);
-
-        Scene scene = new Scene(vbox, 640, 480);
+        controller.SetModelAndView(model, this);
+        label = controller.GetLabel();
+        
         stage.setScene(scene);
         stage.show();
 
@@ -43,5 +46,4 @@ public class View extends Application {
     public void UpdateText() {
         label.setText("Value: " + model.GetValue());
     }
-    
 }
