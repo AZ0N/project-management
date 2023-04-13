@@ -1,16 +1,19 @@
 package example.cucumber;
 
+import application.projectmanagement.Project;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProjectLeaderSteps {
 	
+	private Project project;
+	
+	
 
 @Given("there is a Project named {string}.")
-public void thereIsAProjectNamed(String string) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
+public void thereIsAProjectNamed(String projectName) {
+    project = new Project(projectName);
 }
 
 @Given("the Project {string} has no Project leader")

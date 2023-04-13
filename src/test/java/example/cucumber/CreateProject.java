@@ -1,6 +1,6 @@
 package example.cucumber;
 
-import application.Project;
+import application.projectmanagement.Project;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
