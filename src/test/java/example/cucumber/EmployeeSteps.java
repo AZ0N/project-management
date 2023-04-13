@@ -12,10 +12,12 @@ import io.cucumber.java.en.When;
 public class EmployeeSteps {
 
 	private Projectmanager projectmanager;
+	private ErrorMessageHolder errorMessageHolder;
 	private Employee employee;
 
-	public EmployeeSteps(Projectmanager projectmanager) {
+	public EmployeeSteps(Projectmanager projectmanager, ErrorMessageHolder errorMessageHolder) {
 		this.projectmanager = projectmanager;
+		this.errorMessageHolder = errorMessageHolder;
 	}
 
 	@Given("there is an employee with initials {string}")
@@ -25,7 +27,12 @@ public class EmployeeSteps {
 
 	@When("the employee is added to the system")
 	public void theEmployeeIsAddedToTheSystem() {
-		projectmanager.AddEmployee(employee);
+		try {
+			projectmanager.AddEmployee(employee);
+		}
+		catch (Exception e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
 	}
 
 	@Then("there is an employee with initials {string} in the system")
@@ -41,4 +48,9 @@ public class EmployeeSteps {
 			assertTrue(e.GetInitials().equals(initials));
 		}
 	}
+
+    @Then("an error message {string} is shown")
+    public void an_error_message_is_shown(String errormessage) {
+		errorMessageHolder.getErrorMessage().equals(errormessage);
+    }
 }

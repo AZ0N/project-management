@@ -10,11 +10,14 @@ public class Projectmanager {
         employees = new ArrayList<>();
     }
 
-    public void AddEmployee(Employee employee) {
+    public void AddEmployee(Employee employee) throws Exception {
+        if (GetEmployee(employee.GetInitials()) != null) {
+            throw new Exception("Employee with initials already exists!");
+        }
         employees.add(employee);
     }
 
     public Employee GetEmployee(String initials) {
-        return employees.stream().filter(e -> e.GetInitials().equals(initials)).findFirst().get();
+        return employees.stream().filter(e -> e.GetInitials().equals(initials)).findFirst().orElse(null);
     }
 }
