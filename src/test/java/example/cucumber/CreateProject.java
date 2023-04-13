@@ -1,11 +1,23 @@
 package example.cucumber;
 
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
 import application.projectmanagement.Project;
+import application.projectmanagement.Projectmanager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class CreateProject {
+	
+	private Projectmanager projectmanager;
+	private ErrorMessageHolder errorMessageHolder;
+
+	public CreateProject(Projectmanager projectmanager, ErrorMessageHolder errorMessageHolder) {
+		this.projectmanager = projectmanager;
+		this.errorMessageHolder = errorMessageHolder;
+	}
 	
 	private Project project;
 	
@@ -13,23 +25,30 @@ public class CreateProject {
 	public void thereIsANewProjectNamed(String name) {
 		project = new Project(name);
 	}
-	
-	@Given("{string} is not already in the system")
-	public void isNotAlreadyInTheSystem(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
+
 	
 	@When("the Project called {string} is added to the system")
 	public void theProjectCalledIsAddedToTheSystem(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
-	}
+		try {
+			projectmanager.AddProject(project);
+		} 
+		catch (Exception e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
+		}
+	}	
 	
 	@Then("the Project {string} is in the system")
-	public void theProjectIsInTheSystem(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	public void theProjectIsInTheSystem(String projectName) {
+		// Try to get the employee with {initials}
+				Project e = projectmanager.getProject(projectName);
+
+				// Assert that we found an object
+				assertNotEquals(e, null);
+
+				// If we found an employee, check the initials match
+				if (e != null) {
+					assertTrue(e.getProjectName().equals(projectName));
+				}
 	}
 }
 

@@ -5,7 +5,6 @@ Feature: Create Projekt
 #Main Scenario
 Scenario: Create new Project
 	Given there is a new Project named "Project 1"
-	And "Project 1" is not already in the system
 	When the Project called "Project 1" is added to the system
 	Then the Project "Project 1" is in the system	
 

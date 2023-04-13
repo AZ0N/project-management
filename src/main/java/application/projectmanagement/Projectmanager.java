@@ -6,12 +6,31 @@ import java.util.List;
 public class Projectmanager {
     
     private ArrayList<Employee> employees;
+    private ArrayList<Project> projects;
 
     public Projectmanager() {
         employees = new ArrayList<>();
+        projects = new ArrayList<>();
     }
 
-    public void AddEmployee(Employee employee) throws Exception {
+    // Methods for Projects
+    
+    public void AddProject(Project projectName) throws Exception{
+    	if (getProject(projectName.getProjectName()) != null) {
+    		throw new Exception("Project with this name already exists!");
+    	}
+    	projects.add(projectName);
+    }
+    
+    public Project getProject(String projectName) {
+		return projects.stream().filter(e -> e.getProjectName().equals(projectName)).findFirst().orElse(null);
+	}
+
+    
+    
+    // Methods for Employees
+    
+	public void AddEmployee(Employee employee) throws Exception {
         if (GetEmployee(employee.getInitials()) != null) {
             throw new Exception("Employee with initials already exists!");
         }
