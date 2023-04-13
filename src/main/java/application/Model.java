@@ -1,5 +1,6 @@
 package application;
 
+import application.projectmanagement.Employee;
 import application.projectmanagement.Projectmanager;
 
 public class Model {
@@ -16,12 +17,17 @@ public class Model {
         projectmanager = new Projectmanager();
     }
 
-    public void IncrementValue() {
-        value += 1;
-        view.UpdateText();
-    }
+    public void addEmployee(String initials) {
 
-    public int GetValue() {
-        return value;
+        try {
+            Employee e = new Employee(initials);
+            projectmanager.AddEmployee(e);
+        }
+        catch (Exception e) {
+            //TODO Show error message when adding employee failed
+           return;
+        }
+
+        view.UpdateEmployeeList(projectmanager.GetEmployees());
     }
 }

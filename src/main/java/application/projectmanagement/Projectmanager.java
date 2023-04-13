@@ -1,6 +1,7 @@
 package application.projectmanagement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Projectmanager {
     
@@ -19,5 +20,9 @@ public class Projectmanager {
 
     public Employee GetEmployee(String initials) {
         return employees.stream().filter(e -> e.getInitials().equals(initials)).findFirst().orElse(null);
+    }
+
+    public List<Employee> GetEmployees() {
+        return employees;
     }
 }

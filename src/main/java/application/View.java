@@ -1,9 +1,12 @@
 package application;
 
+import java.util.List;
+
+import application.projectmanagement.Employee;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 public class View extends Application {
@@ -11,7 +14,7 @@ public class View extends Application {
     Model model;
     Controller controller;
 
-    Label label;
+    ListView<String> employeeListView;
 
     public static void main(String[] args) {
         launch(args);
@@ -35,15 +38,18 @@ public class View extends Application {
         }
 
         controller.SetModelAndView(model, this);
-        label = controller.GetLabel();
+        employeeListView = controller.getEmployListView();
         
         stage.setScene(scene);
         stage.show();
-
-        UpdateText();
     }
 
-    public void UpdateText() {
-        label.setText("Value: " + model.GetValue());
+    public void UpdateEmployeeList(List<Employee> employees) {
+        var items = employeeListView.getItems();
+        items.clear();
+
+        for (Employee employee : employees) {
+            employeeListView.getItems().add(employee.getInitials());
+        }
     }
 }

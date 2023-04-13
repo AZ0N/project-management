@@ -1,7 +1,8 @@
 package application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 public class Controller {
 
@@ -9,19 +10,20 @@ public class Controller {
     private Model model;
     private View view;
 
-    @FXML private Label label;
+    @FXML private TextField employeeInitialsTextField;
+    @FXML private ListView<String> employeeListView;
 
     public void SetModelAndView(Model model, View view) {
         this.model = model;
         this.view = view;
     }
     
-    public void IncrementButton() {
-        // Increment value
-        model.IncrementValue();
+    public void addEmployee() {
+        model.addEmployee(employeeInitialsTextField.getText());
     }
 
-    public Label GetLabel() {
-        return label;
+
+    public ListView<String> getEmployListView() {
+        return employeeListView;
     }
 }
