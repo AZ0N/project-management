@@ -2,7 +2,7 @@ package application;
 
 public class Controller {
 
-	// Feilds
+	// Fields
     private Model model;
     private View view;
     
