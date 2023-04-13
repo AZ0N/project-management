@@ -1,40 +1,49 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class ProjectActivties {
+public class ProjectActivties implements Activities {
 	
-	private String name;
+
+    private String name;
     private ArrayList<String> assignedEmployees;
     private int estimatedTime;
-    private int startWeek;
-    private int endWeek;
+    private Date startDate;
+    private Date endDate;
 
-    public ProjectActivties(String name, ArrayList<String> assignedEmployees, int estimatedTime, int startWeek, int endWeek) {
+    public void ProjectActivity(String name, ArrayList<String> assignedEmployees, int estimatedTime, Date startDate, Date endDate) {
         this.name = name;
         this.assignedEmployees = assignedEmployees;
         this.estimatedTime = estimatedTime;
-        this.startWeek = startWeek;
-        this.endWeek = endWeek;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
-    public String getName() {
-        return name;
+    @Override
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public ArrayList<String> getAssignedEmployees() {
-        return assignedEmployees;
+    @Override
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public int getEstimatedTime() {
-        return estimatedTime;
+    @Override
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public int getStartWeek() {
-        return startWeek;
+    @Override
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+    
+    //add employee to the activity
+    public void addEmployee(String employee) {
+        this.assignedEmployees.add(employee);
     }
 
-    public int getEndWeek() {
-        return endWeek;
-    }
+    
 }
