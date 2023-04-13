@@ -1,6 +1,7 @@
 package example.cucumber;
 
-import application.Project;
+
+import application.projectmanagement.Project;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,8 +18,7 @@ public class CreateActivitySteps {
 	
 	@Given("there is a Project named {string} with Project leader {string}")
 	public void thereIsAProjectNamedWithProjectLeader(String projectName, String projectLeader) {
-		        
-		        project = new Project(projectName);
+		project = new Project(projectName);
 		        
 	    throw new io.cucumber.java.PendingException();
 	    
