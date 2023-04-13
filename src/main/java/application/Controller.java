@@ -15,5 +15,6 @@ public class Controller {
     public void IncrementButton() {
         // Increment value
         model.IncrementValue();
+        //bdjew
     }
 }
