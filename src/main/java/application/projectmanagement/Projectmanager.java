@@ -44,4 +44,8 @@ public class Projectmanager {
     public List<Employee> GetEmployees() {
         return employees;
     }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
 }

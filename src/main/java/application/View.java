@@ -3,6 +3,7 @@ package application;
 import java.util.List;
 
 import application.projectmanagement.Employee;
+import application.projectmanagement.Project;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ public class View extends Application {
     Controller controller;
 
     ListView<String> employeeListView;
+    ListView<String> projectListView;
 
     public static void main(String[] args) {
         launch(args);
@@ -39,6 +41,7 @@ public class View extends Application {
 
         controller.SetModelAndView(model, this);
         employeeListView = controller.getEmployListView();
+        projectListView = controller.getProjecListView();
         
         stage.setScene(scene);
         stage.show();
@@ -50,6 +53,15 @@ public class View extends Application {
 
         for (Employee employee : employees) {
             employeeListView.getItems().add(employee.getInitials());
+        }
+    }
+
+    public void updateProjectList(List<Project> projects) {
+        var items = projectListView.getItems();
+        items.clear();
+
+        for (Project project : projects) {
+            projectListView.getItems().add(project.getProjectName());
         }
     }
 }

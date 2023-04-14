@@ -1,6 +1,7 @@
 package application;
 
 import application.projectmanagement.Employee;
+import application.projectmanagement.Project;
 import application.projectmanagement.Projectmanager;
 
 public class Model {
@@ -18,7 +19,6 @@ public class Model {
     }
 
     public void addEmployee(String initials) {
-
         try {
             Employee e = new Employee(initials);
             projectmanager.AddEmployee(e);
@@ -27,7 +27,17 @@ public class Model {
             //TODO Show error message when adding employee failed
            return;
         }
-
         view.UpdateEmployeeList(projectmanager.GetEmployees());
+    }
+
+    public void addProject(String projectName) {
+        try {
+            Project p = new Project(projectName);
+            projectmanager.AddProject(p);
+        } catch (Exception e) {
+            //TODO Show error message when adding employee failed
+           return;
+        }
+        view.updateProjectList(projectmanager.getProjects());
     }
 }

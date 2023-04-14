@@ -11,7 +11,9 @@ public class Controller {
     private View view;
 
     @FXML private TextField employeeInitialsTextField;
+    @FXML private TextField projectNameTextField;
     @FXML private ListView<String> employeeListView;
+    @FXML private ListView<String> projectListView;
 
     public void SetModelAndView(Model model, View view) {
         this.model = model;
@@ -22,8 +24,15 @@ public class Controller {
         model.addEmployee(employeeInitialsTextField.getText());
     }
 
+    public void addProject() {
+        model.addProject(projectNameTextField.getText());
+    }
 
     public ListView<String> getEmployListView() {
         return employeeListView;
+    }
+
+    public ListView<String> getProjecListView() {
+        return projectListView;
     }
 }
