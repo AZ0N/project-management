@@ -21,8 +21,7 @@ public void thereIsAProjectNamed(String projectName) {
 
 @Given("the Project {string} has no Project leader")
 public void theProjectHasNoProjectLeader(String projectName) {
-    assertTrue(project.getProjectLeader().isEmpty());
-    	
+    assertTrue(project.getProjectLeader().isEmpty());    	
     }
 
 @When("the user provides the initials {string} of the person who wants to become Project leader.")
