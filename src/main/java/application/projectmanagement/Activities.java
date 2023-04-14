@@ -1,4 +1,4 @@
-package application;
+package application.projectmanagement;
 
 import java.util.Date;
 

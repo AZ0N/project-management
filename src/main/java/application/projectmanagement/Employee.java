@@ -3,8 +3,6 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.ProjectActivities;
-
 public class Employee {
 
 	private String initials;

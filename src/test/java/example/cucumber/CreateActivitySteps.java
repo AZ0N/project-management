@@ -2,6 +2,7 @@ package example.cucumber;
 
 
 import application.projectmanagement.Project;
+import application.projectmanagement.ProjectActivities;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,7 +15,7 @@ public class CreateActivitySteps {
     private boolean activityCreated;
     
     private Project project;
-    private application.ProjectActivities ProjectActivties;
+    private ProjectActivities ProjectActivties;
 	
 	@Given("there is a Project named {string} with Project leader {string}")
 	public void thereIsAProjectNamedWithProjectLeader(String projectName, String projectLeader) {
