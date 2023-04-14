@@ -21,19 +21,19 @@ public class Model {
     public void addEmployee(String initials) {
         try {
             Employee e = new Employee(initials);
-            projectmanager.AddEmployee(e);
+            projectmanager.addEmployee(e);
         }
         catch (Exception e) {
             //TODO Show error message when adding employee failed
            return;
         }
-        view.UpdateEmployeeList(projectmanager.GetEmployees());
+        view.updateEmployeeList(projectmanager.getEmployees());
     }
 
     public void addProject(String projectName) {
         try {
             Project p = new Project(projectName);
-            projectmanager.AddProject(p);
+            projectmanager.addProject(p);
         } catch (Exception e) {
             //TODO Show error message when adding employee failed
            return;

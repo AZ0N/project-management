@@ -39,7 +39,7 @@ public class View extends Application {
             return;
         }
 
-        controller.SetModelAndView(model, this);
+        controller.setModelAndView(model, this);
         employeeListView = controller.getEmployListView();
         projectListView = controller.getProjecListView();
         
@@ -47,7 +47,7 @@ public class View extends Application {
         stage.show();
     }
 
-    public void UpdateEmployeeList(List<Employee> employees) {
+    public void updateEmployeeList(List<Employee> employees) {
         var items = employeeListView.getItems();
         items.clear();
 

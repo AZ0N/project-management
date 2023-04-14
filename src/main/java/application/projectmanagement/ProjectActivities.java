@@ -3,10 +3,7 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.Date;
 
-import application.projectmanagement.Employee;
-
 public class ProjectActivities implements Activities {
-	
 
     private String name;
     private ArrayList<Employee> assignedEmployees;
@@ -49,12 +46,12 @@ public class ProjectActivities implements Activities {
     }
 
     
-    //add time to the activity used by the employee
+    // Adds time to the activity used by the employee
     public void addTimeUsedByEmployee(Employee employee, int time) {
     	
-    //checks if the employee is assigned to the activity. 
-    //If the employee is assigned to the activity, the method updates the timeUsed field of the activity
-    //and calls the addTimeUsed() method of the Employee class to add the time used by the employee.	
+    // Checks if the employee is assigned to the activity. 
+    // If the employee is assigned to the activity, the method updates the timeUsed field of the activity
+    // and calls the addTimeUsed() method of the Employee class to add the time used by the employee.	
         if (assignedEmployees.contains(employee)) {
             timeUsed += time;
             employee.addTimeUsed(time);

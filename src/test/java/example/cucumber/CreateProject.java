@@ -29,7 +29,7 @@ public class CreateProject {
 	@When("the Project called {string} is added to the system")
 	public void theProjectCalledIsAddedToTheSystem(String string) {
 		try {
-			projectmanager.AddProject(project);
+			projectmanager.addProject(project);
 		} catch (Exception e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}

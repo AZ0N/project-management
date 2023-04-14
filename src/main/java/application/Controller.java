@@ -15,7 +15,7 @@ public class Controller {
     @FXML private ListView<String> employeeListView;
     @FXML private ListView<String> projectListView;
 
-    public void SetModelAndView(Model model, View view) {
+    public void setModelAndView(Model model, View view) {
         this.model = model;
         this.view = view;
     }

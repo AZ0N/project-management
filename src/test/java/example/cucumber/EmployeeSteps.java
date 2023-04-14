@@ -28,7 +28,7 @@ public class EmployeeSteps {
 	@When("the employee is added to the system")
 	public void theEmployeeIsAddedToTheSystem() {
 		try {
-			projectmanager.AddEmployee(employee);
+			projectmanager.addEmployee(employee);
 		}
 		catch (Exception e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
@@ -38,7 +38,7 @@ public class EmployeeSteps {
 	@Then("there is an employee with initials {string} in the system")
 	public void thereIsAnEmployeeWithInitialsInTheSystem(String initials) {
 		// Try to get the employee with {initials}
-		Employee e = projectmanager.GetEmployee(initials);
+		Employee e = projectmanager.getEmployee(initials);
 
 		// Assert that we found an object
 		assertNotEquals(e, null);
