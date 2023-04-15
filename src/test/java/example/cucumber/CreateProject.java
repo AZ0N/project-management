@@ -38,7 +38,7 @@ public class CreateProject {
 	@Then("the Project {string} is in the system")
 	public void theProjectIsInTheSystem(String projectName) {
 		// Try to get the project with {projectName}
-		Project e = projectmanager.getProject(projectName);
+		Project e = projectmanager.getProject(projectName); 
 
 		// Assert that we found an object
 		assertNotEquals(e, null);

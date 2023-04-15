@@ -40,7 +40,7 @@ public class CreateActivitySteps {
 		this.activityName = string2;
         activityCreated = true;
 		
-	    throw new io.cucumber.java.PendingException();
+	    throw new io.cucumber.java.PendingException(); 
 	}
 	
 	@Then("{string} has an Activity named {string}")

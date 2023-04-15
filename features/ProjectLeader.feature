@@ -8,11 +8,10 @@ Scenario: An Employee is appointed Project leader.
     When    the user provides the initials "test" of the person who wants to become Project leader.
     Then    the Project leader of "Project 1" is the Employee with the initials "test"
 
-#Scenario: An Employee is appoints Project leader to Project
-#          which already has Project leader.
-#    Given   there is a Project named "Project 1".
-#    And     that "Project 1" has a Project leader.
-#    When    the user provides the initials "test"
-#            of the person who wants to become Project leader.
-#    Then    the system provides the error message
-#            "Project already has Project leader"
+Scenario: An Employee appoints a Project leader to a Project which already has a Project leader.
+    Given   there is a Project named "Project 1".
+    And     that "Project 1" has a Project leader with initials "test".
+    When    the user provides the initials "test" of the person who wants to become Project leader.
+    Then    the system provides the error message "This project already has a project leader"
+    
+    

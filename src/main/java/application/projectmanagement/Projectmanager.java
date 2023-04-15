@@ -19,7 +19,7 @@ public class Projectmanager {
     		throw new Exception("Project with this name already exists!");
     	}
     	projects.add(projectName);
-    }
+    } 
     
     public Project getProject(String projectName) {
         return projects.stream().filter(e -> e.getProjectName().equals(projectName)).findFirst().orElse(null);
