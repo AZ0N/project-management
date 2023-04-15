@@ -24,8 +24,8 @@ public class Model {
             projectmanager.addEmployee(e);
         }
         catch (Exception e) {
-            //TODO Show error message when adding employee failed
-           return;
+            view.showError(e.getMessage());
+            return;
         }
         view.updateEmployeeList(projectmanager.getEmployees());
     }
@@ -35,8 +35,8 @@ public class Model {
             Project p = new Project(projectName);
             projectmanager.addProject(p);
         } catch (Exception e) {
-            //TODO Show error message when adding employee failed
-           return;
+            view.showError(e.getMessage());
+            return;
         }
         view.updateProjectList(projectmanager.getProjects());
     }

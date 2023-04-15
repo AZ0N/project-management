@@ -7,7 +7,10 @@ import application.projectmanagement.Project;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class View extends Application {
@@ -63,5 +66,11 @@ public class View extends Application {
         for (Project project : projects) {
             projectListView.getItems().add(project.getProjectName());
         }
+    }
+
+    public void showError(String errorMessage) {
+        Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
+        alert.setHeaderText(errorMessage);
+        alert.show();
     }
 }

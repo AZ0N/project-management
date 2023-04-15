@@ -16,7 +16,7 @@ public class ProjectManager {
     // Methods for Projects
     public void addProject(Project projectName) throws Exception{
     	if (getProject(projectName.getProjectName()) != null) {
-    		throw new Exception("Project with this name already exists!");
+    		throw new Exception("Project with name " + projectName + " already exists!");
     	}
     	projects.add(projectName);
     } 
@@ -41,7 +41,7 @@ public class ProjectManager {
     // Methods for Employees
 	public void addEmployee(Employee employee) throws Exception {
         if (getEmployee(employee.getInitials()) != null) {
-            throw new Exception("Employee with initials already exists!");
+            throw new Exception("Employee with initials " + employee.getInitials() + " already exists!");
         }
         employees.add(employee);
     }
