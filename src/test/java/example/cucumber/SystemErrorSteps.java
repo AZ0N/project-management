@@ -14,7 +14,7 @@ public class SystemErrorSteps {
 
 	@Then("the system provides the error message {string}")
 	public void theSystemProvidesTheErrorMessage(String expectedErrorMessage) {
-		assertEquals(expectedErrorMessage,this.errorMessageHolder.getErrorMessage());
+		assertEquals(expectedErrorMessage, errorMessageHolder.getErrorMessage());
 	}
 
 }

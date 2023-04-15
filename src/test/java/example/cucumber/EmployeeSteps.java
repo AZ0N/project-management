@@ -48,9 +48,4 @@ public class EmployeeSteps {
 			assertTrue(e.getInitials().equals(initials));
 		}
 	}
-
-    @Then("an error message {string} is shown")
-    public void an_error_message_is_shown(String errormessage) {
-		errorMessageHolder.getErrorMessage().equals(errormessage);
-    }
 }

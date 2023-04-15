@@ -14,11 +14,11 @@ public class ProjectManager {
     }
 
     // Methods for Projects
-    public void addProject(Project projectName) throws Exception{
-    	if (getProject(projectName.getProjectName()) != null) {
-    		throw new Exception("Project with name " + projectName + " already exists!");
+    public void addProject(Project project) throws Exception{
+    	if (getProject(project.getProjectName()) != null) {
+    		throw new Exception("Project with name " + project.getProjectName() + " already exists!");
     	}
-    	projects.add(projectName);
+    	projects.add(project);
     } 
     
     public void deleteProject(String projectName) throws Exception {
