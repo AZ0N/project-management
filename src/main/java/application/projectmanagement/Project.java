@@ -10,9 +10,11 @@ public class Project {
 		projectLeader = "";
 	}
 	
-	public void appointProjectLeader (String initials) {
+	public void appointProjectLeader (String initials) throws Exception {
 		if (this.projectLeader.isEmpty()) {
 			this.projectLeader = initials;
+		} else {
+			throw new Exception("This project already has a project leader");
 		}
 	}
 	
