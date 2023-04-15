@@ -1,7 +1,6 @@
 package example.cucumber;
 
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Given;
