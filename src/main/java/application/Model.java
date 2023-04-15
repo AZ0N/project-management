@@ -7,13 +7,11 @@ import application.projectmanagement.ProjectManager;
 public class Model {
     
     private View view;
-    private int value;
 
     private ProjectManager projectmanager;
 
     public Model(View view) {
         this.view = view;
-        this.value = 0;
 
         projectmanager = new ProjectManager();
     }
