@@ -11,8 +11,8 @@ public class Project {
 	}
 	
 	public void appointProjectLeader (String initials) {
-		if (initials.isEmpty()) {
-			projectLeader = initials;
+		if (this.projectLeader.isEmpty()) {
+			this.projectLeader = initials;
 		}
 	}
 	
