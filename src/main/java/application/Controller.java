@@ -18,6 +18,14 @@ public class Controller {
     public void setModelAndView(Model model, View view) {
         this.model = model;
         this.view = view;
+
+        employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
+            System.out.println("Employee: " + newValue);
+        });
+
+        projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
+            System.out.println("Project: " + newValue);
+        });
     }
     
     public void addEmployee() {
