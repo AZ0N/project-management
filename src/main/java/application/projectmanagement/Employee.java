@@ -7,7 +7,7 @@ public class Employee {
 
 	private String initials;
 	private int timeUsed;
-	private List<ProjectActivities> assignedActivities;
+	private List<ProjectActivities> assignedActivities; 
 	
 	public Employee(String initials) {
 		this.initials = initials;
