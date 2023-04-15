@@ -2,20 +2,20 @@ package application;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
-import application.projectmanagement.Projectmanager;
+import application.projectmanagement.ProjectManager;
 
 public class Model {
     
     private View view;
     private int value;
 
-    private Projectmanager projectmanager;
+    private ProjectManager projectmanager;
 
     public Model(View view) {
         this.view = view;
         this.value = 0;
 
-        projectmanager = new Projectmanager();
+        projectmanager = new ProjectManager();
     }
 
     public void addEmployee(String initials) {

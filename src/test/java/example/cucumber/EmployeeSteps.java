@@ -4,18 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import application.projectmanagement.Employee;
-import application.projectmanagement.Projectmanager;
+import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class EmployeeSteps {
 
-	private Projectmanager projectmanager;
+	private ProjectManager projectmanager;
 	private ErrorMessageHolder errorMessageHolder;
 	private Employee employee;
 
-	public EmployeeSteps(Projectmanager projectmanager, ErrorMessageHolder errorMessageHolder) {
+	public EmployeeSteps(ProjectManager projectmanager, ErrorMessageHolder errorMessageHolder) {
 		this.projectmanager = projectmanager;
 		this.errorMessageHolder = errorMessageHolder;
 	}

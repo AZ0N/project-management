@@ -4,24 +4,24 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import application.projectmanagement.Project;
-import application.projectmanagement.Projectmanager;
+import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class CreateProject {
+public class CreateProjectSteps {
 
-	private Projectmanager projectmanager;
+	private ProjectManager projectmanager;
 	private ErrorMessageHolder errorMessageHolder;
 
-	public CreateProject(Projectmanager projectmanager, ErrorMessageHolder errorMessageHolder) {
+	public CreateProjectSteps(ProjectManager projectmanager, ErrorMessageHolder errorMessageHolder) {
 		this.projectmanager = projectmanager;
 		this.errorMessageHolder = errorMessageHolder;
 	}
 
 	private Project project;
 
-	@Given("there is a new Project named {string}")
+	@Given("there is a Project named {string}")
 	public void thereIsANewProjectNamed(String name) {
 		project = new Project(name);
 	}
