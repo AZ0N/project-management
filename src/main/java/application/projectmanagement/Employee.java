@@ -50,4 +50,8 @@ public class Employee {
 	        System.out.println("Employee " + initials + " is not assigned to activity " + activity.getName());
 	    }
 	}
+
+	public String toString() {
+		return initials;
+	}
 }

@@ -18,8 +18,8 @@ public class View extends Application {
     Model model;
     Controller controller;
 
-    ListView<String> employeeListView;
-    ListView<String> projectListView;
+    ListView<Employee> employeeListView;
+    ListView<Project> projectListView;
 
     public static void main(String[] args) {
         launch(args);
@@ -43,7 +43,7 @@ public class View extends Application {
         }
 
         controller.setModelAndView(model, this);
-        employeeListView = controller.getEmployListView();
+        employeeListView = controller.getEmployeeListView();
         projectListView = controller.getProjecListView();
         
         stage.setScene(scene);
@@ -55,7 +55,7 @@ public class View extends Application {
         items.clear();
 
         for (Employee employee : employees) {
-            employeeListView.getItems().add(employee.getInitials());
+            employeeListView.getItems().add(employee);
         }
     }
 
@@ -64,7 +64,7 @@ public class View extends Application {
         items.clear();
 
         for (Project project : projects) {
-            projectListView.getItems().add(project.getProjectName());
+            projectListView.getItems().add(project);
         }
     }
 

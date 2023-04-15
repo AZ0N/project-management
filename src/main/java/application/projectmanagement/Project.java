@@ -30,4 +30,7 @@ public class Project {
 		return projectLeader;
 	}
 	
+	public String toString() {
+		return projectName;
+	}
 }

@@ -1,5 +1,7 @@
 package application;
 
+import application.projectmanagement.Employee;
+import application.projectmanagement.Project;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -12,19 +14,19 @@ public class Controller {
 
     @FXML private TextField employeeInitialsTextField;
     @FXML private TextField projectNameTextField;
-    @FXML private ListView<String> employeeListView;
-    @FXML private ListView<String> projectListView;
+    @FXML private ListView<Employee> employeeListView;
+    @FXML private ListView<Project> projectListView;
 
     public void setModelAndView(Model model, View view) {
         this.model = model;
         this.view = view;
 
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
-            System.out.println("Employee: " + newValue);
+            System.out.println("Employee: " + newValue.getInitials());
         });
 
         projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
-            System.out.println("Project: " + newValue);
+            System.out.println("Project: " + newValue.getProjectName());
         });
     }
     
@@ -36,11 +38,11 @@ public class Controller {
         model.addProject(projectNameTextField.getText());
     }
 
-    public ListView<String> getEmployListView() {
+    public ListView<Employee> getEmployeeListView() {
         return employeeListView;
     }
 
-    public ListView<String> getProjecListView() {
+    public ListView<Project> getProjecListView() {
         return projectListView;
     }
 }
