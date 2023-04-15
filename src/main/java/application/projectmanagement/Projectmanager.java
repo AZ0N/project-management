@@ -3,12 +3,12 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Projectmanager {
+public class ProjectManager {
     
     private ArrayList<Employee> employees;
     private ArrayList<Project> projects;
 
-    public Projectmanager() {
+    public ProjectManager() {
         employees = new ArrayList<>();
         projects = new ArrayList<>();
     }
@@ -20,6 +20,15 @@ public class Projectmanager {
     	}
     	projects.add(projectName);
     } 
+    
+    public void deleteProject(String projectName) throws Exception {
+    	var projectToDelete = getProject(projectName);
+    	if (projectToDelete != null) {
+    		projects.remove(projectToDelete);
+    	} else {
+    		throw new Exception ("The Project doesn't exist");
+    	}
+    }
     
     public Project getProject(String projectName) {
         return projects.stream().filter(e -> e.getProjectName().equals(projectName)).findFirst().orElse(null);
