@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.isNull;
 
 import application.projectmanagement.Project;
+import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,7 +14,11 @@ import io.cucumber.java.en.When;
 public class ProjectLeaderSteps {
 
 	private Project project;
-	private String errorMessage;
+	private ErrorMessageHolder errorMessageHolder;
+
+	public ProjectLeaderSteps(ErrorMessageHolder errorMessageHolder) {
+		this.errorMessageHolder = errorMessageHolder;
+	}
 
 	@Given("there is a Project named {string}.")
 	public void thereIsAProjectNamed(String projectName) {
@@ -30,7 +35,7 @@ public class ProjectLeaderSteps {
 		try {
 			project.appointProjectLeader(initials);
 		} catch (Exception e) {
-			this.errorMessage = e.getMessage();
+			this.errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
 
@@ -44,13 +49,8 @@ public class ProjectLeaderSteps {
 		try {
 			project.appointProjectLeader(initials);
 		} catch (Exception e) {
-			this.errorMessage = e.getMessage();
+			this.errorMessageHolder.setErrorMessage(e.getMessage());
 		}
-	}
-
-	@Then("the system provides the error message {string}")
-	public void theSystemProvidesTheErrorMessage(String expectedErrorMessage) {
-		assertEquals(expectedErrorMessage,errorMessage);
 	}
 
 }
