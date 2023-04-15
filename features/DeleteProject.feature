@@ -1,7 +1,6 @@
-
 Feature: Delete Project
-Description: Delete an existing Project
-Actor: Employee
+	Description: Delete an existing Project
+	Actor: Employee
 
 # Main Scenario
 Scenario: Delete Project
