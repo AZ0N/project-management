@@ -14,11 +14,8 @@ public class ProjectActivity implements Activities {
 
     
     //method for ProjectActivities
-    public ProjectActivity(String name, int estimatedTime, Date startDate, Date endDate) {
+    public ProjectActivity(String name) {
         this.name = name;
-        this.estimatedTime = estimatedTime;
-        this.startDate = startDate;
-        this.endDate = endDate;
     }
 
     @Override
