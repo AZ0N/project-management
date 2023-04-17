@@ -22,12 +22,12 @@ public class CreateProjectSteps {
 	private Project project;
 
 	@Given("there is a Project named {string}")
-	public void thereIsANewProjectNamed(String name) {
-		project = new Project(name);
+	public void thereIsANewProjectNamed(String projectName) {
+		project = new Project(projectName);
 	}
 
 	@When("the Project called {string} is added to the system")
-	public void theProjectCalledIsAddedToTheSystem(String string) {
+	public void theProjectCalledIsAddedToTheSystem(String projectName) {
 		try {
 			projectmanager.addProject(project);
 		} catch (Exception e) {
