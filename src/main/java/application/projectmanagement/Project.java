@@ -38,9 +38,9 @@ public class Project {
 	public String toString() {
 		return projectName;
 	}
-	  public void addEmployee(ProjectActivities projectActivity) {
-	        this.projectActivityList.add(projectActivity);
-	    }
-
+	
+	public void addActivity(ProjectActivities projectActivity) {
+        this.projectActivityList.add(projectActivity);
+	}
 	
 }
