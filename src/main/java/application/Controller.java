@@ -3,8 +3,10 @@ package application;
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 
 public class Controller {
 
@@ -44,5 +46,16 @@ public class Controller {
 
     public ListView<Project> getProjecListView() {
         return projectListView;
+    }
+
+    public void createProject() {
+        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setHeaderText("Enter project name:");
+        textInputDialog.setTitle("Create Project");
+        textInputDialog.showAndWait();
+
+        if (textInputDialog.getResult() != null) {
+            model.addProject(textInputDialog.getResult());
+        }
     }
 }
