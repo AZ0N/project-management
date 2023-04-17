@@ -12,9 +12,10 @@ public class ProjectActivities implements Activities {
     private Date startDate;
     private Date endDate;
 
-    public void ProjectActivity(String name, ArrayList<Employee> assignedEmployees, int estimatedTime, Date startDate, Date endDate) {
+    
+    //method for ProjectActivities
+    public void ProjectActivity(String name, int estimatedTime, Date startDate, Date endDate) {
         this.name = name;
-        this.assignedEmployees = assignedEmployees;
         this.estimatedTime = estimatedTime;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -61,6 +62,7 @@ public class ProjectActivities implements Activities {
 	public String getName() {
 		return name;
 	}
+	
 
     
 }
