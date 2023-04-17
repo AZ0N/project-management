@@ -8,4 +8,3 @@ Scenario: A Project leader creates an Activity.
     And "Project 1" has no Activity named "Activity 1"
     When the Project leader "LBM" creates the Activity named "Activity 1"
     Then "Project 1" has an Activity named "Activity 1"
-

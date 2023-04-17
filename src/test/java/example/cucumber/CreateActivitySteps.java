@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 public class CreateActivitySteps {
 	
     private Project project;
-    private ProjectActivity ProjectActivty;
+    private ProjectActivity projectActivity;
 	
 	@Given("there is a Project named {string} with Project leader {string}")
 	public void thereIsAProjectNamedWithProjectLeader(String projectName, String projectLeader) {
@@ -31,7 +31,8 @@ public class CreateActivitySteps {
 	
 	@When("the Project leader {string} creates the Activity named {string}")
 	public void theProjectLeaderCreatesTheActivityNamed(String projectName, String activityName) {
-	    throw new io.cucumber.java.PendingException(); 
+	    projectActivity = new ProjectActivity(activityName);
+	    project.addActivity(projectActivity); 
 	}
 	
 	@Then("{string} has an Activity named {string}")

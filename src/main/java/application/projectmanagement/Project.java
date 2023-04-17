@@ -12,6 +12,7 @@ public class Project {
 	public Project(String projectName) {
 		this.projectName = projectName;
 		projectLeader = "";
+		projectActivities = new ArrayList<ProjectActivity>();
 	}
 	
 	public void appointProjectLeader (String initials) throws Exception {
@@ -45,4 +46,5 @@ public class Project {
 	public List<ProjectActivity> getProjectActivities() {
 		return projectActivities;
 	}
+	
 }
