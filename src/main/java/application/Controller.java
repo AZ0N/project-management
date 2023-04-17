@@ -33,7 +33,14 @@ public class Controller {
     }
     
     public void addEmployee() {
-        model.addEmployee(employeeInitialsTextField.getText());
+    	TextInputDialog textInputDialog = new TextInputDialog();
+    	textInputDialog.setHeaderText("Enter employee initials");
+    	textInputDialog.setTitle("Add employee");
+    	textInputDialog.showAndWait();
+    	
+    	if (textInputDialog.getResult() != null) {
+            model.addEmployee(textInputDialog.getResult());
+    	}
     }
 
     public void addProject() {
