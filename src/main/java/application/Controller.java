@@ -3,8 +3,9 @@ package application;
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 
@@ -18,6 +19,11 @@ public class Controller {
     @FXML private TextField projectNameTextField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
+
+    @FXML private TabPane tabPane;
+    @FXML private Tab employeeTab;
+    @FXML private Tab projectTab;
+    @FXML private Tab activityTab;
 
     public void setModelAndView(Model model, View view) {
         this.model = model;
@@ -40,6 +46,7 @@ public class Controller {
     	
     	if (textInputDialog.getResult() != null) {
             model.addEmployee(textInputDialog.getResult());
+            tabPane.getSelectionModel().select(employeeTab);
     	}
     }
 
@@ -63,6 +70,7 @@ public class Controller {
 
         if (textInputDialog.getResult() != null) {
             model.addProject(textInputDialog.getResult());
+            tabPane.getSelectionModel().select(projectTab);
         }
     }
 }
