@@ -1,9 +1,14 @@
 package application.projectmanagement;
 
+import java.util.ArrayList;
+
 public class Project {
 	private String projectName;
 	private String initials;
 	private String projectLeader;
+	private ProjectActivities projectActivity;
+	
+    private ArrayList<ProjectActivities> projectActivityList;
 	
 	public Project(String projectName) {
 		this.projectName = projectName;
@@ -33,4 +38,9 @@ public class Project {
 	public String toString() {
 		return projectName;
 	}
+	  public void addEmployee(ProjectActivities projectActivity) {
+	        this.projectActivityList.add(projectActivity);
+	    }
+
+	
 }
