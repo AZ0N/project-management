@@ -3,14 +3,14 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PredefinedActivities implements Activities {
+public class PredefinedActivity implements Activities {
     private String predefinedActivityName;
     private int estimatedTime;
     private Date startDate;
     private Date endDate;
     private ArrayList<String> causeOfAbsence;
 
-    public PredefinedActivities(String predefinedActivityName, int estimatedTime, Date startDate, Date endDate) {
+    public PredefinedActivity(String predefinedActivityName, int estimatedTime, Date startDate, Date endDate) {
         this.predefinedActivityName = predefinedActivityName;
         this.estimatedTime = estimatedTime;
         this.startDate = startDate;

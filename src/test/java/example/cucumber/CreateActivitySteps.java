@@ -1,55 +1,43 @@
 package example.cucumber;
 
 
+import static org.junit.Assert.assertTrue;
+
 import application.projectmanagement.Project;
-import application.projectmanagement.ProjectActivities;
+import application.projectmanagement.ProjectActivity;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class CreateActivitySteps {
 	
-	private String projectName;
-    private String projectLeader;
-    private String activityName;
-    private boolean activityCreated;
-    
     private Project project;
-    private ProjectActivities ProjectActivties;
+    private ProjectActivity ProjectActivty;
 	
 	@Given("there is a Project named {string} with Project leader {string}")
 	public void thereIsAProjectNamedWithProjectLeader(String projectName, String projectLeader) {
 		project = new Project(projectName);
-		        
-	    throw new io.cucumber.java.PendingException();
-	    
+		try {
+			project.appointProjectLeader(projectLeader);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 	@Given("{string} has no Activity named {string}")
-	public void hasNoActivityNamed(String string, String string2) {
-		
-		// Set activityCreated to false if it does not exist
-        activityCreated = false;
-	    throw new io.cucumber.java.PendingException();
+	public void hasNoActivityNamed(String projectName, String activityName) {
+		assertTrue(project.getProjectActivities().stream().filter(e -> e.getName().equals(activityName)).findAny().orElse(null) == null);
 	}
 	
 	@When("the Project leader {string} creates the Activity named {string}")
-	public void theProjectLeaderCreatesTheActivityNamed(String string, String string2) {
-	
-		// Set activityCreated to true if it is created successfully
-		this.activityName = string2;
-        activityCreated = true;
-		
+	public void theProjectLeaderCreatesTheActivityNamed(String projectName, String activityName) {
 	    throw new io.cucumber.java.PendingException(); 
 	}
 	
 	@Then("{string} has an Activity named {string}")
-	public void hasAnActivityNamed(String string, String string2) {
-	    
-	     // Assert that activityCreated is true
-	    throw new io.cucumber.java.PendingException();
+	public void hasAnActivityNamed(String projectName, String activityName) {
+		assertTrue(project.getProjectActivities().stream().filter(e -> e.getName().equals(activityName)).findAny().orElse(null) != null);
 	}
-	
 	
 }
 

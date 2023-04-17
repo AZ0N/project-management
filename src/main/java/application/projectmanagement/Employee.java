@@ -7,7 +7,7 @@ public class Employee {
 
 	private String initials;
 	private int timeUsed;
-	private List<ProjectActivities> assignedActivities; 
+	private List<ProjectActivity> assignedActivities; 
 	
 	public Employee(String initials) {
 		this.initials = initials;
@@ -35,15 +35,15 @@ public class Employee {
 	    this.timeUsed += time;
 	}
 	    
-	public List<ProjectActivities> getAssignedActivities() {
+	public List<ProjectActivity> getAssignedActivities() {
 	    return assignedActivities;
 	}
 	    
-	public void assignActivity(ProjectActivities activity) {
+	public void assignActivity(ProjectActivity activity) {
 	    assignedActivities.add(activity);
 	}
 	    
-	public void addTimeUsedToActivity(ProjectActivities activity, int time) {
+	public void addTimeUsedToActivity(ProjectActivity activity, int time) {
 	    if (assignedActivities.contains(activity)) {
 	        activity.addTimeUsedByEmployee(this, time);
 	    } else {

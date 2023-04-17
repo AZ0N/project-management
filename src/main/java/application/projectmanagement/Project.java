@@ -1,14 +1,13 @@
 package application.projectmanagement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Project {
 	private String projectName;
 	private String initials;
 	private String projectLeader;
-	private ProjectActivities projectActivity;
-	
-    private ArrayList<ProjectActivities> projectActivityList;
+	private ArrayList<ProjectActivity> projectActivities;
 	
 	public Project(String projectName) {
 		this.projectName = projectName;
@@ -38,13 +37,12 @@ public class Project {
 	public String toString() {
 		return projectName;
 	}
-	
-	/*
-	 * Melissa
-	 */
-	
-	public void addActivity(ProjectActivities projectActivity) {
-        this.projectActivityList.add(projectActivity);
+
+	public void addActivity(ProjectActivity projectActivity) {
+		projectActivities.add(projectActivity);
 	}
-	
+
+	public List<ProjectActivity> getProjectActivities() {
+		return projectActivities;
+	}
 }
