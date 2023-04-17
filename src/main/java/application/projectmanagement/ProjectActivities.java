@@ -3,9 +3,13 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ProjectActivities implements Activities {
+/*
+ * Melissa
+ */
 
-    private String name;
+public class ProjectActivities implements Activities {
+	
+    private String ProjectActivityName;
     private ArrayList<Employee> assignedEmployees;
     private int estimatedTime;
     private int timeUsed;
@@ -14,8 +18,8 @@ public class ProjectActivities implements Activities {
 
     
     //method for ProjectActivities
-    public void ProjectActivity(String name, int estimatedTime, Date startDate, Date endDate) {
-        this.name = name;
+    public void ProjectActivity(String ProjectActivityName, int estimatedTime, Date startDate, Date endDate) {
+        this.ProjectActivityName = ProjectActivityName;
         this.estimatedTime = estimatedTime;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -60,7 +64,7 @@ public class ProjectActivities implements Activities {
     }
 
 	public String getName() {
-		return name;
+		return ProjectActivityName;
 	}
 	
 

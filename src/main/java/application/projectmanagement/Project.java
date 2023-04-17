@@ -39,6 +39,10 @@ public class Project {
 		return projectName;
 	}
 	
+	/*
+	 * Melissa
+	 */
+	
 	public void addActivity(ProjectActivities projectActivity) {
         this.projectActivityList.add(projectActivity);
 	}
