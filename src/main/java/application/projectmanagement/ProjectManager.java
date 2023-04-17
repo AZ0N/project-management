@@ -18,6 +18,9 @@ public class ProjectManager {
     	if (getProject(project.getProjectName()) != null) {
     		throw new Exception("Project with name " + project.getProjectName() + " already exists!");
     	}
+    	if (project.getProjectName().isEmpty()) {
+    		throw new Exception("The project needs a name!");
+    	}
     	projects.add(project);
     } 
     
@@ -26,7 +29,7 @@ public class ProjectManager {
     	if (projectToDelete != null) {
     		projects.remove(projectToDelete);
     	} else {
-    		throw new Exception ("The Project doesn't exist");
+    		throw new Exception ("The Project doesn't exist!");
     	}
     }
     
@@ -42,6 +45,9 @@ public class ProjectManager {
 	public void addEmployee(Employee employee) throws Exception {
         if (getEmployee(employee.getInitials()) != null) {
             throw new Exception("Employee with initials " + employee.getInitials() + " already exists!");
+        }
+        if (employee.getInitials().isEmpty()) {
+        	throw new Exception("The employee needs initials!");
         }
         employees.add(employee);
     }
