@@ -12,4 +12,4 @@ Scenario: Delete Project
 Scenario: Project doesn't exist
 	Given there isn't a Project named "Project 1"
 	When the Project called "Project 1" is deleted
-	Then the system provides the error message "The Project doesn't exist"
+	Then the system provides the error message "The Project doesn't exist!"
