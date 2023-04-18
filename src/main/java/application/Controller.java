@@ -15,8 +15,8 @@ public class Controller {
     private Model model;
     private View view;
 
-    @FXML private TextField employeeInitialsTextField;
-    @FXML private TextField projectNameTextField;
+    @FXML private TextField employeeSearchField;
+    @FXML private TextField projectSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
 
@@ -49,19 +49,7 @@ public class Controller {
             tabPane.getSelectionModel().select(employeeTab);
     	}
     }
-
-    public void addProject() {
-        model.addProject(projectNameTextField.getText());
-    }
-
-    public ListView<Employee> getEmployeeListView() {
-        return employeeListView;
-    }
-
-    public ListView<Project> getProjecListView() {
-        return projectListView;
-    }
-
+    
     public void createProject() {
         TextInputDialog textInputDialog = new TextInputDialog();
         textInputDialog.setHeaderText("Enter project name:");
@@ -72,5 +60,13 @@ public class Controller {
             model.addProject(textInputDialog.getResult());
             tabPane.getSelectionModel().select(projectTab);
         }
+    }
+
+    public ListView<Employee> getEmployeeListView() {
+        return employeeListView;
+    }
+
+    public ListView<Project> getProjecListView() {
+        return projectListView;
     }
 }
