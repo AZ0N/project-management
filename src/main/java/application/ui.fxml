@@ -22,7 +22,7 @@
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#createProject" text="Create Project" />
                         <MenuItem mnemonicParsing="false" onAction="#addEmployee" text="Add Employee" />
-                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Close" />
                   </items>
                 </Menu>
               </menus>

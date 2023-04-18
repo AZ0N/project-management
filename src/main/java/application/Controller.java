@@ -62,6 +62,10 @@ public class Controller {
         }
     }
 
+    public void closeApplication() {
+        view.close();
+    }
+
     public ListView<Employee> getEmployeeListView() {
         return employeeListView;
     }

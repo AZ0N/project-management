@@ -21,13 +21,15 @@ public class View extends Application {
     ListView<Employee> employeeListView;
     ListView<Project> projectListView;
 
+    private Stage stage;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) {
-
+        this.stage = stage;
         model = new Model(this);
         Scene scene;
 
@@ -72,5 +74,9 @@ public class View extends Application {
         Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
         alert.setHeaderText(errorMessage);
         alert.show();
+    }
+
+    public void close() {
+        stage.close();
     }
 }
