@@ -7,13 +7,21 @@ import application.projectmanagement.ProjectManager;
 public class Model {
     
     private View view;
-
     private ProjectManager projectmanager;
+
+    private Employee selectedEmployee;
 
     public Model(View view) {
         this.view = view;
-
         projectmanager = new ProjectManager();
+    }
+
+    public Employee getCurrentEmployee() {
+        return selectedEmployee;
+    }
+
+    public void clearSelectedEmployee() {
+        selectedEmployee = null;
     }
 
     public void addEmployee(String initials) {
@@ -37,5 +45,16 @@ public class Model {
             return;
         }
         view.updateProjectList(projectmanager.getProjects());
+    }
+
+    public void login(String initials) {
+        Employee e = projectmanager.getEmployee(initials);
+        if (e == null) {
+            view.showError("No employee with initials: " + initials);
+            return;
+        }
+        selectedEmployee = e;
+        //Update view
+        view.toMainScreen();
     }
 }

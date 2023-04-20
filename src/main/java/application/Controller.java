@@ -3,15 +3,16 @@ package application;
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.VBox;
 
 public class Controller {
 
-	// Fields
     private Model model;
     private View view;
 
@@ -19,11 +20,14 @@ public class Controller {
     @FXML private TextField projectSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
-
     @FXML private TabPane tabPane;
     @FXML private Tab employeeTab;
     @FXML private Tab projectTab;
     @FXML private Tab activityTab;
+    @FXML VBox LogInScreen;
+    @FXML VBox MainScreen;
+    @FXML TextField loginTextField;
+    @FXML Label currentUserLabel;
 
     public void setModelAndView(Model model, View view) {
         this.model = model;
@@ -76,5 +80,14 @@ public class Controller {
 
     public ListView<Project> getProjecListView() {
         return projectListView;
+    }
+
+    public void loginButton() {
+        model.login(loginTextField.getText());
+    }
+
+    public void logoutButton() {
+        model.clearSelectedEmployee();
+        view.toLoginScreen();
     }
 }

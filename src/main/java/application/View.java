@@ -60,9 +60,8 @@ public class View extends Application {
     @Override
     public void start(Stage stage) {
         this.stage = stage;
-        model = new Model(this);
         Scene scene;
-
+        
         try {
             // Load outer scene and controller using FXML
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui.fxml"));
@@ -73,11 +72,20 @@ public class View extends Application {
             e.printStackTrace();
             return;
         }
-
+        
+        model = new Model(this);
         controller.setModelAndView(model, this);
         employeeListView = controller.getEmployeeListView();
         projectListView = controller.getProjecListView();
+
+        // Add admin employee
+        try {
+            model.addEmployee("admin"); 
+        } catch (Exception e) {
+        }
         
+        toLoginScreen();
+
         stage.setScene(scene);
         stage.show();
     }
@@ -108,5 +116,17 @@ public class View extends Application {
 
     public void close() {
         stage.close();
+    }
+
+    public void toMainScreen() {
+        controller.currentUserLabel.setText("User: " + model.getCurrentEmployee().getInitials());
+        controller.MainScreen.setVisible(true);
+        controller.LogInScreen.setVisible(false);
+    }
+
+    public void toLoginScreen() {
+        controller.loginTextField.clear();
+        controller.LogInScreen.setVisible(true);
+        controller.MainScreen.setVisible(false);
     }
 }

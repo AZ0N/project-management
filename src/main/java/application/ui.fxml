@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -10,7 +11,9 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -18,13 +21,10 @@
    <root>
       <StackPane>
          <children>
-            <VBox fx:id="LogInScreen" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false">
+            <VBox fx:id="LogInScreen" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" visible="false">
                <children>
-                  <Button mnemonicParsing="false" text="Login">
-                     <graphic>
-                        <TextField />
-                     </graphic>
-                  </Button>
+                  <TextField fx:id="loginTextField" maxWidth="-Infinity" prefWidth="100.0" VBox.vgrow="NEVER" />
+                  <Button mnemonicParsing="false" onAction="#loginButton" prefWidth="100.0" text="Login" />
                </children>
             </VBox>
             <VBox fx:id="MainScreen" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
@@ -33,8 +33,7 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
-                          <MenuItem mnemonicParsing="false" onAction="#createProject" text="Create Project" />
-                              <MenuItem mnemonicParsing="false" onAction="#addEmployee" text="Add Employee" />
+                              <MenuItem mnemonicParsing="false" onAction="#logoutButton" text="Logout" />
                               <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Close" />
                         </items>
                       </Menu>
@@ -46,11 +45,15 @@
                            <content>
                               <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="employeeSearchField">
+                                    <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="NEVER">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
-                                    </TextField>
+                                       <children>
+                                          <TextField fx:id="employeeSearchField" HBox.hgrow="ALWAYS" />
+                                          <Button mnemonicParsing="false" onAction="#addEmployee" text="New" />
+                                       </children>
+                                    </HBox>
                                     <ListView fx:id="employeeListView" VBox.vgrow="ALWAYS">
                                        <VBox.margin>
                                           <Insets />
@@ -67,11 +70,15 @@
                            <content>
                               <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
                                  <children>
-                                    <TextField fx:id="projectSearchField">
+                                    <HBox spacing="10.0" VBox.vgrow="NEVER">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
-                                    </TextField>
+                                       <children>
+                                          <TextField fx:id="projectSearchField" HBox.hgrow="ALWAYS" />
+                                          <Button mnemonicParsing="false" onAction="#createProject" text="New" />
+                                       </children>
+                                    </HBox>
                                     <ListView fx:id="projectListView" VBox.vgrow="ALWAYS">
                                        <VBox.margin>
                                           <Insets />
@@ -91,6 +98,11 @@
                         </Tab>
                      </tabs>
                   </TabPane>
+                  <ToolBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER">
+                     <items>
+                        <Label fx:id="currentUserLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="User: XXXX" />
+                     </items>
+                  </ToolBar>
                </children>
             </VBox>
          </children>
