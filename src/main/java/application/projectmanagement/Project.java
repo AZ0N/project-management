@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
+	
 	private String projectName;
 	private String initials;
 	private String projectLeader;
@@ -46,6 +47,13 @@ public class Project {
 	public List<ProjectActivity> getProjectActivities(){
 		return projectActivities;
 	}
-	
-	
+
+	/**
+	 * Check if the given search string matches this Project 
+	 * @param searchText String to check if matches Project
+	 * @return True if searchText matches this Project. False otherwise
+	 */
+	public boolean match(String searchText) {
+		return projectName.contains(searchText);
+	}
 }

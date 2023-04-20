@@ -54,4 +54,13 @@ public class Employee {
 	public String toString() {
 		return initials;
 	}
+
+	/**
+	 * Check if the given search string matches this Employee
+	 * @param searchText String to check if matches Employee
+	 * @return True if searchText matches this Employee. False otherwise
+	 */
+	public boolean match(String searchText) {
+		return initials.contains(searchText);
+	}
 }

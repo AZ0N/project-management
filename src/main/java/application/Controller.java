@@ -52,6 +52,15 @@ public class Controller {
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
             }
         });
+
+        // Add eventlisterner to search fields for Employees and Projects
+        employeeSearchField.textProperty().addListener((e) -> {
+            view.updateEmployeeList(model.searchEmployees(employeeSearchField.getText().strip()));
+        });
+
+        projectSearchField.textProperty().addListener((e) -> {
+            view.updateProjectList(model.searchProjects(projectSearchField.getText().strip()));
+        });
     }
     
     public void addEmployee() {
