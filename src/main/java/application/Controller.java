@@ -1,10 +1,14 @@
 package application;
 
+import java.awt.Button;
+
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
@@ -20,8 +24,12 @@ public class Controller {
     @FXML private ListView<Project> projectListView;
     @FXML VBox logInScreen;
     @FXML VBox mainScreen;
+    @FXML TabPane Tabs;
+    @FXML Tab SelectedProject;
     @FXML TextField loginTextField;
     @FXML Label currentUserLabel;
+    @FXML Label ViewProjectName;
+    @FXML Label ViewProjectLeader;
 
     public void setModelAndView(Model model, View view) {
         this.model = model;
@@ -35,7 +43,7 @@ public class Controller {
 
         projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
-                System.out.println("Project: " + newValue.getProjectName());
+                view.updateProjectDetails(newValue); //Still needs ID and activity updates
             }
         });
     }
@@ -81,5 +89,9 @@ public class Controller {
     public void logoutButton() {
         model.clearSelectedEmployee();
         view.toLoginScreen();
+    }
+    
+    public void editProjectButton() {
+    	view.toSelectedProject();
     }
 }

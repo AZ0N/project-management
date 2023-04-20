@@ -77,6 +77,12 @@ public class View extends Application {
             projectListView.getItems().add(project);
         }
     }
+    
+    public void updateProjectDetails(Project project) {
+    	controller.ViewProjectName.setText("Project name: " + project.getProjectName());
+    	controller.ViewProjectLeader.setText("Project leader: " + project.getProjectLeader());
+    	// Todo ID and activities
+    }
 
     public void showError(String errorMessage) {
         Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
@@ -98,5 +104,9 @@ public class View extends Application {
         controller.loginTextField.clear();
         controller.logInScreen.setVisible(true);
         controller.mainScreen.setVisible(false);
+    }
+    
+    public void toSelectedProject() {
+    	controller.Tabs.getSelectionModel().select(controller.SelectedProject);
     }
 }
