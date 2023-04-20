@@ -1,5 +1,8 @@
 package application;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectManager;
@@ -56,5 +59,13 @@ public class Model {
         selectedEmployee = e;
         //Update view
         view.toMainScreen();
+    }
+
+    public List<Employee> searchEmployees(String searchText) {
+        return projectmanager.getEmployees().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
+    }
+
+    public List<Project> searchProjects(String searchText) {
+        return projectmanager.getProjects().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
     }
 }

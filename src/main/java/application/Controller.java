@@ -4,6 +4,7 @@ import java.awt.Button;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
+import application.projectmanagement.ProjectActivity;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -22,24 +23,27 @@ public class Controller {
     @FXML private TextField projectSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
+    @FXML private ListView<ProjectActivity> projectActivityListView;
     @FXML VBox logInScreen;
     @FXML VBox mainScreen;
     @FXML TabPane Tabs;
     @FXML Tab SelectedProject;
     @FXML TextField loginTextField;
     @FXML Label currentUserLabel;
+
     @FXML Label ViewProjectName;
     @FXML Label ViewProjectLeader;
     @FXML Label SPViewProjectName;
     @FXML Label SPViewProjectLeader;
-    
+    @FXML Label employeeInitials;
+
     public void setModelAndView(Model model, View view) {
         this.model = model;
         this.view = view;
 
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
-                System.out.println("Employee: " + newValue.getInitials());
+            	employeeInitials.setText("Initials: " + newValue.getInitials());
             }
         });
 
@@ -47,6 +51,15 @@ public class Controller {
             if (newValue != null) {
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
             }
+        });
+
+        // Add eventlisterner to search fields for Employees and Projects
+        employeeSearchField.textProperty().addListener((e) -> {
+            view.updateEmployeeList(model.searchEmployees(employeeSearchField.getText().strip()));
+        });
+
+        projectSearchField.textProperty().addListener((e) -> {
+            view.updateProjectList(model.searchProjects(projectSearchField.getText().strip()));
         });
     }
     
@@ -83,7 +96,10 @@ public class Controller {
     public ListView<Project> getProjecListView() {
         return projectListView;
     }
-
+    
+    public ListView<ProjectActivity> getProjectActivityListView() {
+    	return projectActivityListView;
+    }
     public void loginButton() {
         model.login(loginTextField.getText());
     }
