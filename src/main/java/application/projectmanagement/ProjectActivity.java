@@ -60,6 +60,7 @@ public class ProjectActivity implements Activities {
 		return name;
 	}
 	
-
-    
+	public String toString() {
+		return name;
+	}
 }

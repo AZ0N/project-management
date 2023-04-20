@@ -4,6 +4,7 @@ import java.awt.Button;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
+import application.projectmanagement.ProjectActivity;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -22,14 +23,19 @@ public class Controller {
     @FXML private TextField projectSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
+    @FXML private ListView<ProjectActivity> projectActivityListView;
     @FXML VBox logInScreen;
     @FXML VBox mainScreen;
     @FXML TabPane Tabs;
     @FXML Tab SelectedProject;
     @FXML TextField loginTextField;
     @FXML Label currentUserLabel;
+
     @FXML Label ViewProjectName;
     @FXML Label ViewProjectLeader;
+
+    @FXML Label employeeInitials;
+
 
     public void setModelAndView(Model model, View view) {
         this.model = model;
@@ -37,7 +43,7 @@ public class Controller {
 
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
-                System.out.println("Employee: " + newValue.getInitials());
+            	employeeInitials.setText("Initials: " + newValue.getInitials());
             }
         });
 
@@ -81,7 +87,10 @@ public class Controller {
     public ListView<Project> getProjecListView() {
         return projectListView;
     }
-
+    
+    public ListView<ProjectActivity> getProjectActivityListView() {
+    	return projectActivityListView;
+    }
     public void loginButton() {
         model.login(loginTextField.getText());
     }
