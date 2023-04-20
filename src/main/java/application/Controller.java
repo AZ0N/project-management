@@ -5,8 +5,6 @@ import application.projectmanagement.Project;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
@@ -20,12 +18,8 @@ public class Controller {
     @FXML private TextField projectSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
-    @FXML private TabPane tabPane;
-    @FXML private Tab employeeTab;
-    @FXML private Tab projectTab;
-    @FXML private Tab activityTab;
-    @FXML VBox LogInScreen;
-    @FXML VBox MainScreen;
+    @FXML VBox logInScreen;
+    @FXML VBox mainScreen;
     @FXML TextField loginTextField;
     @FXML Label currentUserLabel;
 
@@ -54,7 +48,6 @@ public class Controller {
     	
     	if (textInputDialog.getResult() != null) {
             model.addEmployee(textInputDialog.getResult());
-            tabPane.getSelectionModel().select(employeeTab);
     	}
     }
     
@@ -66,7 +59,6 @@ public class Controller {
 
         if (textInputDialog.getResult() != null) {
             model.addProject(textInputDialog.getResult());
-            tabPane.getSelectionModel().select(projectTab);
         }
     }
 
