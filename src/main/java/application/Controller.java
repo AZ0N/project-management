@@ -30,7 +30,9 @@ public class Controller {
     @FXML Label currentUserLabel;
     @FXML Label ViewProjectName;
     @FXML Label ViewProjectLeader;
-
+    @FXML Label SPViewProjectName;
+    @FXML Label SPViewProjectLeader;
+    
     public void setModelAndView(Model model, View view) {
         this.model = model;
         this.view = view;

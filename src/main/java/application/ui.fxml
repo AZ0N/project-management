@@ -12,7 +12,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -127,9 +126,15 @@
                            </content>
                         </Tab>
                         <Tab fx:id="SelectedProject" text="Selected Project">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                          </content>
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Project ID:" />
+                                    <Label fx:id="SPViewProjectName" text="Project name:" />
+                                    <Label fx:id="SPViewProjectLeader" text="Project leader:" />
+                                 </children>
+                              </VBox>
+                           </content>
                         </Tab>
                      </tabs>
                   </TabPane>

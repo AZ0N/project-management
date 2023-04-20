@@ -81,6 +81,9 @@ public class View extends Application {
     public void updateProjectDetails(Project project) {
     	controller.ViewProjectName.setText("Project name: " + project.getProjectName());
     	controller.ViewProjectLeader.setText("Project leader: " + project.getProjectLeader());
+    	
+    	controller.SPViewProjectName.setText("Project name: " + project.getProjectName());
+    	controller.SPViewProjectLeader.setText("Project leader: " + project.getProjectLeader());
     	// Todo ID and activities
     }
 
