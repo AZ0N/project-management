@@ -4,8 +4,6 @@ import java.util.List;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
-import application.projectmanagement.ProjectActivity;
-import application.projectmanagement.ProjectManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,34 +25,6 @@ public class View extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        ProjectManager projectManager = new ProjectManager();
-        launch(args);
-        Employee employee = new Employee("jens");
-        try {
-			projectManager.addEmployee(employee);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        Project project = new Project("jensefar");
-        System.out.println(projectManager.getEmployees());
-        try {
-			projectManager.addProject(project);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        System.out.println(projectManager.getProjects());
-        try {
-			project.appointProjectLeader("jens");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        System.out.println(project.getProjectLeader());
-        ProjectActivity projectActivity = new ProjectActivity("jensemor");
-        project.addActivity(projectActivity);
-        System.out.println(project.getProjectActivities());
     }
 
     @Override
@@ -120,13 +90,13 @@ public class View extends Application {
 
     public void toMainScreen() {
         controller.currentUserLabel.setText("User: " + model.getCurrentEmployee().getInitials());
-        controller.MainScreen.setVisible(true);
-        controller.LogInScreen.setVisible(false);
+        controller.mainScreen.setVisible(true);
+        controller.logInScreen.setVisible(false);
     }
 
     public void toLoginScreen() {
         controller.loginTextField.clear();
-        controller.LogInScreen.setVisible(true);
-        controller.MainScreen.setVisible(false);
+        controller.logInScreen.setVisible(true);
+        controller.mainScreen.setVisible(false);
     }
 }
