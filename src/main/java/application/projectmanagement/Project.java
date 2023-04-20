@@ -43,8 +43,18 @@ public class Project {
 		projectActivities.add(projectActivity);
 	}
 
-	public List<ProjectActivity> getProjectActivities() {
-		return projectActivities;
+	public ProjectActivity getProjectActivity(ProjectActivity projectActivityName) {
+		return projectActivities.stream().filter(e -> e.getName().equals(projectActivityName)).findFirst().orElse(null);
 	}
+	
+	public void deleteProjectActivity(ProjectActivity projectActivityName) throws Exception {
+    	var activityToDelete = getProjectActivity(projectActivityName);
+    	if (activityToDelete != null) {
+    		projectActivities.remove(activityToDelete);
+    	} else {
+    		throw new Exception ("The Project doesn't exist!");
+    	}
+    }
+	
 	
 }
