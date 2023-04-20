@@ -30,11 +30,15 @@ public class Controller {
         this.view = view;
 
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
-            System.out.println("Employee: " + newValue.getInitials());
+            if (newValue != null) {
+                System.out.println("Employee: " + newValue.getInitials());
+            }
         });
 
         projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
-            System.out.println("Project: " + newValue.getProjectName());
+            if (newValue != null) {
+                System.out.println("Project: " + newValue.getProjectName());
+            }
         });
     }
     
