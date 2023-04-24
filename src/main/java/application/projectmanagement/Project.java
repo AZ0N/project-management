@@ -47,6 +47,7 @@ public class Project {
 	public List<ProjectActivity> getProjectActivities(){
 		return projectActivities;
 	}
+	
 
 	/**
 	 * Check if the given search string matches this Project 

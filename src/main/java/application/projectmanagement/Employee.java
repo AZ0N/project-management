@@ -8,6 +8,7 @@ public class Employee {
 	private String initials;
 	private int timeUsed;
 	private List<ProjectActivity> assignedActivities; 
+	private ArrayList<Project> projects;
 	
 	public Employee(String initials) {
 		this.initials = initials;
@@ -38,7 +39,11 @@ public class Employee {
 	public List<ProjectActivity> getAssignedActivities() {
 	    return assignedActivities;
 	}
-	    
+	
+	public List<Project> getprojects() {
+	    return projects;
+	}
+	 
 	public void assignActivity(ProjectActivity activity) {
 	    assignedActivities.add(activity);
 	}
