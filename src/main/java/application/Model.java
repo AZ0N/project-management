@@ -66,12 +66,20 @@ public class Model {
 
     public void assignEmployeeToActivity(String employeeInitials) {
     	if (selectedActivity == null) {
-    		return; //TODO throw error
+            // TODO Handle
+    		return; 
     	}
-    	selectedActivity.addEmployee(new Employee(employeeInitials));
+        Employee e = projectmanager.getEmployee(employeeInitials);
+        if (e == null) {
+            view.showError("Employee with initals " + employeeInitials + " doesn't exist!");
+            return;
+        }
+        if (selectedActivity.getAssignedEmployees().contains(e)) {
+            view.showError(employeeInitials + " is already assigned to this activity!");
+            return;
+        }
+    	selectedActivity.addEmployee(e);
     	view.updateSAEmployeeListView(getSelectedActivityEmployees());
-    	// TODO list of employees on activity
-		
 	}
     
     public List<ProjectActivity> getSelectedProjectActivities() {
