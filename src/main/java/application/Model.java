@@ -90,7 +90,11 @@ public class Model {
         return projectmanager.getProjects().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
     }
     
-    public List<ProjectActivity> showEmployeeActivityListView(Employee e){
+    public List<ProjectActivity> showEmployeeActivityListView(Employee e) {
     	return projectmanager.getAllActivitiesForEmployee(e);
+    }
+    
+    public List<Project> showEmployeeProjectListView(Employee e) {
+    	return projectmanager.getAllProjectsForEmployee(e);
     }
 }

@@ -74,7 +74,7 @@
                                        <children>
                                           <Label fx:id="employeeInitials" text="Initials:" />
                                           <Label text="Projects:" />
-                                          <ListView fx:id="projectListView" prefHeight="213.0" prefWidth="230.0" />
+                                          <ListView fx:id="employeeProjectListView" prefHeight="213.0" prefWidth="230.0" />
                                           <Label layoutX="10.0" layoutY="10.0" text="Activities:" />
                                           <ListView fx:id="employeeActivityListView" prefHeight="268.0" prefWidth="230.0" />
                                        </children>

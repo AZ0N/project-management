@@ -22,6 +22,7 @@ public class View extends Application {
 
     ListView<Employee> employeeListView;
     ListView<Project> projectListView;
+    ListView<Project> employeeProjectListView;
     ListView<ProjectActivity> projectActivityListView;
     ListView<ProjectActivity> employeeActivityListView;
     
@@ -53,6 +54,7 @@ public class View extends Application {
         projectListView = controller.getProjecListView();
         projectActivityListView = controller.getProjectActivityListView();
         employeeActivityListView = controller.getEmployeeActivityListView();
+        employeeProjectListView = controller.getEmployeeProjectListView();
 
         // Add admin employee
         try {
@@ -92,6 +94,16 @@ public class View extends Application {
         	employeeActivityListView.getItems().add(projectActivity);
         }
     }
+    
+    public void updateEmployeeProjectList(List<Project> projects) {
+        var items = employeeProjectListView.getItems();
+        items.clear();
+
+        for (Project project : projects) {
+        	employeeProjectListView.getItems().add(project);
+        }
+    }
+    
     
 
     public void updateProjectList(List<Project> projects) {

@@ -23,9 +23,11 @@ public class Controller {
     @FXML private TextField projectSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
+    @FXML private ListView<Project> employeeProjectListView;
     @FXML private ListView<ProjectActivity> projectActivityListView;
     @FXML private ListView<ProjectActivity> SPActivityListView;
     @FXML private ListView<ProjectActivity> employeeActivityListView;
+    
     
     @FXML VBox logInScreen;
     @FXML VBox mainScreen;
@@ -48,6 +50,7 @@ public class Controller {
             if (newValue != null) {
             	employeeInitials.setText("Initials: " + newValue.getInitials());
             	view.updateEmployeeActivityList(model.showEmployeeActivityListView(newValue));
+            	view.updateEmployeeProjectList(model.showEmployeeProjectListView(newValue));
             }
         });
 
@@ -126,6 +129,9 @@ public class Controller {
     	return employeeActivityListView;
     }
     
+    public ListView<Project> getEmployeeProjectListView(){
+    	return employeeProjectListView;
+    }
 
     public void loginButton() {
         model.login(loginTextField.getText());
