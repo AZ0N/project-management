@@ -22,7 +22,7 @@ public class ProjectManager {
     }
 
     // Methods for Projects
-    public void addProject(Project project) throws Exception{
+    public void addProject(Project project) throws Exception {
     	if (getProject(project.getProjectName()) != null) {
     		throw new Exception("Project with name " + project.getProjectName() + " already exists!");
     	}
