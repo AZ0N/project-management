@@ -166,10 +166,6 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="500.0" text="Initials: ">
-                                       <VBox.margin>
-                                          <Insets left="10.0" />
-                                       </VBox.margin></Label>
                                     <HBox prefHeight="576.0" prefWidth="500.0">
                                        <children>
                                           <VBox prefHeight="370.0" prefWidth="250.0">
@@ -178,7 +174,7 @@
                                                    <VBox.margin>
                                                       <Insets left="10.0" />
                                                    </VBox.margin></Label>
-                                                <ListView prefHeight="550.0" prefWidth="232.0">
+                                                <ListView prefHeight="551.0" prefWidth="230.0">
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                    </padding>
