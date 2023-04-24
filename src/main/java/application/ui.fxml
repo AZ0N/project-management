@@ -155,6 +155,56 @@
                               </VBox>
                            </content>
                         </Tab>
+                        <Tab text="My Overview">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox />
+                                 </children>
+                              </VBox>
+                           </content>
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="500.0" text="Initials: ">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin></Label>
+                                    <HBox prefHeight="576.0" prefWidth="500.0">
+                                       <children>
+                                          <VBox prefHeight="370.0" prefWidth="250.0">
+                                             <children>
+                                                <Label text="My Projects:">
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin></Label>
+                                                <ListView prefHeight="550.0" prefWidth="232.0">
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </VBox.margin></ListView>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="370.0" prefWidth="250.0">
+                                             <children>
+                                                <Label text="My Activities:">
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin></Label>
+                                                <ListView prefHeight="558.0" prefWidth="237.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </VBox.margin></ListView>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
                      </tabs>
                   </TabPane>
                </children>
