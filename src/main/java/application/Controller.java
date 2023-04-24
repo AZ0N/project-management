@@ -24,6 +24,7 @@ public class Controller {
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> projectListView;
     @FXML private ListView<ProjectActivity> projectActivityListView;
+    @FXML private ListView<ProjectActivity> SPActivityListView;
     @FXML VBox logInScreen;
     @FXML VBox mainScreen;
     @FXML TabPane Tabs;
@@ -49,7 +50,9 @@ public class Controller {
 
         projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
+                model.selectProject(newValue);
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
+                view.updateSPActivityListView(newValue.getProjectActivities());
             }
         });
 
@@ -85,6 +88,17 @@ public class Controller {
         }
     }
 
+    public void createProjectActivity() {
+        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setHeaderText("Enter activity name:");
+        textInputDialog.setTitle("Create Activity");
+        textInputDialog.showAndWait();
+
+        if (textInputDialog.getResult() != null) {
+            model.createProjectActivity(textInputDialog.getResult());
+        }
+    }
+
     public void closeApplication() {
         view.close();
     }
@@ -100,6 +114,11 @@ public class Controller {
     public ListView<ProjectActivity> getProjectActivityListView() {
     	return projectActivityListView;
     }
+
+    public ListView<ProjectActivity> getSPActivityListView() {
+        return SPActivityListView;
+    }
+
     public void loginButton() {
         model.login(loginTextField.getText());
     }

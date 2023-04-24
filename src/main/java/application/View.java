@@ -99,6 +99,16 @@ public class View extends Application {
     	// Todo ID and activities
     }
 
+    public void updateSPActivityListView(List<ProjectActivity> projectActivities) {
+        var listView = controller.getSPActivityListView();
+        
+        listView.getItems().clear();
+
+        for (ProjectActivity projectActivity : projectActivities) {
+            listView.getItems().add(projectActivity);
+        }
+    }
+
     public void showError(String errorMessage) {
         Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
         alert.setHeaderText(errorMessage);

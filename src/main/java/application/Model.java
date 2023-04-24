@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
+import application.projectmanagement.ProjectActivity;
 import application.projectmanagement.ProjectManager;
 
 public class Model {
@@ -13,6 +14,7 @@ public class Model {
     private ProjectManager projectmanager;
 
     private Employee selectedEmployee;
+    private Project selectedProject;
 
     public Model(View view) {
         this.view = view;
@@ -50,6 +52,19 @@ public class Model {
         view.updateProjectList(projectmanager.getProjects());
     }
 
+    public void createProjectActivity(String activityName) {
+        if (selectedProject == null) {
+            return;
+        }
+        // TODO Check if activity already exists
+        selectedProject.addActivity(new ProjectActivity(activityName));
+        view.updateSPActivityListView(getSelectedProjectActivities());
+    }
+
+    public List<ProjectActivity> getSelectedProjectActivities() {
+        return selectedProject.getProjectActivities();
+    }
+
     public void login(String initials) {
         Employee e = projectmanager.getEmployee(initials);
         if (e == null) {
@@ -59,6 +74,10 @@ public class Model {
         selectedEmployee = e;
         //Update view
         view.toMainScreen();
+    }
+
+    public void selectProject(Project p) {
+        selectedProject = p;
     }
 
     public List<Employee> searchEmployees(String searchText) {
