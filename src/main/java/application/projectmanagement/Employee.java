@@ -47,7 +47,7 @@ public class Employee {
 	public void assignActivity(ProjectActivity activity) {
 	    assignedActivities.add(activity);
 	}
-	    
+	
 	public void addTimeUsedToActivity(ProjectActivity activity, int time) {
 	    if (assignedActivities.contains(activity)) {
 	        activity.addTimeUsedByEmployee(this, time);

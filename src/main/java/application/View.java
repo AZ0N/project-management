@@ -6,6 +6,7 @@ import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -22,7 +23,8 @@ public class View extends Application {
     ListView<Employee> employeeListView;
     ListView<Project> projectListView;
     ListView<ProjectActivity> projectActivityListView;
-
+    ListView<ProjectActivity> employeeActivityListView;
+    
     private Stage stage;
 
     public static void main(String[] args) {
@@ -50,6 +52,7 @@ public class View extends Application {
         employeeListView = controller.getEmployeeListView();
         projectListView = controller.getProjecListView();
         projectActivityListView = controller.getProjectActivityListView();
+        employeeActivityListView = controller.getEmployeeActivityListView();
 
         // Add admin employee
         try {
@@ -80,6 +83,16 @@ public class View extends Application {
         	projectActivityListView.getItems().add(projectActivity);
         }
     }
+    
+    public void updateEmployeeActivityList(List<ProjectActivity> projectActivities) {
+        var items = employeeActivityListView.getItems();
+        items.clear();
+
+        for (ProjectActivity projectActivity : projectActivities) {
+        	employeeActivityListView.getItems().add(projectActivity);
+        }
+    }
+    
 
     public void updateProjectList(List<Project> projects) {
         var items = projectListView.getItems();

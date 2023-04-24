@@ -87,4 +87,8 @@ public class Model {
     public List<Project> searchProjects(String searchText) {
         return projectmanager.getProjects().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
     }
+    
+    public List<ProjectActivity> showEmployeeActivityListView(Employee e){
+    	return projectmanager.getAllActivitiesForEmployee(e);
+    }
 }

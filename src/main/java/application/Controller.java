@@ -25,6 +25,8 @@ public class Controller {
     @FXML private ListView<Project> projectListView;
     @FXML private ListView<ProjectActivity> projectActivityListView;
     @FXML private ListView<ProjectActivity> SPActivityListView;
+    @FXML private ListView<ProjectActivity> employeeActivityListView;
+    
     @FXML VBox logInScreen;
     @FXML VBox mainScreen;
     @FXML TabPane Tabs;
@@ -45,6 +47,7 @@ public class Controller {
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
             	employeeInitials.setText("Initials: " + newValue.getInitials());
+            	view.updateEmployeeActivityList(model.showEmployeeActivityListView(newValue));
             }
         });
 
@@ -118,6 +121,11 @@ public class Controller {
     public ListView<ProjectActivity> getSPActivityListView() {
         return SPActivityListView;
     }
+    
+    public ListView<ProjectActivity> getEmployeeActivityListView(){
+    	return employeeActivityListView;
+    }
+    
 
     public void loginButton() {
         model.login(loginTextField.getText());

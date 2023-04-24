@@ -15,6 +15,7 @@ public class ProjectActivity implements Activities {
     //method for ProjectActivities
     public ProjectActivity(String name) {
         this.name = name;
+        assignedEmployees = new ArrayList<Employee>();
     }
 
     @Override

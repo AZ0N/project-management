@@ -10,7 +10,7 @@ public class ProjectManager {
 
     public ProjectManager() {
         employees = new ArrayList<>();
-        projects = new ArrayList<>();
+        projects = new ArrayList<>(); 
     }
 
     // Methods for Projects
