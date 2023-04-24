@@ -59,4 +59,16 @@ public class ProjectManager {
     public List<Employee> getEmployees() {
         return employees;
     }
+
+    public List<ProjectActivity> getAllActivitiesForEmployee(Employee e) {
+        ArrayList<ProjectActivity> result = new ArrayList<>();
+        for (Project project : projects) {
+            result.addAll(project.getActivitiesForEmployee(e));
+        }
+        return result;
+    }
+
+    public List<Project> getAllProjectsForEmployee(Employee e) {
+        return projects.stream().filter(p -> p.isEmployeeInProject(e)).toList();
+    }
 }

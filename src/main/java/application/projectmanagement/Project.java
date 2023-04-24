@@ -47,7 +47,14 @@ public class Project {
 	public List<ProjectActivity> getProjectActivities(){
 		return projectActivities;
 	}
-	
+
+	public boolean isEmployeeInProject(Employee e) {
+		return getActivitiesForEmployee(e).size() > 0;
+	}
+
+	public List<ProjectActivity> getActivitiesForEmployee(Employee e) {
+		return projectActivities.stream().filter(projectActivity -> projectActivity.hasEmployee(e)).toList();
+	} 
 
 	/**
 	 * Check if the given search string matches this Project 

@@ -12,7 +12,6 @@ public class ProjectActivity implements Activities {
     private Date startDate;
     private Date endDate;
 
-    
     //method for ProjectActivities
     public ProjectActivity(String name) {
         this.name = name;
@@ -63,4 +62,8 @@ public class ProjectActivity implements Activities {
 	public String toString() {
 		return name;
 	}
+
+    public boolean hasEmployee(Employee employee) {
+        return assignedEmployees.contains(employee);
+    }
 }
