@@ -7,6 +7,7 @@ import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
 import application.projectmanagement.ProjectManager;
+import application.timemanagement.SystemTimeServer;
 
 public class Model {
     
@@ -19,6 +20,7 @@ public class Model {
     public Model(View view) {
         this.view = view;
         projectmanager = new ProjectManager();
+        projectmanager.setTimeServer(new SystemTimeServer());
     }
 
     public Employee getCurrentEmployee() {

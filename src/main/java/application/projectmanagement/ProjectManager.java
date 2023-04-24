@@ -3,14 +3,22 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.timemanagement.TimeServer;
+
 public class ProjectManager {
     
     private ArrayList<Employee> employees;
     private ArrayList<Project> projects;
 
+    private TimeServer timeServer;
+
     public ProjectManager() {
         employees = new ArrayList<>();
         projects = new ArrayList<>(); 
+    }
+
+    public void setTimeServer(TimeServer timeServer) {
+        this.timeServer = timeServer;
     }
 
     // Methods for Projects
