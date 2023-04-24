@@ -132,11 +132,25 @@
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Label text="Project ID:" />
+                                    <HBox>
+                                       <children>
+                                          <Label text="Project ID:" />
+                                       </children>
+                                    </HBox>
                                     <Label fx:id="SPViewProjectName" text="Project name:" />
                                     <Label fx:id="SPViewProjectLeader" text="Project leader:" />
-                                    <Button mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
-                                    <ListView fx:id="SPActivityListView" prefHeight="200.0" prefWidth="200.0" />
+                                    <HBox>
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
+                                          <Button mnemonicParsing="false" onAction="#assignEmployeeToActivity" text="Assign Employee" />
+                                       </children>
+                                    </HBox>
+                                    <HBox>
+                                       <children>
+                                          <ListView fx:id="SPActivityListView" />
+                                          <ListView fx:id="SAEmployeeListView" />
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </content>

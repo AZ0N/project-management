@@ -67,4 +67,8 @@ public class ProjectActivity implements Activities {
     public boolean hasEmployee(Employee employee) {
         return assignedEmployees.contains(employee);
     }
+
+	public ArrayList<Employee> getAssignedEmployees() {
+		return assignedEmployees;
+	}
 }

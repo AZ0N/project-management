@@ -16,6 +16,7 @@ public class Model {
 
     private Employee selectedEmployee;
     private Project selectedProject;
+	private ProjectActivity selectedActivity;
 
     public Model(View view) {
         this.view = view;
@@ -56,15 +57,29 @@ public class Model {
 
     public void createProjectActivity(String activityName) {
         if (selectedProject == null) {
-            return;
+            return; //TODO throw error
         }
         // TODO Check if activity already exists
         selectedProject.addActivity(new ProjectActivity(activityName));
         view.updateSPActivityListView(getSelectedProjectActivities());
     }
 
+    public void assignEmployeeToActivity(String employeeInitials) {
+    	if (selectedActivity == null) {
+    		return; //TODO throw error
+    	}
+    	selectedActivity.addEmployee(new Employee(employeeInitials));
+    	view.updateSAEmployeeListView(getSelectedActivityEmployees());
+    	// TODO list of employees on activity
+		
+	}
+    
     public List<ProjectActivity> getSelectedProjectActivities() {
         return selectedProject.getProjectActivities();
+    }
+    
+    public List<Employee> getSelectedActivityEmployees(){
+    	return selectedActivity.getAssignedEmployees();
     }
 
     public void login(String initials) {
@@ -78,9 +93,17 @@ public class Model {
         view.toMainScreen();
     }
 
-    public void selectProject(Project p) {
+    public void selectedProject(Project p) {
         selectedProject = p;
     }
+    
+   public void selectedActivity(ProjectActivity a) {
+		selectedActivity = a;
+	}
+   
+   public ProjectActivity getSelectedProjectActivity() {
+	   return selectedActivity;
+   }
 
     public List<Employee> searchEmployees(String searchText) {
         return projectmanager.getEmployees().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
@@ -97,4 +120,5 @@ public class Model {
     public List<Project> showEmployeeProjectListView(Employee e) {
     	return projectmanager.getAllProjectsForEmployee(e);
     }
+
 }

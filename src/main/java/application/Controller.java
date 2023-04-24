@@ -25,8 +25,8 @@ public class Controller {
     @FXML private ListView<ProjectActivity> projectActivityListView;
     @FXML private ListView<ProjectActivity> SPActivityListView;
     @FXML private ListView<ProjectActivity> employeeActivityListView;
-    
-    
+    @FXML private ListView<Employee> SAEmployeeListView;
+
     @FXML VBox logInScreen;
     @FXML VBox mainScreen;
     @FXML TabPane Tabs;
@@ -54,11 +54,20 @@ public class Controller {
 
         projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
-                model.selectProject(newValue);
+                model.selectedProject(newValue);
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
                 view.updateSPActivityListView(newValue.getProjectActivities());
             }
         });
+        
+        SPActivityListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
+            if (newValue != null) {
+            	model.selectedActivity(newValue);
+            	view.updateSAEmployeeListView(model.getSelectedActivityEmployees());
+            	// TODO update the list of employees on the specific activity
+            }
+        });
+        
 
         // Add eventlisterner to search fields for Employees and Projects
         employeeSearchField.textProperty().addListener((e) -> {
@@ -102,6 +111,17 @@ public class Controller {
             model.createProjectActivity(textInputDialog.getResult());
         }
     }
+    
+    public void assignEmployeeToActivity() {
+    	TextInputDialog textInputDialog = new TextInputDialog();
+    	textInputDialog.setHeaderText("Enter employee initials:");
+        textInputDialog.setTitle("Assign Employee");
+        textInputDialog.showAndWait();
+        
+        if (textInputDialog.getResult() != null) {
+        	model.assignEmployeeToActivity(textInputDialog.getResult());
+        }
+    }
 
     public void closeApplication() {
         view.close();
@@ -129,6 +149,10 @@ public class Controller {
     
     public ListView<Project> getEmployeeProjectListView(){
     	return employeeProjectListView;
+    }
+    
+    public ListView<Employee> getSAEmployeeListView() {
+    	return SAEmployeeListView;
     }
 
     public void loginButton() {

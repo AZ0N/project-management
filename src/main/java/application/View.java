@@ -103,7 +103,6 @@ public class View extends Application {
         }
     }
     
-    
 
     public void updateProjectList(List<Project> projects) {
         var items = projectListView.getItems();
@@ -132,6 +131,17 @@ public class View extends Application {
             listView.getItems().add(projectActivity);
         }
     }
+    
+    public void updateSAEmployeeListView(List<Employee> newValue) {
+		var listView = controller.getSAEmployeeListView();
+		
+		listView.getItems().clear();
+		
+		for (Employee employees : model.getSelectedProjectActivity().getAssignedEmployees()) {
+			listView.getItems().add(employees);
+		}
+		
+	}
 
     public void showError(String errorMessage) {
         Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
@@ -158,4 +168,6 @@ public class View extends Application {
     public void toSelectedProject() {
     	controller.Tabs.getSelectionModel().select(controller.SelectedProject);
     }
+
+	
 }
