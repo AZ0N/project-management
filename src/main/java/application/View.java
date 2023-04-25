@@ -1,7 +1,6 @@
 package application;
 
 import java.util.List;
-
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
@@ -17,158 +16,153 @@ import javafx.stage.Stage;
 
 public class View extends Application {
 
-    Model model;
-    Controller controller;
+	Model model;
+	Controller controller;
+	ListView<Employee> employeeListView;
+	ListView<Project> projectListView;
+	ListView<Project> employeeProjectListView;
+	ListView<ProjectActivity> projectActivityListView;
+	ListView<ProjectActivity> employeeActivityListView;
 
-    ListView<Employee> employeeListView;
-    ListView<Project> projectListView;
-    ListView<Project> employeeProjectListView;
-    ListView<ProjectActivity> projectActivityListView;
-    ListView<ProjectActivity> employeeActivityListView;
-    
-    private Stage stage;
+	private Stage stage;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-    @Override
-    public void start(Stage stage) {
-        this.stage = stage;
-        Scene scene;
-        
-        try {
-            // Load outer scene and controller using FXML
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui.fxml"));
-            scene = fxmlLoader.load();
-            controller = (Controller) fxmlLoader.getController();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-        
-        model = new Model(this);
-        controller.setModelAndView(model, this);
-        employeeListView = controller.getEmployeeListView();
-        projectListView = controller.getProjecListView();
-        projectActivityListView = controller.getProjectActivityListView();
-        employeeActivityListView = controller.getEmployeeActivityListView();
-        employeeProjectListView = controller.getEmployeeProjectListView();
+	@Override
+	public void start(Stage stage) {
+		this.stage = stage;
+		Scene scene;
 
-        // Add admin employee
-        try {
-            model.addEmployee("admin");
-        } catch (Exception e) {
-        }
-        
-        toLoginScreen();
+		try {
+			// Load outer scene and controller using FXML
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui.fxml"));
+			scene = fxmlLoader.load();
+			controller = (Controller) fxmlLoader.getController();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
 
-        stage.setScene(scene);
-        stage.show();
-    }
+		model = new Model(this);
+		controller.setModelAndView(model, this);
+		employeeListView = controller.getEmployeeListView();
+		projectListView = controller.getProjecListView();
+		projectActivityListView = controller.getProjectActivityListView();
+		employeeActivityListView = controller.getEmployeeActivityListView();
+		employeeProjectListView = controller.getEmployeeProjectListView();
 
-    public void updateEmployeeList(List<Employee> employees) {
-        var items = employeeListView.getItems();
-        items.clear();
+		// Add admin employee
+		try {
+			model.addEmployee("admin");
+		} catch (Exception e) {
+		}
 
-        for (Employee employee : employees) {
-            employeeListView.getItems().add(employee);
-        }
-    } 
-    
-    public void updateProjectActivityList(List<ProjectActivity> projectActivities) {
-        var items = projectActivityListView.getItems();
-        items.clear();
+		toLoginScreen();
 
-        for (ProjectActivity projectActivity : projectActivities) {
-        	projectActivityListView.getItems().add(projectActivity);
-        }
-    }
-    
-    public void updateEmployeeActivityList(List<ProjectActivity> projectActivities) {
-        var items = employeeActivityListView.getItems();
-        items.clear();
+		stage.setScene(scene);
+		stage.show();
+	}
 
-        for (ProjectActivity projectActivity : projectActivities) {
-        	employeeActivityListView.getItems().add(projectActivity);
-        }
-    }
-    
-    public void updateEmployeeProjectList(List<Project> projects) {
-        var items = employeeProjectListView.getItems();
-        items.clear();
+	public void updateEmployeeList(List<Employee> employees) {
+		var items = employeeListView.getItems();
+		items.clear();
 
-        for (Project project : projects) {
-        	employeeProjectListView.getItems().add(project);
-        }
-    }
-    
+		for (Employee employee : employees) {
+			employeeListView.getItems().add(employee);
+		}
+	}
 
-    public void updateProjectList(List<Project> projects) {
-        var items = projectListView.getItems();
-        items.clear();
+	public void updateProjectActivityList(List<ProjectActivity> projectActivities) {
+		var items = projectActivityListView.getItems();
+		items.clear();
 
-        for (Project project : projects) {
-            projectListView.getItems().add(project);
-        }
-    }
-    
-    public void updateProjectDetails(Project project) {
-    	controller.ViewProjectName.setText("Project name: " + project.getProjectName());
-    	controller.ViewProjectLeader.setText("Project leader: " + project.getProjectLeader());
-    	
-    	controller.SPViewProjectName.setText("Project name: " + project.getProjectName());
-    	controller.SPViewProjectLeader.setText("Project leader: " + project.getProjectLeader());
-    	// Todo ID and activities
-    }
+		for (ProjectActivity projectActivity : projectActivities) {
+			projectActivityListView.getItems().add(projectActivity);
+		}
+	}
 
-    public void updateSPActivityListView(List<ProjectActivity> projectActivities) {
-        var listView = controller.getSPActivityListView();
-        
-        listView.getItems().clear();
+	public void updateEmployeeActivityList(List<ProjectActivity> projectActivities) {
+		var items = employeeActivityListView.getItems();
+		items.clear();
 
-        for (ProjectActivity projectActivity : projectActivities) {
-            listView.getItems().add(projectActivity);
-        }
-    }
-    
-    public void updateSAEmployeeListView(List<Employee> newValue) {
-		var listView = controller.getSAEmployeeListView();
-		
+		for (ProjectActivity projectActivity : projectActivities) {
+			employeeActivityListView.getItems().add(projectActivity);
+		}
+	}
+
+	public void updateEmployeeProjectList(List<Project> projects) {
+		var items = employeeProjectListView.getItems();
+		items.clear();
+
+		for (Project project : projects) {
+			employeeProjectListView.getItems().add(project);
+		}
+	}
+
+	public void updateProjectList(List<Project> projects) {
+		var items = projectListView.getItems();
+		items.clear();
+
+		for (Project project : projects) {
+			projectListView.getItems().add(project);
+		}
+	}
+
+	public void updateProjectDetails(Project project) {
+		controller.ViewProjectName.setText("Project name: " + project.getProjectName());
+		controller.ViewProjectLeader.setText("Project leader: " + project.getProjectLeader());
+
+		controller.SPViewProjectName.setText("Project name: " + project.getProjectName());
+		controller.SPViewProjectLeader.setText("Project leader: " + project.getProjectLeader());
+	}
+
+	public void updateSPActivityListView(List<ProjectActivity> projectActivities) {
+		var listView = controller.getSPActivityListView();
+
 		listView.getItems().clear();
-		
+
+		for (ProjectActivity projectActivity : projectActivities) {
+			listView.getItems().add(projectActivity);
+		}
+	}
+
+	public void updateSAEmployeeListView(List<Employee> newValue) {
+		var listView = controller.getSAEmployeeListView();
+
+		listView.getItems().clear();
+
 		for (Employee employees : model.getSelectedProjectActivity().getAssignedEmployees()) {
 			listView.getItems().add(employees);
 		}
-		
+
 	}
 
-    public void showError(String errorMessage) {
-        Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
-        alert.setHeaderText(errorMessage);
-        alert.show();
-    }
+	public void showError(String errorMessage) {
+		Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
+		alert.setHeaderText(errorMessage);
+		alert.show();
+	}
 
-    public void close() {
-        stage.close();
-    }
+	public void close() {
+		stage.close();
+	}
 
-    public void toMainScreen() {
-        controller.currentUserLabel.setText("User: " + model.getCurrentEmployee().getInitials());
-        controller.mainScreen.setVisible(true);
-        controller.logInScreen.setVisible(false);
-    }
+	public void toMainScreen() {
+		controller.currentUserLabel.setText("User: " + model.getCurrentEmployee().getInitials());
+		controller.mainScreen.setVisible(true);
+		controller.logInScreen.setVisible(false);
+	}
 
-    public void toLoginScreen() {
-        controller.loginTextField.clear();
-        controller.logInScreen.setVisible(true);
-        controller.mainScreen.setVisible(false);
-    }
-    
-    public void toSelectedProject() {
-    	controller.Tabs.getSelectionModel().select(controller.SelectedProject);
-    }
+	public void toLoginScreen() {
+		controller.loginTextField.clear();
+		controller.logInScreen.setVisible(true);
+		controller.mainScreen.setVisible(false);
+	}
 
-	
+	public void toSelectedProject() {
+		controller.Tabs.getSelectionModel().select(controller.SelectedProject);
+	}
+
 }
