@@ -82,47 +82,39 @@ public class Controller {
    
     // Button events
     public void addEmployee() {
-    	TextInputDialog textInputDialog = new TextInputDialog();
-    	textInputDialog.setHeaderText("Enter employee initials");
-    	textInputDialog.setTitle("Add employee");
-    	textInputDialog.showAndWait();
-    	
-    	if (textInputDialog.getResult() != null) {
-            model.addEmployee(textInputDialog.getResult());
-    	}
+        String inputResult = showDialogBox("Add Employee", "Enter employee initials:");
+        if (inputResult != null) {
+            model.addEmployee(inputResult);
+        }
     }
     
     public void createProject() {
-        TextInputDialog textInputDialog = new TextInputDialog();
-        textInputDialog.setHeaderText("Enter project name:");
-        textInputDialog.setTitle("Create Project");
-        textInputDialog.showAndWait();
-
-        if (textInputDialog.getResult() != null) {
-            model.addProject(textInputDialog.getResult());
+        String inputResult = showDialogBox("Create Project", "Enter project name:");
+        if (inputResult != null) {
+            model.addProject(inputResult);
         }
     }
 
     public void createProjectActivity() {
-        TextInputDialog textInputDialog = new TextInputDialog();
-        textInputDialog.setHeaderText("Enter activity name:");
-        textInputDialog.setTitle("Create Activity");
-        textInputDialog.showAndWait();
-
-        if (textInputDialog.getResult() != null) {
-            model.createProjectActivity(textInputDialog.getResult());
+        String inputResult = showDialogBox("Create Activity", "Enter activity name:");
+        if (inputResult != null) {
+            model.createProjectActivity(inputResult);
         }
     }
     
     public void assignEmployeeToActivity() {
-    	TextInputDialog textInputDialog = new TextInputDialog();
-    	textInputDialog.setHeaderText("Enter employee initials:");
-        textInputDialog.setTitle("Assign Employee");
-        textInputDialog.showAndWait();
-        
-        if (textInputDialog.getResult() != null) {
-        	model.assignEmployeeToActivity(textInputDialog.getResult());
+        String inputResult = showDialogBox("Assign Employee", "Enter employee initials:");
+        if (inputResult != null) {
+            model.assignEmployeeToActivity(inputResult);
         }
+    }
+
+    private String showDialogBox(String title, String header) {
+        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setTitle(title);
+        textInputDialog.setHeaderText(header);
+        textInputDialog.showAndWait();
+        return textInputDialog.getResult();
     }
 
     public void closeApplication() {
