@@ -27,18 +27,18 @@ public class Controller {
     @FXML private ListView<ProjectActivity> employeeActivityListView;
     @FXML private ListView<Employee> SAEmployeeListView;
 
-    @FXML VBox logInScreen;
-    @FXML VBox mainScreen;
-    @FXML TabPane Tabs;
-    @FXML Tab SelectedProject;
-    @FXML TextField loginTextField;
-    @FXML Label currentUserLabel;
+    @FXML private VBox logInScreen;
+    @FXML private TextField loginTextField;
+    @FXML private VBox mainScreen;
+    @FXML private TabPane Tabs;
+    @FXML private Tab SelectedProject;
+    @FXML private Label currentUserLabel;
 
-    @FXML Label ViewProjectName;
-    @FXML Label ViewProjectLeader;
-    @FXML Label SPViewProjectName;
-    @FXML Label SPViewProjectLeader;
-    @FXML Label employeeInitials;
+    @FXML private Label ViewProjectName;
+    @FXML private Label ViewProjectLeader;
+    @FXML private Label SPViewProjectName;
+    @FXML private Label SPViewProjectLeader;
+    @FXML private Label employeeInitials;
 
 
     public void setModelAndView(Model model, View view) {
@@ -142,4 +142,17 @@ public class Controller {
     public ListView<ProjectActivity> getEmployeeActivityListView(){ return employeeActivityListView; }
     public ListView<Project> getEmployeeProjectListView(){ return employeeProjectListView; }
     public ListView<Employee> getSAEmployeeListView() { return SAEmployeeListView; }
+
+    public VBox getLogInScreen() { return logInScreen; }
+    public TextField getLogInTextField() { return loginTextField; }
+    public VBox getMainScreen() { return mainScreen; }
+    public TabPane getTabPane() { return Tabs; }
+    public Tab getSelectedProjecTab() { return SelectedProject; }
+    public Label getCurrentUserLabel() { return currentUserLabel; }
+
+    public Label getProjectNameLabel() { return ViewProjectName; }
+    public Label getProjectLeaderlabel() { return ViewProjectLeader; }
+    public Label getSelectedProjectNameLabel() { return SPViewProjectName; }
+    public Label getSelectedProjectLeaderLabel() { return SPViewProjectLeader; }
+    public Label getEmployeeInitialsLabel() { return employeeInitials; }
 }
