@@ -43,7 +43,7 @@ public class View extends Application {
 
 		// Add admin employee
 		try {
-			model.addEmployee("test");
+			model.addEmployee("adm");
 		}
 		catch (Exception e) {
 
@@ -106,6 +106,18 @@ public class View extends Application {
 		controller.getSelectedProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getSelectedProjectNameLabel().setText("Project name: " + project.getProjectName());
 		controller.getSelectedProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
+	}
+
+	public void clearProjectDetails() {
+		// Clear "Projects" tab
+		controller.getProjectIDLabel().setText("Project ID: ");
+		controller.getProjectNameLabel().setText("Project name: ");
+		controller.getProjectLeaderLabel().setText("Project leader: ");
+
+		// Clear "Selected Project" tab
+		controller.getSelectedProjectIDLabel().setText("Project ID: ");
+		controller.getSelectedProjectNameLabel().setText("Project name: ");
+		controller.getSelectedProjectLeaderLabel().setText("Project leader: ");
 	}
 
 	public void updateSelectedProjectActivityListView(List<ProjectActivity> projectActivities) {
