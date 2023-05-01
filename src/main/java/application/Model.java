@@ -96,8 +96,9 @@ public class Model {
             return;
         }
         selectedEmployee = e;
-        //Update view
+        // Update view
         view.toMainScreen();
+        view.updateOverview(projectmanager.getAllProjectsForEmployee(e), projectmanager.getAllActivitiesForEmployee(e));
     }
 
     public void selectedProject(Project p) {
@@ -120,11 +121,11 @@ public class Model {
         return projectmanager.getProjects().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
     }
     
-    public List<ProjectActivity> showEmployeeActivityListView(Employee e) {
+    public List<ProjectActivity> getAllActivitiesForEmployee(Employee e) {
     	return projectmanager.getAllActivitiesForEmployee(e);
     }
     
-    public List<Project> showEmployeeProjectListView(Employee e) {
+    public List<Project> getAllProjectsForEmployee(Employee e) {
     	return projectmanager.getAllProjectsForEmployee(e);
     }
 

@@ -139,6 +139,16 @@ public class View extends Application {
 		}
 	}
 
+	public void updateOverview(List<Project> projects, List<ProjectActivity> activities) {
+		var projectItems = controller.getOverviewProjectListView().getItems();
+		projectItems.clear();
+		projectItems.addAll(projects);
+
+		var activityItems = controller.getOverViewActivityListView().getItems();
+		activityItems.clear();
+		activityItems.addAll(activities);
+	}
+
 	public void showError(String errorMessage) {
 		Alert alert = new Alert(AlertType.WARNING, null, ButtonType.OK);
 		alert.setHeaderText(errorMessage);

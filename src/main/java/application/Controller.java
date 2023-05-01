@@ -45,6 +45,10 @@ public class Controller {
     @FXML private ListView<ProjectActivity> selectedProjectActivityListView;
     @FXML private ListView<Employee> selectedProjectActivityEmployeesListView;
 
+    // "My Overview" tab
+    @FXML private ListView<Project> overviewProjectListView;
+    @FXML private ListView<ProjectActivity> overviewActivityListView;
+
     // General UI elements    
     @FXML private VBox mainScreen;
     @FXML private TabPane tabPane;
@@ -59,8 +63,8 @@ public class Controller {
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
             	employeeInitialsLabel.setText("Initials: " + newValue.getInitials());
-            	view.updateEmployeeActivityList(model.showEmployeeActivityListView(newValue));
-            	view.updateEmployeeProjectList(model.showEmployeeProjectListView(newValue));
+            	view.updateEmployeeActivityList(model.getAllActivitiesForEmployee(newValue));
+            	view.updateEmployeeProjectList(model.getAllProjectsForEmployee(newValue));
             }
         });
 
@@ -68,7 +72,7 @@ public class Controller {
             model.selectedProject(newValue);
             selectedProjectTab.setDisable(newValue == null);
             editProjectButton.setDisable(newValue == null);
-            
+
             if (newValue != null) {
                 selectedProjectTab.setText("Selected Project: " + newValue.getID());
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
@@ -95,6 +99,14 @@ public class Controller {
 
         projectSearchField.textProperty().addListener((e) -> {
             view.updateProjectList(model.searchProjects(projectSearchField.getText().strip()));
+        });
+
+        // Eventlistener for when tabs change
+        tabPane.getSelectionModel().selectedIndexProperty().addListener((event, oldIndex, newIndex) -> {
+            // TODO Use enum for handling specific tab indexes
+            if ((int)newIndex == 0) {
+                view.updateOverview(model.getAllProjectsForEmployee(model.getCurrentEmployee()), model.getAllActivitiesForEmployee(model.getCurrentEmployee()));
+            }
         });
     }
    
@@ -172,4 +184,8 @@ public class Controller {
     public Label getSelectedProjectIDLabel() {return selectedProjectIDLabel; }
     public Label getSelectedProjectNameLabel() { return selectedProjectNameLabel; }
     public Label getSelectedProjectLeaderLabel() { return selectedProjectLeaderLabel; }
+
+    // Getters for "My Overview" UI elements
+    public ListView<Project> getOverviewProjectListView() { return overviewProjectListView; }
+    public ListView<ProjectActivity> getOverViewActivityListView() { return overviewActivityListView; }
 }
