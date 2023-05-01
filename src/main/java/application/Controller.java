@@ -31,11 +31,13 @@ public class Controller {
     // "Projects" tab
     @FXML private TextField projectSearchField;
     @FXML private ListView<Project> projectListView;
+    @FXML private Label projectIDLabel;
     @FXML private Label projectNameLabel;
     @FXML private Label projectLeaderLabel;
     @FXML private ListView<ProjectActivity> projectActivityListView;
 
     // "Selected Project" tab
+    @FXML private Label selectedProjectIDLabel;
     @FXML private Label selectedProjectNameLabel;
     @FXML private Label selectedProjectLeaderLabel;
     @FXML private ListView<ProjectActivity> selectedProjectActivityListView;
@@ -153,9 +155,11 @@ public class Controller {
     public VBox getMainScreen() { return mainScreen; }
     public TabPane getTabPane() { return tabPane; }
     public Tab getSelectedProjecTab() { return selectedProjectTab; }
+    public Label getProjectIDLabel() { return projectIDLabel; }
     public Label getCurrentUserLabel() { return currentUserLabel; }
     public Label getProjectNameLabel() { return projectNameLabel; }
-    public Label getProjectLeaderlabel() { return projectLeaderLabel; }
+    public Label getProjectLeaderLabel() { return projectLeaderLabel; }
+    public Label getSelectedProjectIDLabel() {return selectedProjectIDLabel; }
     public Label getSelectedProjectNameLabel() { return selectedProjectNameLabel; }
     public Label getSelectedProjectLeaderLabel() { return selectedProjectLeaderLabel; }
 }

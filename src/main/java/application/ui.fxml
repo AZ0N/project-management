@@ -114,7 +114,7 @@
                                     <VBox prefWidth="250.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                        <children>
                                           <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#editProjectButton" text="Edit Project" />
-                                          <Label text="Project ID:" />
+                                          <Label fx:id="projectIDLabel" text="Project ID:" />
                                           <Label fx:id="projectNameLabel" layoutX="10.0" layoutY="10.0" text="Project name:" />
                                           <Label fx:id="projectLeaderLabel" text="Project leader:" />
                                           <Label text="Activities" />
@@ -134,7 +134,7 @@
                                  <children>
                                     <HBox>
                                        <children>
-                                          <Label text="Project ID:" />
+                                          <Label fx:id="selectedProjectIDLabel" text="Project ID:" />
                                        </children>
                                     </HBox>
                                     <Label fx:id="selectedProjectNameLabel" text="Project name:" />

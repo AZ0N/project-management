@@ -97,8 +97,13 @@ public class View extends Application {
 	}
 
 	public void updateProjectDetails(Project project) {
+		// Update "Projects" tab
+		controller.getProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getProjectNameLabel().setText("Project name: " + project.getProjectName());
-		controller.getProjectLeaderlabel().setText("Project leader: " + project.getProjectLeader());
+		controller.getProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
+
+		// Update "Selected Project" tab
+		controller.getSelectedProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getSelectedProjectNameLabel().setText("Project name: " + project.getProjectName());
 		controller.getSelectedProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
 	}
