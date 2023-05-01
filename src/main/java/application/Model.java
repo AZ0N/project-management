@@ -45,8 +45,7 @@ public class Model {
 
     public void addProject(String projectName) {
         try {
-            Project p = new Project(projectName);
-            projectmanager.addProject(p);
+            projectmanager.createProject(projectName);
         } catch (Exception e) {
             view.showError(e.getMessage());
             return;

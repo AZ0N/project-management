@@ -11,10 +11,13 @@ public class Project {
 	private String projectLeader;
 	private ArrayList<ProjectActivity> projectActivities;
 	
-	public Project(String projectName) {
+	public Project(String projectName) throws IllegalArgumentException {
+		if (projectName.length() == 0 || projectName.length() > 30) {
+			throw new IllegalArgumentException("Project name " + projectName + " is not valid.");
+		}
 		this.projectName = projectName;
-		projectLeader = "";
-		projectActivities = new ArrayList<ProjectActivity>();
+		this.projectLeader = "";
+		this.projectActivities = new ArrayList<ProjectActivity>();
 	}
 	
 	public void appointProjectLeader (String initials) throws Exception {

@@ -21,16 +21,13 @@ public class ProjectManager {
         this.timeServer = timeServer;
     }
 
-    // Methods for Projects
-    public void addProject(Project project) throws Exception {
-    	if (getProject(project.getProjectName()) != null) {
-    		throw new Exception("Project with name " + project.getProjectName() + " already exists!");
-    	}
-    	if (project.getProjectName().isEmpty()) {
-    		throw new Exception("The project needs a name!");
-    	}
-    	projects.add(project);
-    } 
+    public void createProject(String projectName) throws IllegalArgumentException, Exception {
+        if (getProject(projectName) != null) {
+    		throw new Exception("Project with name " + projectName + " already exists!");
+        }
+        Project p = new Project(projectName);
+        projects.add(p);
+    }
     
     public void deleteProject(String projectName) throws Exception {
     	var projectToDelete = getProject(projectName);
@@ -41,14 +38,6 @@ public class ProjectManager {
     	}
     }
     
-    public Project getProject(String projectName) {
-        return projects.stream().filter(e -> e.getProjectName().equals(projectName)).findFirst().orElse(null);
-	}
-
-    public List<Project> getProjects() {
-        return projects;
-    }
-
     public void addEmployee(String initials) throws IllegalArgumentException, Exception {
         if (getEmployee(initials) != null) {
             throw new Exception("Employee with initials " + initials + " already exists!");
@@ -56,21 +45,29 @@ public class ProjectManager {
         Employee e = new Employee(initials);
         employees.add(e);
     }
-
-    public Employee getEmployee(String initials) {
-        return employees.stream().filter(e -> e.getInitials().equals(initials)).findFirst().orElse(null);
+    
+    public List<Project> getProjects() {
+        return projects;
     }
-
+    
     public List<Employee> getEmployees() {
         return employees;
     }
-
+    
     public List<ProjectActivity> getAllActivitiesForEmployee(Employee e) {
         ArrayList<ProjectActivity> result = new ArrayList<>();
         for (Project project : projects) {
             result.addAll(project.getActivitiesForEmployee(e));
         }
         return result;
+    }
+    
+    public Employee getEmployee(String initials) {
+        return employees.stream().filter(e -> e.getInitials().equals(initials)).findFirst().orElse(null);
+    }
+    
+    public Project getProject(String projectName) {
+        return projects.stream().filter(e -> e.getProjectName().equals(projectName)).findFirst().orElse(null);
     }
 
     public List<Project> getAllProjectsForEmployee(Employee e) {

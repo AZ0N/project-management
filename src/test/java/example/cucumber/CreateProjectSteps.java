@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectManager;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -19,24 +18,17 @@ public class CreateProjectSteps {
 		this.errorMessageHolder = errorMessageHolder;
 	}
 
-	private Project project;
-
-	@Given("there is a Project named {string}")
-	public void thereIsANewProjectNamed(String projectName) {
-		project = new Project(projectName);
-	}
-
-	@When("the Project called {string} is added to the system")
+	@When("a Project called {string} is added to the system")
 	public void theProjectCalledIsAddedToTheSystem(String projectName) {
 		try {
-			projectmanager.addProject(project);
+			projectmanager.createProject(projectName);
 		} catch (Exception e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
 
-	@Then("the Project {string} is in the system")
-	public void theProjectIsInTheSystem(String projectName) {
+	@Then("the Project called {string} is in the system")
+	public void theProjectCalledIsInTheSystem(String projectName) {
 		// Try to get the project with {projectName}
 		Project e = projectmanager.getProject(projectName); 
 
@@ -48,5 +40,4 @@ public class CreateProjectSteps {
 			assertTrue(e.getProjectName().equals(projectName));
 		}
 	}
-	
 }

@@ -4,7 +4,7 @@ Feature: Delete Project
 
 # Main Scenario
 Scenario: Delete Project
-	Given there is a Project named "Project 1"
+	Given a Project called "Project 1" is added to the system
 	When the Project called "Project 1" is deleted
 	Then the Project "Project 1" is not in the system
 	
