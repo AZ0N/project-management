@@ -40,10 +40,12 @@ public class Controller {
     @FXML Label SPViewProjectLeader;
     @FXML Label employeeInitials;
 
+
     public void setModelAndView(Model model, View view) {
         this.model = model;
         this.view = view;
 
+        // Initialize eventhandlers for listviews
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
             	employeeInitials.setText("Initials: " + newValue.getInitials());
@@ -67,7 +69,6 @@ public class Controller {
             	// TODO update the list of employees on the specific activity
             }
         });
-        
 
         // Add eventlisterner to search fields for Employees and Projects
         employeeSearchField.textProperty().addListener((e) -> {
@@ -78,7 +79,8 @@ public class Controller {
             view.updateProjectList(model.searchProjects(projectSearchField.getText().strip()));
         });
     }
-    
+   
+    // Button events
     public void addEmployee() {
     	TextInputDialog textInputDialog = new TextInputDialog();
     	textInputDialog.setHeaderText("Enter employee initials");
@@ -127,34 +129,6 @@ public class Controller {
         view.close();
     }
 
-    public ListView<Employee> getEmployeeListView() {
-        return employeeListView;
-    }
-
-    public ListView<Project> getProjecListView() {
-        return projectListView;
-    }
-    
-    public ListView<ProjectActivity> getProjectActivityListView() {
-    	return projectActivityListView;
-    }
-
-    public ListView<ProjectActivity> getSPActivityListView() {
-        return SPActivityListView;
-    }
-    
-    public ListView<ProjectActivity> getEmployeeActivityListView(){
-    	return employeeActivityListView;
-    }
-    
-    public ListView<Project> getEmployeeProjectListView(){
-    	return employeeProjectListView;
-    }
-    
-    public ListView<Employee> getSAEmployeeListView() {
-    	return SAEmployeeListView;
-    }
-
     public void loginButton() {
         model.login(loginTextField.getText());
     }
@@ -167,4 +141,13 @@ public class Controller {
     public void editProjectButton() {
     	view.toSelectedProject();
     }
+
+    // Getters for UI elements
+    public ListView<Employee> getEmployeeListView() { return employeeListView; }
+    public ListView<Project> getProjecListView() { return projectListView; }
+    public ListView<ProjectActivity> getProjectActivityListView() { return projectActivityListView; }
+    public ListView<ProjectActivity> getSPActivityListView() { return SPActivityListView; }
+    public ListView<ProjectActivity> getEmployeeActivityListView(){ return employeeActivityListView; }
+    public ListView<Project> getEmployeeProjectListView(){ return employeeProjectListView; }
+    public ListView<Employee> getSAEmployeeListView() { return SAEmployeeListView; }
 }
