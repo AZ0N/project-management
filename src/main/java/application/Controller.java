@@ -90,28 +90,28 @@ public class Controller {
     public void addEmployee() {
         String inputResult = showDialogBox("Add Employee", "Enter employee initials:");
         if (inputResult != null) {
-            model.addEmployee(inputResult);
+            model.addEmployee(inputResult.strip());
         }
     }
     
     public void createProject() {
         String inputResult = showDialogBox("Create Project", "Enter project name:");
         if (inputResult != null) {
-            model.addProject(inputResult);
+            model.addProject(inputResult.strip());
         }
     }
 
     public void createProjectActivity() {
         String inputResult = showDialogBox("Create Activity", "Enter activity name:");
         if (inputResult != null) {
-            model.createProjectActivity(inputResult);
+            model.createProjectActivity(inputResult.strip());
         }
     }
     
     public void assignEmployeeToActivity() {
         String inputResult = showDialogBox("Assign Employee", "Enter employee initials:");
         if (inputResult != null) {
-            model.assignEmployeeToActivity(inputResult);
+            model.assignEmployeeToActivity(inputResult.strip());
         }
     }
 
