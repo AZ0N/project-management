@@ -17,29 +17,35 @@ public class Controller {
     private Model model;
     private View view;
 
-    @FXML private TextField employeeSearchField;
-    @FXML private TextField projectSearchField;
-    @FXML private ListView<Employee> employeeListView;
-    @FXML private ListView<Project> projectListView;
-    @FXML private ListView<Project> employeeProjectListView;
-    @FXML private ListView<ProjectActivity> projectActivityListView;
-    @FXML private ListView<ProjectActivity> SPActivityListView;
-    @FXML private ListView<ProjectActivity> employeeActivityListView;
-    @FXML private ListView<Employee> SAEmployeeListView;
-
+    // Login screen
     @FXML private VBox logInScreen;
     @FXML private TextField loginTextField;
+
+    // "Employees" tab 
+    @FXML private TextField employeeSearchField;
+    @FXML private ListView<Employee> employeeListView;
+    @FXML private ListView<Project> employeeProjectListView;
+    @FXML private ListView<ProjectActivity> employeeActivityListView;
+    @FXML private Label employeeInitialsLabel;
+
+    // "Projects" tab
+    @FXML private TextField projectSearchField;
+    @FXML private ListView<Project> projectListView;
+    @FXML private Label projectNameLabel;
+    @FXML private Label projectLeaderLabel;
+    @FXML private ListView<ProjectActivity> projectActivityListView;
+
+    // "Selected Project" tab
+    @FXML private Label selectedProjectNameLabel;
+    @FXML private Label selectedProjectLeaderLabel;
+    @FXML private ListView<ProjectActivity> selectedProjectActivityListView;
+    @FXML private ListView<Employee> selectedProjectActivityEmployeesListView;
+
+    // General UI elements    
     @FXML private VBox mainScreen;
-    @FXML private TabPane Tabs;
-    @FXML private Tab SelectedProject;
+    @FXML private TabPane tabPane;
+    @FXML private Tab selectedProjectTab;
     @FXML private Label currentUserLabel;
-
-    @FXML private Label ViewProjectName;
-    @FXML private Label ViewProjectLeader;
-    @FXML private Label SPViewProjectName;
-    @FXML private Label SPViewProjectLeader;
-    @FXML private Label employeeInitials;
-
 
     public void setModelAndView(Model model, View view) {
         this.model = model;
@@ -48,7 +54,7 @@ public class Controller {
         // Initialize eventhandlers for listviews
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
-            	employeeInitials.setText("Initials: " + newValue.getInitials());
+            	employeeInitialsLabel.setText("Initials: " + newValue.getInitials());
             	view.updateEmployeeActivityList(model.showEmployeeActivityListView(newValue));
             	view.updateEmployeeProjectList(model.showEmployeeProjectListView(newValue));
             }
@@ -62,7 +68,7 @@ public class Controller {
             }
         });
         
-        SPActivityListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
+        selectedProjectActivityListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
             	model.selectedActivity(newValue);
             	view.updateSAEmployeeListView(model.getSelectedActivityEmployees());
@@ -138,21 +144,18 @@ public class Controller {
     public ListView<Employee> getEmployeeListView() { return employeeListView; }
     public ListView<Project> getProjecListView() { return projectListView; }
     public ListView<ProjectActivity> getProjectActivityListView() { return projectActivityListView; }
-    public ListView<ProjectActivity> getSPActivityListView() { return SPActivityListView; }
+    public ListView<ProjectActivity> getSelectedProjectActivityListView() { return selectedProjectActivityListView; }
     public ListView<ProjectActivity> getEmployeeActivityListView(){ return employeeActivityListView; }
     public ListView<Project> getEmployeeProjectListView(){ return employeeProjectListView; }
-    public ListView<Employee> getSAEmployeeListView() { return SAEmployeeListView; }
-
+    public ListView<Employee> getSelectedProjectActivityEmployeesListView() { return selectedProjectActivityEmployeesListView; }
     public VBox getLogInScreen() { return logInScreen; }
     public TextField getLogInTextField() { return loginTextField; }
     public VBox getMainScreen() { return mainScreen; }
-    public TabPane getTabPane() { return Tabs; }
-    public Tab getSelectedProjecTab() { return SelectedProject; }
+    public TabPane getTabPane() { return tabPane; }
+    public Tab getSelectedProjecTab() { return selectedProjectTab; }
     public Label getCurrentUserLabel() { return currentUserLabel; }
-
-    public Label getProjectNameLabel() { return ViewProjectName; }
-    public Label getProjectLeaderlabel() { return ViewProjectLeader; }
-    public Label getSelectedProjectNameLabel() { return SPViewProjectName; }
-    public Label getSelectedProjectLeaderLabel() { return SPViewProjectLeader; }
-    public Label getEmployeeInitialsLabel() { return employeeInitials; }
+    public Label getProjectNameLabel() { return projectNameLabel; }
+    public Label getProjectLeaderlabel() { return projectLeaderLabel; }
+    public Label getSelectedProjectNameLabel() { return selectedProjectNameLabel; }
+    public Label getSelectedProjectLeaderLabel() { return selectedProjectLeaderLabel; }
 }

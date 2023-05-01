@@ -43,7 +43,7 @@
                         <Label fx:id="currentUserLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="User: XXXX" />
                      </items>
                   </ToolBar>
-                  <TabPane fx:id="Tabs" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+                  <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                      <tabs>
                         <Tab closable="false" text="Employees">
                            <content>
@@ -72,7 +72,7 @@
                                     </VBox>
                                     <VBox prefWidth="250.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Label fx:id="employeeInitials" text="Initials:" />
+                                          <Label fx:id="employeeInitialsLabel" text="Initials:" />
                                           <Label text="Projects:" />
                                           <ListView fx:id="employeeProjectListView" prefHeight="213.0" prefWidth="230.0" />
                                           <Label layoutX="10.0" layoutY="10.0" text="Activities:" />
@@ -115,10 +115,10 @@
                                        <children>
                                           <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#editProjectButton" text="Edit Project" />
                                           <Label text="Project ID:" />
-                                          <Label fx:id="ViewProjectName" layoutX="10.0" layoutY="10.0" text="Project name:" />
-                                          <Label fx:id="ViewProjectLeader" text="Project leader:" />
+                                          <Label fx:id="projectNameLabel" layoutX="10.0" layoutY="10.0" text="Project name:" />
+                                          <Label fx:id="projectLeaderLabel" text="Project leader:" />
                                           <Label text="Activities" />
-                                          <ListView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                                          <ListView fx:id="projectActivityListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
                                        </children>
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -128,7 +128,7 @@
                               </HBox>
                            </content>
                         </Tab>
-                        <Tab fx:id="SelectedProject" text="Selected Project">
+                        <Tab fx:id="selectedProjectTab" text="Selected Project">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
@@ -137,8 +137,8 @@
                                           <Label text="Project ID:" />
                                        </children>
                                     </HBox>
-                                    <Label fx:id="SPViewProjectName" text="Project name:" />
-                                    <Label fx:id="SPViewProjectLeader" text="Project leader:" />
+                                    <Label fx:id="selectedProjectNameLabel" text="Project name:" />
+                                    <Label fx:id="selectedProjectLeaderLabel" text="Project leader:" />
                                     <HBox>
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
@@ -147,8 +147,8 @@
                                     </HBox>
                                     <HBox>
                                        <children>
-                                          <ListView fx:id="SPActivityListView" />
-                                          <ListView fx:id="SAEmployeeListView" />
+                                          <ListView fx:id="selectedProjectActivityListView" />
+                                          <ListView fx:id="selectedProjectActivityEmployeesListView" />
                                        </children>
                                     </HBox>
                                  </children>

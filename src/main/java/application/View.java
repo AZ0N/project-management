@@ -103,7 +103,7 @@ public class View extends Application {
 	}
 
 	public void updateSPActivityListView(List<ProjectActivity> projectActivities) {
-		var items = controller.getSPActivityListView().getItems();
+		var items = controller.getSelectedProjectActivityListView().getItems();
 		items.clear();
 		for (ProjectActivity projectActivity : projectActivities) {
 			items.add(projectActivity);
@@ -111,7 +111,7 @@ public class View extends Application {
 	}
 
 	public void updateSAEmployeeListView(List<Employee> newValue) {
-		var items = controller.getSAEmployeeListView().getItems();
+		var items = controller.getSelectedProjectActivityEmployeesListView().getItems();
 		items.clear();
 		for (Employee employees : model.getSelectedProjectActivity().getAssignedEmployees()) {
 			items.add(employees);
