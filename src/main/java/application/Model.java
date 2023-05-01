@@ -80,6 +80,25 @@ public class Model {
     	selectedActivity.addEmployee(e);
     	view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
 	}
+
+    public void appointProjectLeader(String employeeInitials) {
+        if (selectedProject == null) {
+            // TODO Handle
+            return;
+        }
+        Employee e = projectmanager.getEmployee(employeeInitials);
+        if (e == null) {
+            view.showError("Employee with initals " + employeeInitials + " doesn't exist!");
+            return;
+        }
+        try {
+            selectedProject.appointProjectLeader(e);
+        }
+        catch (Exception ex) {
+            view.showError(ex.getMessage());
+        }
+        view.updateProjectDetails(selectedProject);
+    }
     
     public List<ProjectActivity> getSelectedProjectActivities() {
         return selectedProject.getProjectActivities();

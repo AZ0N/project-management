@@ -140,6 +140,13 @@ public class Controller {
         }
     }
 
+    public void appointProjectLeader() {
+        String inputResult = showDialogBox("Appoint Project Leader", "Enter employee initials:");
+        if (inputResult != null) {
+            model.appointProjectLeader(inputResult.strip());
+        }
+    }
+
     private String showDialogBox(String title, String header) {
         TextInputDialog textInputDialog = new TextInputDialog();
         textInputDialog.setTitle(title);
@@ -161,7 +168,7 @@ public class Controller {
 
         // Clear selected employee
         model.clearSelectedEmployee();
-        
+
         // Clear UI elements
         view.clearProjectDetails();
         view.clearEmployeeTab();

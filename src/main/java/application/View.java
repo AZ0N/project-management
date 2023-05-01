@@ -97,6 +97,7 @@ public class View extends Application {
 	}
 
 	public void updateProjectDetails(Project project) {
+		//TODO Handle no project leader
 		// Update "Projects" tab
 		controller.getProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getProjectNameLabel().setText("Project name: " + project.getProjectName());

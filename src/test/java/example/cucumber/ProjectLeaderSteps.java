@@ -1,53 +1,38 @@
 package example.cucumber;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-import application.projectmanagement.Project;
-import io.cucumber.java.en.Given;
+import application.projectmanagement.ProjectManager;
+import application.timemanagement.ManualTimeServer;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProjectLeaderSteps {
 
-	private Project project;
+	private ProjectManager projectManager;
 	private ErrorMessageHolder errorMessageHolder;
+	private ManualTimeServer manualTimeServer;
 
-	public ProjectLeaderSteps(ErrorMessageHolder errorMessageHolder) {
+	public ProjectLeaderSteps(ProjectManager projectManager, ErrorMessageHolder errorMessageHolder, ManualTimeServer manualTimeServer) {
+		this.projectManager = projectManager;
 		this.errorMessageHolder = errorMessageHolder;
+		this.manualTimeServer = manualTimeServer;
+
+		this.projectManager.setTimeServer(this.manualTimeServer);
 	}
 
-	@Given("there is a Project named {string}.")
-	public void thereIsAProjectNamed(String projectName) {
-		// TODO Change to match new way of creating projects
-		project = new Project(1, projectName);
-	}
-
-	@Given("the Project {string} has no Project leader")
-	public void theProjectHasNoProjectLeader(String projectName) {
-		assertTrue(project.getProjectLeader().isEmpty());
-	}
-
-	@When("the user provides the initials {string} of the person who wants to become Project leader.")
-	public void theUserProvidesTheInitialsOfThePersonWhoWantsToBecomeProjectLeader(String initials) {
+	@When("the employee with initials {string} is appointed project leader of project with ID {int}")
+	public void theEmployeeWithInitialsIsAppointedProjectLeaderOfProjectWithID(String initials, int ID) {
 		try {
-			project.appointProjectLeader(initials);
-		} catch (Exception e) {
-			this.errorMessageHolder.setErrorMessage(e.getMessage());
+			projectManager.getProjectByID(ID).appointProjectLeader(projectManager.getEmployee(initials));
+		}
+		catch (Exception e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
 
-	@Then("the Project leader of {string} is the Employee with the initials {string}")
-	public void theProjectLeaderOfIsTheEmployeeWithTheInitials(String projectLeader, String initials) {
-		assertTrue(project.getProjectLeader().equals(initials));
+	@Then("the project leader of the project with ID {int} is {string}")
+	public void theProjectLeaderOfTheProjectWithIDIs(int ID, String projectLeaderInitials) {
+		assertEquals(projectManager.getProjectByID(ID).getProjectLeader().getInitials(), projectLeaderInitials);
 	}
-
-	@Given("that {string} has a Project leader with initials {string}.")
-	public void thatHasAProjectLeader(String projectName,String initials) {
-		try {
-			project.appointProjectLeader(initials);
-		} catch (Exception e) {
-			this.errorMessageHolder.setErrorMessage(e.getMessage());
-		}
-	}
-
 }

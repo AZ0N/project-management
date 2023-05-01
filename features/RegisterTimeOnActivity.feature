@@ -5,7 +5,8 @@ Actor: Employee
 # Main Scenario
 
 Scenario: an Employee registers his hours spent on an Activity.
-Given there is a Project named "Project 1".
+# TODO Fix this missing step definition
+Given there is a Project named "Project 1"
 And that "Project 1" has an Activity named "Activity 1".
 When the Employee with the initials "TEST" provides the Activity named "Activity 1".
 And the Employee with the initials "TEST" provides the total hours of work 2 on the Activity.

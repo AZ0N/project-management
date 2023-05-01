@@ -3,17 +3,19 @@ Feature: Appoint Project leader
     Actor: Employee
 
 # Main Scenario
-Scenario: An Employee is appointed Project leader.
-    Given there is a Project named "Project 1".
-    And the Project "Project 1" has no Project leader
-    When the user provides the initials "test" of the person who wants to become Project leader.
-    Then the Project leader of "Project 1" is the Employee with the initials "test"
+Scenario: An Employee is appointed Project Leader.
+    Given the year is 2023
+    And an employee with initials "jeff" is added to the system
+    And a Project called "Project 1" is added to the system
+    When the employee with initials "jeff" is appointed project leader of project with ID 23001
+    Then the project leader of the project with ID 23001 is "jeff"
 
-# Alternate Scenario
-Scenario: An Employee appoints a Project leader to a Project which already has a Project leader.
-    Given there is a Project named "Project 1".
-    And that "Project 1" has a Project leader with initials "test".
-    When the user provides the initials "test" of the person who wants to become Project leader.
-    Then the system provides the error message "This project already has a project leader"
-    
-    
+# Alternate Scenario 1
+Scenario: An Employee is appointed Project Leader on a project which already has a Project Leader
+    Given the year is 2023
+    And an employee with initials "jeff" is added to the system
+    And an employee with initials "bob" is added to the system
+    And a Project called "Project 1" is added to the system
+    And the employee with initials "jeff" is appointed project leader of project with ID 23001
+    When the employee with initials "bob" is appointed project leader of project with ID 23001
+    Then the system provides the error message "This projects already has a project leader!"

@@ -9,7 +9,7 @@ public class Project {
 	private int ID;
 	private String projectName;
 	private String initials;
-	private String projectLeader;
+	private Employee projectLeader;
 	private ArrayList<ProjectActivity> projectActivities;
 	
 	public Project(int projectID, String projectName) throws IllegalArgumentException {
@@ -18,16 +18,14 @@ public class Project {
 		}
 		this.ID = projectID;
 		this.projectName = projectName;
-		this.projectLeader = "";
 		this.projectActivities = new ArrayList<ProjectActivity>();
 	}
 	
-	public void appointProjectLeader (String initials) throws Exception {
-		if (this.projectLeader.isEmpty()) {
-			this.projectLeader = initials;
-		} else {
-			throw new Exception("This project already has a project leader");
+	public void appointProjectLeader (Employee employee) throws Exception {
+		if (projectLeader != null) {
+			throw new Exception("This projects already has a project leader!");
 		}
+		projectLeader = employee;
 	}
 	
 	public String getInitials() {
@@ -42,8 +40,12 @@ public class Project {
 		return projectName;
 	}
 	
-	public String getProjectLeader() {
+	public Employee getProjectLeader() {
 		return projectLeader;
+	}
+
+	public boolean hasProjectLeader() {
+		return projectLeader != null;
 	}
 	
 	public String toString() {

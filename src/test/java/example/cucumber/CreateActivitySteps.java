@@ -19,7 +19,7 @@ public class CreateActivitySteps {
 		// TODO Change to match new way of creating projects
 		project = new Project(1, projectName);
 		try {
-			project.appointProjectLeader(projectLeader);
+			//project.appointProjectLeader(projectLeader);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
