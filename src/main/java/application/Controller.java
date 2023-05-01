@@ -68,12 +68,14 @@ public class Controller {
             model.selectedProject(newValue);
             selectedProjectTab.setDisable(newValue == null);
             editProjectButton.setDisable(newValue == null);
-
+            
             if (newValue != null) {
+                selectedProjectTab.setText("Selected Project: " + newValue.getID());
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
                 view.updateSelectedProjectActivityListView(newValue.getProjectActivities());
             }
             else {
+                selectedProjectTab.setText("Selected Project");
                 view.clearProjectDetails();
             }
         });
