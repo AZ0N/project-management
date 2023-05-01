@@ -11,6 +11,7 @@ public class ProjectManager {
     private ArrayList<Project> projects;
 
     private TimeServer timeServer;
+    private int projectsCreated;
 
     public ProjectManager() {
         employees = new ArrayList<>();
@@ -19,14 +20,14 @@ public class ProjectManager {
 
     public void setTimeServer(TimeServer timeServer) {
         this.timeServer = timeServer;
+        this.projectsCreated = 0;
     }
 
     public void createProject(String projectName) throws IllegalArgumentException, Exception {
-        if (getProject(projectName) != null) {
-    		throw new Exception("Project with name " + projectName + " already exists!");
-        }
-        Project p = new Project(projectName);
+        // TODO Check if year changed since last time project was created
+        Project p = new Project((timeServer.getYear() % 100) * 1000 + projectsCreated + 1, projectName);
         projects.add(p);
+        projectsCreated += 1;
     }
     
     public void deleteProject(String projectName) throws Exception {
@@ -68,6 +69,10 @@ public class ProjectManager {
     
     public Project getProject(String projectName) {
         return projects.stream().filter(e -> e.getProjectName().equals(projectName)).findFirst().orElse(null);
+    }
+
+    public Project getProjectByID(int ID) {
+        return projects.stream().filter(p -> p.getID() == ID).findFirst().orElse(null);
     }
 
     public List<Project> getAllProjectsForEmployee(Employee e) {

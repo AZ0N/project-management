@@ -4,14 +4,17 @@ Feature: Create Project
 
 # Main Scenario
 Scenario: Create new Project
+	Given the year is 2023
 	When a Project called "Project 1" is added to the system
-	Then the Project called "Project 1" is in the system	
+	Then the Project with id 23001 and name "Project 1" is in the system	
 
 # Alternate Scenario 1
-Scenario: Create existing Project
+Scenario: Create two Projects with same names but different ID's
+	Given the year is 2023
 	When a Project called "Project 1" is added to the system
 	And a Project called "Project 1" is added to the system
-	Then the system provides the error message "Project with name Project 1 already exists!"
+	Then the Project with id 23001 and name "Project 1" is in the system
+	And the Project with id 23002 and name "Project 1" is in the system
 
 # Alternate Scenario 2
 Scenario: Create Project with empty name

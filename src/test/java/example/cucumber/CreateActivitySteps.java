@@ -16,7 +16,8 @@ public class CreateActivitySteps {
 	
 	@Given("there is a Project named {string} with Project leader {string}")
 	public void thereIsAProjectNamedWithProjectLeader(String projectName, String projectLeader) {
-		project = new Project(projectName);
+		// TODO Change to match new way of creating projects
+		project = new Project(1, projectName);
 		try {
 			project.appointProjectLeader(projectLeader);
 		} catch (Exception e) {

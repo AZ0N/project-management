@@ -18,7 +18,8 @@ public class ProjectLeaderSteps {
 
 	@Given("there is a Project named {string}.")
 	public void thereIsAProjectNamed(String projectName) {
-		project = new Project(projectName);
+		// TODO Change to match new way of creating projects
+		project = new Project(1, projectName);
 	}
 
 	@Given("the Project {string} has no Project leader")

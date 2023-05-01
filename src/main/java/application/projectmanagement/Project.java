@@ -6,15 +6,17 @@ import java.util.stream.Collectors;
 
 public class Project {
 	
+	private int ID;
 	private String projectName;
 	private String initials;
 	private String projectLeader;
 	private ArrayList<ProjectActivity> projectActivities;
 	
-	public Project(String projectName) throws IllegalArgumentException {
+	public Project(int projectID, String projectName) throws IllegalArgumentException {
 		if (projectName.length() == 0 || projectName.length() > 30) {
 			throw new IllegalArgumentException("Project name " + projectName + " is not valid.");
 		}
+		this.ID = projectID;
 		this.projectName = projectName;
 		this.projectLeader = "";
 		this.projectActivities = new ArrayList<ProjectActivity>();
@@ -31,6 +33,10 @@ public class Project {
 	public String getInitials() {
 		return initials;
 	}
+
+	public int getID() {
+		return ID;
+	}
 	
 	public String getProjectName() {
 		return projectName;
@@ -41,7 +47,7 @@ public class Project {
 	}
 	
 	public String toString() {
-		return projectName;
+		return ID + " - " + projectName;
 	}
 
 	public void addActivity(ProjectActivity projectActivity) {
