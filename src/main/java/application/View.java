@@ -101,11 +101,13 @@ public class View extends Application {
 		controller.getProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getProjectNameLabel().setText("Project name: " + project.getProjectName());
 		controller.getProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
+		updateProjectActivityList(project.getProjectActivities());
 
 		// Update "Selected Project" tab
 		controller.getSelectedProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getSelectedProjectNameLabel().setText("Project name: " + project.getProjectName());
 		controller.getSelectedProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
+		updateSelectedProjectActivityListView(project.getProjectActivities());
 	}
 
 	public void clearProjectDetails() {
@@ -113,6 +115,7 @@ public class View extends Application {
 		controller.getProjectIDLabel().setText("Project ID: ");
 		controller.getProjectNameLabel().setText("Project name: ");
 		controller.getProjectLeaderLabel().setText("Project leader: ");
+		controller.getProjectActivityListView().getItems().clear();
 
 		// Clear "Selected Project" tab
 		controller.getSelectedProjectIDLabel().setText("Project ID: ");

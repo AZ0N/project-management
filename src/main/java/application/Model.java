@@ -60,6 +60,7 @@ public class Model {
         // TODO Check if activity already exists
         selectedProject.addActivity(new ProjectActivity(activityName));
         view.updateSelectedProjectActivityListView(getSelectedProjectActivities());
+        view.updateProjectActivityList(getSelectedProjectActivities());
     }
 
     public void assignEmployeeToActivity(String employeeInitials) {
