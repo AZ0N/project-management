@@ -108,7 +108,7 @@ public class View extends Application {
 		controller.getSelectedProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
 	}
 
-	public void updateSPActivityListView(List<ProjectActivity> projectActivities) {
+	public void updateSelectedProjectActivityListView(List<ProjectActivity> projectActivities) {
 		var items = controller.getSelectedProjectActivityListView().getItems();
 		items.clear();
 		for (ProjectActivity projectActivity : projectActivities) {
@@ -116,7 +116,7 @@ public class View extends Application {
 		}
 	}
 
-	public void updateSAEmployeeListView(List<Employee> newValue) {
+	public void updateSelectedActivityEmployeeListView(List<Employee> newValue) {
 		var items = controller.getSelectedProjectActivityEmployeesListView().getItems();
 		items.clear();
 		for (Employee employees : model.getSelectedProjectActivity().getAssignedEmployees()) {

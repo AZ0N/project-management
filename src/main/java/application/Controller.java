@@ -66,14 +66,14 @@ public class Controller {
             if (newValue != null) {
                 model.selectedProject(newValue);
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
-                view.updateSPActivityListView(newValue.getProjectActivities());
+                view.updateSelectedProjectActivityListView(newValue.getProjectActivities());
             }
         });
         
         selectedProjectActivityListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
             	model.selectedActivity(newValue);
-            	view.updateSAEmployeeListView(model.getSelectedActivityEmployees());
+            	view.updateSelectedActivityEmployeeListView(model.getSelectedActivityEmployees());
             	// TODO update the list of employees on the specific activity
             }
         });
