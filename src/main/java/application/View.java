@@ -121,6 +121,13 @@ public class View extends Application {
 		controller.getSelectedProjectIDLabel().setText("Project ID: ");
 		controller.getSelectedProjectNameLabel().setText("Project name: ");
 		controller.getSelectedProjectLeaderLabel().setText("Project leader: ");
+		controller.getSelectedProjectActivityListView().getItems().clear();
+		controller.getSelectedProjectActivityEmployeesListView().getItems().clear();
+	}
+
+	public void clearEmployeeTab() {
+		controller.getEmployeeProjectListView().getItems().clear();
+		controller.getEmployeeActivityListView().getItems().clear();
 	}
 
 	public void updateSelectedProjectActivityListView(List<ProjectActivity> projectActivities) {

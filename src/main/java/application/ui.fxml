@@ -46,7 +46,7 @@
                   </ToolBar>
                   <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
                      <tabs>
-                        <Tab text="My Overview">
+                        <Tab fx:id="overviewTab" text="My Overview">
                            <content>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>

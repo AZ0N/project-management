@@ -39,6 +39,7 @@ public class Controller {
     @FXML private Button editProjectButton;
 
     // "Selected Project" tab
+    @FXML private Tab selectedProjectTab;
     @FXML private Label selectedProjectIDLabel;
     @FXML private Label selectedProjectNameLabel;
     @FXML private Label selectedProjectLeaderLabel;
@@ -46,13 +47,13 @@ public class Controller {
     @FXML private ListView<Employee> selectedProjectActivityEmployeesListView;
 
     // "My Overview" tab
+    @FXML private Tab overviewTab;
     @FXML private ListView<Project> overviewProjectListView;
     @FXML private ListView<ProjectActivity> overviewActivityListView;
 
     // General UI elements    
     @FXML private VBox mainScreen;
     @FXML private TabPane tabPane;
-    @FXML private Tab selectedProjectTab;
     @FXML private Label currentUserLabel;
 
     public void setModelAndView(Model model, View view) {
@@ -156,8 +157,17 @@ public class Controller {
     }
 
     public void logoutButton() {
-        model.clearSelectedEmployee();
         view.toLoginScreen();
+
+        // Clear selected employee
+        model.clearSelectedEmployee();
+        
+        // Clear UI elements
+        view.clearProjectDetails();
+        view.clearEmployeeTab();
+        tabPane.getSelectionModel().select(overviewTab);
+        projectSearchField.setText("");
+        employeeSearchField.setText("");
     }
     
     public void editProjectButton() {
