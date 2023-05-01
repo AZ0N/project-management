@@ -11,6 +11,7 @@ public class ProjectManager {
     private ArrayList<Project> projects;
 
     private TimeServer timeServer;
+    private int lastUsedYear;
     private int projectsCreated;
 
     public ProjectManager() {
@@ -21,11 +22,17 @@ public class ProjectManager {
     public void setTimeServer(TimeServer timeServer) {
         this.timeServer = timeServer;
         this.projectsCreated = 0;
+        this.lastUsedYear = -1;
     }
 
     public void createProject(String projectName) throws IllegalArgumentException, Exception {
-        // TODO Check if year changed since last time project was created
-        Project p = new Project((timeServer.getYear() % 100) * 1000 + projectsCreated + 1, projectName);
+        // If the year changed since we last created a project the Project numbering should start over
+        int currentYear = timeServer.getYear();
+        if (lastUsedYear != currentYear) {
+            lastUsedYear = currentYear;
+            projectsCreated = 0;
+        }
+        Project p = new Project((currentYear % 100) * 1000 + projectsCreated + 1, projectName);
         projects.add(p);
         projectsCreated += 1;
     }
