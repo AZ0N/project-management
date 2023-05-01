@@ -43,8 +43,9 @@ public class View extends Application {
 
 		// Add admin employee
 		try {
-			model.addEmployee("admin");
-		} catch (Exception e) {
+			model.addEmployee("test");
+		}
+		catch (Exception e) {
 
 		}
 
