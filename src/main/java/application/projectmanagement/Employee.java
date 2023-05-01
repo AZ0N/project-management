@@ -13,7 +13,7 @@ public class Employee {
 	public Employee(String initials) throws IllegalArgumentException {
 		// Verify initials
 		if (initials.length() == 0 || initials.length() > 4 || !initials.chars().allMatch(Character::isLetter)) {
-			throw new IllegalArgumentException("Initials \"" + initials + "\" not valid. Only 1-4 letters allowed.");
+			throw new IllegalArgumentException("Initials " + initials + " not valid. Only 1-4 letters allowed.");
 		}
 		this.initials = initials.toLowerCase();
 		this.timeUsed = 0;
