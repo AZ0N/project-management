@@ -4,6 +4,7 @@ import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
@@ -35,6 +36,7 @@ public class Controller {
     @FXML private Label projectNameLabel;
     @FXML private Label projectLeaderLabel;
     @FXML private ListView<ProjectActivity> projectActivityListView;
+    @FXML private Button editProjectButton;
 
     // "Selected Project" tab
     @FXML private Label selectedProjectIDLabel;
@@ -63,10 +65,16 @@ public class Controller {
         });
 
         projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
+            model.selectedProject(newValue);
+            selectedProjectTab.setDisable(newValue == null);
+            editProjectButton.setDisable(newValue == null);
+
             if (newValue != null) {
-                model.selectedProject(newValue);
                 view.updateProjectDetails(newValue); //Still needs ID and activity updates
                 view.updateSelectedProjectActivityListView(newValue.getProjectActivities());
+            }
+            else {
+                view.clearProjectDetails();
             }
         });
         
