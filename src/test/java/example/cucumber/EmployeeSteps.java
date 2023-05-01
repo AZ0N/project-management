@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.ProjectManager;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -13,22 +12,16 @@ public class EmployeeSteps {
 
 	private ProjectManager projectmanager;
 	private ErrorMessageHolder errorMessageHolder;
-	private Employee employee;
 
 	public EmployeeSteps(ProjectManager projectmanager, ErrorMessageHolder errorMessageHolder) {
 		this.projectmanager = projectmanager;
 		this.errorMessageHolder = errorMessageHolder;
 	}
 
-	@Given("there is an employee with initials {string}")
-	public void thereIsAnEmployeeWithInitials(String initials) {
-		employee = new Employee(initials);
-	}
-
-	@When("the employee is added to the system")
-	public void theEmployeeIsAddedToTheSystem() {
+	@When("an employee with initials {string} is added to the system")
+	public void anEmployeeWithInitialsIsAddedToTheSystem(String initials) {
 		try {
-			projectmanager.addEmployee(employee);
+			projectmanager.addEmployee(initials);
 		}
 		catch (Exception e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());

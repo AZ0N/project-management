@@ -34,8 +34,7 @@ public class Model {
 
     public void addEmployee(String initials) {
         try {
-            Employee e = new Employee(initials);
-            projectmanager.addEmployee(e);
+            projectmanager.addEmployee(initials);
         }
         catch (Exception e) {
             view.showError(e.getMessage());

@@ -49,15 +49,12 @@ public class ProjectManager {
         return projects;
     }
 
-    // Methods for Employees
-	public void addEmployee(Employee employee) throws Exception {
-        if (getEmployee(employee.getInitials()) != null) {
-            throw new Exception("Employee with initials " + employee.getInitials() + " already exists!");
+    public void addEmployee(String initials) throws IllegalArgumentException, Exception {
+        if (getEmployee(initials) != null) {
+            throw new Exception("Employee with initials " + initials + " already exists!");
         }
-        if (employee.getInitials().isEmpty()) {
-        	throw new Exception("The employee needs initials!");
-        }
-        employees.add(employee);
+        Employee e = new Employee(initials);
+        employees.add(e);
     }
 
     public Employee getEmployee(String initials) {
