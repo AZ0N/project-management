@@ -40,7 +40,7 @@ public class Employee {
 	    return assignedActivities;
 	}
 	
-	public List<Project> getprojects() {
+	public List<Project> getProjects() {
 	    return projects;
 	}
 	 
