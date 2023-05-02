@@ -97,18 +97,25 @@ public class View extends Application {
 	}
 
 	public void updateProjectDetails(Project project) {
-		//TODO Handle no project leader
 		// Update "Projects" tab
 		controller.getProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getProjectNameLabel().setText("Project name: " + project.getProjectName());
-		controller.getProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
 		updateProjectActivityList(project.getProjectActivities());
-
+		
 		// Update "Selected Project" tab
 		controller.getSelectedProjectIDLabel().setText("Project ID: " + project.getID());
 		controller.getSelectedProjectNameLabel().setText("Project name: " + project.getProjectName());
-		controller.getSelectedProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader());
 		updateSelectedProjectActivityListView(project.getProjectActivities());
+		
+		// Update Project Leader fields
+		if (project.getProjectLeader() != null) {
+			controller.getProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader().getInitials());
+			controller.getSelectedProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader().getInitials());
+		}
+		else {
+			controller.getProjectLeaderLabel().setText("Project leader: ");
+			controller.getSelectedProjectLeaderLabel().setText("Project leader: ");
+		}
 	}
 
 	public void clearProjectDetails() {
