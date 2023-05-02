@@ -111,10 +111,12 @@ public class View extends Application {
 		if (project.getProjectLeader() != null) {
 			controller.getProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader().getInitials());
 			controller.getSelectedProjectLeaderLabel().setText("Project leader: " + project.getProjectLeader().getInitials());
+			controller.getAppointProjectLeaderButton().setDisable(true);
 		}
 		else {
 			controller.getProjectLeaderLabel().setText("Project leader: ");
 			controller.getSelectedProjectLeaderLabel().setText("Project leader: ");
+			controller.getAppointProjectLeaderButton().setDisable(false);
 		}
 	}
 

@@ -45,6 +45,7 @@ public class Controller {
     @FXML private Label selectedProjectLeaderLabel;
     @FXML private ListView<ProjectActivity> selectedProjectActivityListView;
     @FXML private ListView<Employee> selectedProjectActivityEmployeesListView;
+    @FXML private Button appointProjectLeaderButton;
 
     // "My Overview" tab
     @FXML private Tab overviewTab;
@@ -201,6 +202,9 @@ public class Controller {
     public Label getSelectedProjectIDLabel() {return selectedProjectIDLabel; }
     public Label getSelectedProjectNameLabel() { return selectedProjectNameLabel; }
     public Label getSelectedProjectLeaderLabel() { return selectedProjectLeaderLabel; }
+
+    // Getters for "Selected Project" UI elements
+    public Button getAppointProjectLeaderButton() { return appointProjectLeaderButton; }
 
     // Getters for "My Overview" UI elements
     public ListView<Project> getOverviewProjectListView() { return overviewProjectListView; }

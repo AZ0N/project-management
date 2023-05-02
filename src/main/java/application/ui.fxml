@@ -182,7 +182,7 @@
                                     <Label fx:id="selectedProjectIDLabel" text="Project ID:" />
                                     <Label fx:id="selectedProjectNameLabel" text="Project name:" />
                                     <Label fx:id="selectedProjectLeaderLabel" text="Project leader:" />
-                                    <Button mnemonicParsing="false" onAction="#appointProjectLeader" text="Appoint Project Leader" />
+                                    <Button fx:id="appointProjectLeaderButton" mnemonicParsing="false" onAction="#appointProjectLeader" text="Appoint Project Leader" />
                                     <HBox>
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
