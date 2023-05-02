@@ -182,31 +182,37 @@ public class Controller {
     	view.toSelectedProject();
     }
 
-    // Getters for UI elements
-    public ListView<Employee> getEmployeeListView() { return employeeListView; }
-    public ListView<Project> getProjecListView() { return projectListView; }
-    public ListView<ProjectActivity> getProjectActivityListView() { return projectActivityListView; }
-    public ListView<ProjectActivity> getSelectedProjectActivityListView() { return selectedProjectActivityListView; }
-    public ListView<ProjectActivity> getEmployeeActivityListView(){ return employeeActivityListView; }
-    public ListView<Project> getEmployeeProjectListView(){ return employeeProjectListView; }
-    public ListView<Employee> getSelectedProjectActivityEmployeesListView() { return selectedProjectActivityEmployeesListView; }
+    // Getters for "Login Screen" UI elements
     public VBox getLogInScreen() { return logInScreen; }
     public TextField getLogInTextField() { return loginTextField; }
-    public VBox getMainScreen() { return mainScreen; }
-    public TabPane getTabPane() { return tabPane; }
-    public Tab getSelectedProjecTab() { return selectedProjectTab; }
+
+    // Getters for "Employees" UI elements
+    public ListView<Employee> getEmployeeListView() { return employeeListView; }
+    public ListView<Project> getEmployeeProjectListView(){ return employeeProjectListView; }
+    public ListView<ProjectActivity> getEmployeeActivityListView(){ return employeeActivityListView; }
+
+    // Getters for "Projects" UI elements
+    public ListView<Project> getProjecListView() { return projectListView; }
     public Label getProjectIDLabel() { return projectIDLabel; }
-    public Label getCurrentUserLabel() { return currentUserLabel; }
     public Label getProjectNameLabel() { return projectNameLabel; }
     public Label getProjectLeaderLabel() { return projectLeaderLabel; }
+    public ListView<ProjectActivity> getProjectActivityListView() { return projectActivityListView; }
+
+    // Getters for "Selected Project" UI elements
+    public Tab getSelectedProjecTab() { return selectedProjectTab; }
     public Label getSelectedProjectIDLabel() {return selectedProjectIDLabel; }
     public Label getSelectedProjectNameLabel() { return selectedProjectNameLabel; }
     public Label getSelectedProjectLeaderLabel() { return selectedProjectLeaderLabel; }
-
-    // Getters for "Selected Project" UI elements
+    public ListView<ProjectActivity> getSelectedProjectActivityListView() { return selectedProjectActivityListView; }
+    public ListView<Employee> getSelectedProjectActivityEmployeesListView() { return selectedProjectActivityEmployeesListView; }
     public Button getAppointProjectLeaderButton() { return appointProjectLeaderButton; }
 
     // Getters for "My Overview" UI elements
     public ListView<Project> getOverviewProjectListView() { return overviewProjectListView; }
     public ListView<ProjectActivity> getOverViewActivityListView() { return overviewActivityListView; }
+
+    // Getters for general UI elements
+    public VBox getMainScreen() { return mainScreen; }
+    public TabPane getTabPane() { return tabPane; }
+    public Label getCurrentUserLabel() { return currentUserLabel; }
 }
