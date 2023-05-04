@@ -83,8 +83,8 @@ public class Model {
         }
         try {
             selectedActivity.assignEmployee(employee, loggedInEmployee);
+            view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
             view.updateProjectDetails(selectedProject);
-            //view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
         }
         catch (Exception e) {
             view.showError(e.getMessage());
