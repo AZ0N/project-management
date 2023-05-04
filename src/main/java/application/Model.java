@@ -111,7 +111,7 @@ public class Model {
         view.updateProjectDetails(selectedProject);
     }
 
-        public void addTimeUsed(String timeUsed) {
+    public void addTimeUsed(String timeUsed) {
     	if (selectedActivity == null) {
             view.showError("No activity selected!");
     		return; 
@@ -201,5 +201,4 @@ public class Model {
     public List<Project> getAllProjectsForEmployee(Employee e) {
     	return projectmanager.getAllProjectsForEmployee(e);
     }
-
 }
