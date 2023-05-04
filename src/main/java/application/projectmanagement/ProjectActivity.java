@@ -13,7 +13,6 @@ public class ProjectActivity implements Activity {
     private Date endDate;
     private Project project;
 
-    //method for ProjectActivities
     public ProjectActivity(String name) {
         this.name = name;
         assignedEmployees = new ArrayList<Employee>();
@@ -42,22 +41,34 @@ public class ProjectActivity implements Activity {
     public void setProject(Project project) {
         this.project = project;
     }
+    
+    public int getEstimatedTime() {
+        return estimatedTime;
+    }
 
+    /**
+     * Sets the estimated time for this activity.
+     * @param estimatedTime
+     * @param employee setting the estimated time.
+     * @throws IllegalArgumentException if estimated time is non-positive.
+     * @throws Exception if the project has a project leader different from the employee trying to set the estimated time
+     */
     public void setEstimatedTime(int estimatedTime, Employee employee) throws Exception {
         if (project.hasProjectLeader() && employee != project.getProjectLeader()) {
             throw new Exception("Only project leader can set estimated time!");
         }
         if (estimatedTime <= 0) {
-            throw new Exception("Estimated time must be positive!");
+            throw new IllegalArgumentException("Estimated time must be positive!");
         }
         this.estimatedTime = estimatedTime;
     }
 
-    public int getEstimatedTime() {
-        return estimatedTime;
-    }
-    
-    //add employee to the activity
+    /**
+     * Assign employee to an activity.
+     * @param toAssign the employee to be assigned to this activity.
+     * @param assignedBy the employee assigning the employee to this activity.
+     * @throws Exception if the project has a project leader different from assignedBy.
+     */
     public void assignEmployee(Employee toAssign, Employee assignedBy) throws Exception {
         if (project.hasProjectLeader() && project.getProjectLeader() != assignedBy) {
             throw new Exception("Only project leader can assign employees!");
@@ -65,6 +76,13 @@ public class ProjectActivity implements Activity {
         this.assignedEmployees.add(toAssign);
     }
     
+    /**
+     * Adds time used on this activity by employee.
+     * @param employee adding used time.
+     * @param time to be added.
+     * @throws IllegalArgumentException if time is non-positive.
+     * @throws Exception if the project has a project leader different from employee.
+     */
     public void addTimeUsedByEmployee(Employee employee, int time) throws Exception {
         if (!hasEmployee(employee)) {
             throw new Exception("Only employees assigned to activity can add time used!");
