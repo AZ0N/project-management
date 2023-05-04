@@ -3,7 +3,7 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PredefinedActivity implements Activities {
+public class PredefinedActivity implements Activity {
     private String predefinedActivityName;
     private int estimatedTime;
     private Date startDate;

@@ -2,7 +2,7 @@ package application.projectmanagement;
 
 import java.util.Date;
 
-public interface Activities {
+public interface Activity {
 	
     public Date getStartDate();
     public void setStartDate(Date startDate);

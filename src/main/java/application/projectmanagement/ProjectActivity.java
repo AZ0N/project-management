@@ -3,7 +3,7 @@ package application.projectmanagement;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ProjectActivity implements Activities {
+public class ProjectActivity implements Activity {
 
     private String name;
     private ArrayList<Employee> assignedEmployees;
