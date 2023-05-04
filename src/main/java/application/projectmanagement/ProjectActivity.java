@@ -62,16 +62,15 @@ public class ProjectActivity implements Activities {
         this.assignedEmployees.add(employee);
     }
     
-    // Adds time to the activity used by the employee
-    public void addTimeUsedByEmployee(Employee employee, int time) {
-    	
-    // Checks if the employee is assigned to the activity. 
-    // If the employee is assigned to the activity, the method updates the timeUsed field of the activity
-    // and calls the addTimeUsed() method of the Employee class to add the time used by the employee.	
-        if (assignedEmployees.contains(employee)) {
-            timeUsed += time;
-            employee.addTimeUsed(time);
+    public void addTimeUsedByEmployee(Employee employee, int time) throws Exception {
+        if (!hasEmployee(employee)) {
+            throw new Exception("Only employees assigned to activity can add time used!");
         }
+        timeUsed += time;
+    }
+
+    public int getTimeUsed() {
+        return timeUsed;
     }
 
 	public String getName() {

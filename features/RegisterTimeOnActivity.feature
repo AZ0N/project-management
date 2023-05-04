@@ -3,10 +3,20 @@ Feature: Register hours spent on Activity
     Actor: Employee
 
 # Main Scenario
-#Scenario: an Employee registers his hours spent on an Activity.
-# TODO Fix this missing step definition
-#Given there is a Project named "Project 1"
-#And that "Project 1" has an Activity named "Activity 1".
-#When the Employee with the initials "TEST" provides the Activity named "Activity 1".
-#And the Employee with the initials "TEST" provides the total hours of work 2 on the Activity.
-#Then the system will register the Employees’ hours spent on "Activity 1"
+Scenario: An employee registers time on activity he is assigned to
+    Given the year is 2023
+    And a Project called "Project 1" is added to the system
+    And an employee with initials "test" is added to the system
+    And the employee "test" creates and activity named "First Activity" on project with ID 23001
+    And the employee "test" is assigned to the activity "First Activity" on project with ID 23001
+    When the employee "test" adds 10 hours used on activity "First Activity" on project with ID 23001
+    Then the activity "First Activity" on project with ID 23001 has 10 hours used
+
+# Alternate Scenario 1
+Scenario: An employee registers time on activity he is not assigned to
+    Given the year is 2023
+    And a Project called "Project 1" is added to the system
+    And an employee with initials "test" is added to the system
+    And the employee "test" creates and activity named "First Activity" on project with ID 23001
+    When the employee "test" adds 10 hours used on activity "First Activity" on project with ID 23001
+    Then the system provides the error message "Only employees assigned to activity can add time used!"

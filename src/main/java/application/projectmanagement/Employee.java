@@ -1,14 +1,9 @@
 package application.projectmanagement;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Employee {
 
 	private String initials;
 	private int timeUsed;
-	private List<ProjectActivity> assignedActivities; 
-	private ArrayList<Project> projects;
 	
 	public Employee(String initials) throws IllegalArgumentException {
 		// Verify initials
@@ -17,7 +12,6 @@ public class Employee {
 		}
 		this.initials = initials.toLowerCase();
 		this.timeUsed = 0;
-        this.assignedActivities = new ArrayList<>();
     }
 	
 	public String getInitials() {
@@ -36,26 +30,6 @@ public class Employee {
 	    this.timeUsed += time;
 	}
 	    
-	public List<ProjectActivity> getAssignedActivities() {
-	    return assignedActivities;
-	}
-	
-	public List<Project> getProjects() {
-	    return projects;
-	}
-	 
-	public void assignActivity(ProjectActivity activity) {
-	    assignedActivities.add(activity);
-	}
-	
-	public void addTimeUsedToActivity(ProjectActivity activity, int time) {
-	    if (assignedActivities.contains(activity)) {
-	        activity.addTimeUsedByEmployee(this, time);
-	    } else {
-	        System.out.println("Employee " + initials + " is not assigned to activity " + activity.getName());
-	    }
-	}
-
 	public String toString() {
 		return initials;
 	}
