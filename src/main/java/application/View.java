@@ -118,6 +118,15 @@ public class View extends Application {
 			controller.getSelectedProjectLeaderLabel().setText("Project leader: ");
 			controller.getAppointProjectLeaderButton().setDisable(false);
 		}
+
+		updateAssignEmployeeButton();
+
+		if (project.getProjectLeader() == null || project.getProjectLeader() == model.getCurrentEmployee()) {
+			controller.getCreateActivityButton().setDisable(false);
+		}
+		else {
+			controller.getCreateActivityButton().setDisable(true);
+		}
 	}
 
 	public void clearProjectDetails() {
@@ -133,6 +142,15 @@ public class View extends Application {
 		controller.getSelectedProjectLeaderLabel().setText("Project leader: ");
 		controller.getSelectedProjectActivityListView().getItems().clear();
 		controller.getSelectedProjectActivityEmployeesListView().getItems().clear();
+	}
+
+	public void updateAssignEmployeeButton() {
+		if (!model.getSelectedProject().hasProjectLeader() || model.getSelectedProject().getProjectLeader() == model.getCurrentEmployee()) {
+			controller.getAssignEmployeeButton().setDisable(model.getSelectedProjectActivity() == null);
+		}
+		else {
+			controller.getAssignEmployeeButton().setDisable(true);
+		}
 	}
 
 	public void clearEmployeeTab() {

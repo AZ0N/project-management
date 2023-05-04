@@ -185,9 +185,9 @@
                                     <Button fx:id="appointProjectLeaderButton" mnemonicParsing="false" onAction="#appointProjectLeader" text="Appoint Project Leader" />
                                     <HBox>
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
+                                          <Button fx:id="createActivityButton" mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
                                           <Pane disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-                                          <Button mnemonicParsing="false" onAction="#assignEmployeeToActivity" text="Assign Employee" />
+                                          <Button fx:id="assignEmployeeButton" mnemonicParsing="false" onAction="#assignEmployeeToActivity" text="Assign Employee" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" spacing="10.0">

@@ -59,8 +59,7 @@ public class Model {
         }
         // TODO Check if activity already exists
         selectedProject.addActivity(new ProjectActivity(activityName));
-        view.updateSelectedProjectActivityListView(getSelectedProjectActivities());
-        view.updateProjectActivityList(getSelectedProjectActivities());
+        view.updateProjectDetails(selectedProject);
     }
 
     public void assignEmployeeToActivity(String employeeInitials) {
@@ -127,7 +126,11 @@ public class Model {
    public void selectedActivity(ProjectActivity a) {
 		selectedActivity = a;
 	}
-   
+
+    public Project getSelectedProject() {
+        return selectedProject;
+    }
+
    public ProjectActivity getSelectedProjectActivity() {
 	   return selectedActivity;
    }

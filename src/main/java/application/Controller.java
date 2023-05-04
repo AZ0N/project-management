@@ -46,6 +46,8 @@ public class Controller {
     @FXML private ListView<ProjectActivity> selectedProjectActivityListView;
     @FXML private ListView<Employee> selectedProjectActivityEmployeesListView;
     @FXML private Button appointProjectLeaderButton;
+    @FXML private Button createActivityButton;
+    @FXML private Button assignEmployeeButton;
 
     // "My Overview" tab
     @FXML private Tab overviewTab;
@@ -87,10 +89,10 @@ public class Controller {
         });
         
         selectedProjectActivityListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
+            model.selectedActivity(newValue);
             if (newValue != null) {
-            	model.selectedActivity(newValue);
             	view.updateSelectedActivityEmployeeListView(model.getSelectedActivityEmployees());
-            	// TODO update the list of employees on the specific activity
+                view.updateAssignEmployeeButton();
             }
         });
 
@@ -206,6 +208,8 @@ public class Controller {
     public ListView<ProjectActivity> getSelectedProjectActivityListView() { return selectedProjectActivityListView; }
     public ListView<Employee> getSelectedProjectActivityEmployeesListView() { return selectedProjectActivityEmployeesListView; }
     public Button getAppointProjectLeaderButton() { return appointProjectLeaderButton; }
+    public Button getCreateActivityButton() { return createActivityButton; }
+    public Button getAssignEmployeeButton() { return assignEmployeeButton; }
 
     // Getters for "My Overview" UI elements
     public ListView<Project> getOverviewProjectListView() { return overviewProjectListView; }
