@@ -109,7 +109,7 @@ public class Controller {
         tabPane.getSelectionModel().selectedIndexProperty().addListener((event, oldIndex, newIndex) -> {
             // TODO Use enum for handling specific tab indexes
             if ((int)newIndex == 0) {
-                view.updateOverview(model.getAllProjectsForEmployee(model.getCurrentEmployee()), model.getAllActivitiesForEmployee(model.getCurrentEmployee()));
+                view.updateOverview(model.getAllProjectsForEmployee(model.getLoggedInEmployee()), model.getAllActivitiesForEmployee(model.getLoggedInEmployee()));
             }
         });
     }
@@ -170,7 +170,7 @@ public class Controller {
         view.toLoginScreen();
 
         // Clear selected employee
-        model.clearSelectedEmployee();
+        model.clearLoggedInEmployee();
 
         // Clear UI elements
         view.clearProjectDetails();

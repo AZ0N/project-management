@@ -121,7 +121,7 @@ public class View extends Application {
 
 		updateAssignEmployeeButton();
 
-		if (project.getProjectLeader() == null || project.getProjectLeader() == model.getCurrentEmployee()) {
+		if (project.getProjectLeader() == null || project.getProjectLeader() == model.getLoggedInEmployee()) {
 			controller.getCreateActivityButton().setDisable(false);
 		}
 		else {
@@ -145,7 +145,7 @@ public class View extends Application {
 	}
 
 	public void updateAssignEmployeeButton() {
-		if (!model.getSelectedProject().hasProjectLeader() || model.getSelectedProject().getProjectLeader() == model.getCurrentEmployee()) {
+		if (!model.getSelectedProject().hasProjectLeader() || model.getSelectedProject().getProjectLeader() == model.getLoggedInEmployee()) {
 			controller.getAssignEmployeeButton().setDisable(model.getSelectedProjectActivity() == null);
 		}
 		else {
@@ -195,7 +195,7 @@ public class View extends Application {
 	}
 
 	public void toMainScreen() {
-		controller.getCurrentUserLabel().setText("User: " + model.getCurrentEmployee().getInitials());
+		controller.getCurrentUserLabel().setText("User: " + model.getLoggedInEmployee().getInitials());
 		controller.getMainScreen().setVisible(true);
 		controller.getLogInScreen().setVisible(false);
 	}

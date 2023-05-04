@@ -14,7 +14,7 @@ public class Model {
     private View view;
     private ProjectManager projectmanager;
 
-    private Employee selectedEmployee;
+    private Employee loggedInEmployee;
     private Project selectedProject;
 	private ProjectActivity selectedActivity;
 
@@ -24,12 +24,12 @@ public class Model {
         projectmanager.setTimeServer(new SystemTimeServer());
     }
 
-    public Employee getCurrentEmployee() {
-        return selectedEmployee;
+    public Employee getLoggedInEmployee() {
+        return loggedInEmployee;
     }
 
-    public void clearSelectedEmployee() {
-        selectedEmployee = null;
+    public void clearLoggedInEmployee() {
+        loggedInEmployee = null;
     }
 
     public void addEmployee(String initials) {
@@ -113,7 +113,7 @@ public class Model {
             view.showError("No employee with initials: " + initials);
             return;
         }
-        selectedEmployee = e;
+        loggedInEmployee = e;
         // Update view
         view.toMainScreen();
         view.updateOverview(projectmanager.getAllProjectsForEmployee(e), projectmanager.getAllActivitiesForEmployee(e));
