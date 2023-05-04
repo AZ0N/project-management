@@ -13,7 +13,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -183,18 +182,29 @@
                                     <Label fx:id="selectedProjectNameLabel" text="Project name:" />
                                     <Label fx:id="selectedProjectLeaderLabel" text="Project leader:" />
                                     <Button fx:id="appointProjectLeaderButton" mnemonicParsing="false" onAction="#appointProjectLeader" text="Appoint Project Leader" />
-                                    <HBox>
+                                    <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
                                        <children>
-                                          <Button fx:id="createActivityButton" mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
-                                          <Pane disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" visible="false" HBox.hgrow="ALWAYS" />
-                                          <Button fx:id="assignEmployeeButton" mnemonicParsing="false" onAction="#assignEmployeeToActivity" text="Assign Employee" />
+                                          <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Button fx:id="createActivityButton" mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
+                                                <ListView fx:id="selectedProjectActivityListView" VBox.vgrow="ALWAYS" />
+                                             </children>
+                                          </VBox>
+                                          <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <HBox spacing="5.0">
+                                                   <children>
+                                                      <Button fx:id="assignEmployeeButton" mnemonicParsing="false" onAction="#assignEmployeeToActivity" text="Assign Employee" />
+                                                      <Button fx:id="setEstimatedTimeButton" mnemonicParsing="false" onAction="#setEstimatedTime" text="Set Estimated Time" />
+                                                   </children>
+                                                </HBox>
+                                                <ListView fx:id="selectedProjectActivityEmployeesListView" VBox.vgrow="ALWAYS" />
+                                             </children>
+                                          </VBox>
                                        </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" spacing="10.0">
-                                       <children>
-                                          <ListView fx:id="selectedProjectActivityListView" />
-                                          <ListView fx:id="selectedProjectActivityEmployeesListView" />
-                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
                                     </HBox>
                                  </children>
                                  <padding>

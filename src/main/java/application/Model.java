@@ -55,16 +55,21 @@ public class Model {
 
     public void createProjectActivity(String activityName) {
         if (selectedProject == null) {
-            return; //TODO throw error
+            view.showError("No project selected!");
+            return;
         }
         // TODO Check if activity already exists
-        selectedProject.addActivity(new ProjectActivity(activityName));
-        view.updateProjectDetails(selectedProject);
+        try {
+            selectedProject.addActivity(new ProjectActivity(activityName), loggedInEmployee);
+            view.updateProjectDetails(selectedProject);
+        } catch (Exception e) {
+            view.showError(e.getMessage());
+        }
     }
 
     public void assignEmployeeToActivity(String employeeInitials) {
     	if (selectedActivity == null) {
-            // TODO Handle
+            view.showError("No activity selected!");
     		return; 
     	}
         Employee e = projectmanager.getEmployee(employeeInitials);
@@ -80,9 +85,29 @@ public class Model {
     	view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
 	}
 
+    public void setEstimatedTime(String estimatedTime) {
+    	if (selectedActivity == null) {
+            view.showError("No activity selected!");
+    		return; 
+    	}
+        int time;
+        try {
+            time = Integer.parseInt(estimatedTime);
+            selectedActivity.setEstimatedTime(time, loggedInEmployee);
+        }
+        catch (NumberFormatException e) {
+            view.showError("Please enter a valid number!");
+            return;
+        }
+        catch (Exception e) {
+            view.showError(e.getMessage());
+        }
+        view.updateProjectDetails(selectedProject);
+    }
+
     public void appointProjectLeader(String employeeInitials) {
         if (selectedProject == null) {
-            // TODO Handle
+            view.showError("No project selected!");
             return;
         }
         Employee e = projectmanager.getEmployee(employeeInitials);

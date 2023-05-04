@@ -42,22 +42,35 @@ public class ProjectActivity implements Activities {
     public void setProject(Project project) {
         this.project = project;
     }
+
+    public void setEstimatedTime(int estimatedTime, Employee employee) throws Exception {
+        if (project.hasProjectLeader() && employee != project.getProjectLeader()) {
+            throw new Exception("Only project leader can set estimated time!");
+        }
+        if (estimatedTime <= 0) {
+            throw new Exception("Estimated time must be positive!");
+        }
+        this.estimatedTime = estimatedTime;
+    }
+
+    public int getEstimatedTime() {
+        return estimatedTime;
+    }
     
     //add employee to the activity
     public void addEmployee(Employee employee) {
         this.assignedEmployees.add(employee);
     }
     
-    // Adds time to the activity used by the employee
-    public void addTimeUsedByEmployee(Employee employee, int time) {
-    	
-    // Checks if the employee is assigned to the activity. 
-    // If the employee is assigned to the activity, the method updates the timeUsed field of the activity
-    // and calls the addTimeUsed() method of the Employee class to add the time used by the employee.	
-        if (assignedEmployees.contains(employee)) {
-            timeUsed += time;
-            employee.addTimeUsed(time);
+    public void addTimeUsedByEmployee(Employee employee, int time) throws Exception {
+        if (!hasEmployee(employee)) {
+            throw new Exception("Only employees assigned to activity can add time used!");
         }
+        timeUsed += time;
+    }
+
+    public int getTimeUsed() {
+        return timeUsed;
     }
 
 	public String getName() {
@@ -65,7 +78,7 @@ public class ProjectActivity implements Activities {
 	}
 	
 	public String toString() {
-		return project.getID() + " - " + name;
+		return project.getID() + " - " + name + " - " + timeUsed + "/" + estimatedTime;
 	}
 
     public boolean hasEmployee(Employee employee) {

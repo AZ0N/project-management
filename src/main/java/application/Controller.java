@@ -22,7 +22,7 @@ public class Controller {
     @FXML private VBox logInScreen;
     @FXML private TextField loginTextField;
 
-    // "Employees" tab 
+    // "Employees" tab
     @FXML private TextField employeeSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> employeeProjectListView;
@@ -48,6 +48,7 @@ public class Controller {
     @FXML private Button appointProjectLeaderButton;
     @FXML private Button createActivityButton;
     @FXML private Button assignEmployeeButton;
+    @FXML private Button setEstimatedTimeButton;
 
     // "My Overview" tab
     @FXML private Tab overviewTab;
@@ -92,7 +93,7 @@ public class Controller {
             model.selectedActivity(newValue);
             if (newValue != null) {
             	view.updateSelectedActivityEmployeeListView(model.getSelectedActivityEmployees());
-                view.updateAssignEmployeeButton();
+                view.updateSelectedActivityButtons();
             }
         });
 
@@ -106,9 +107,8 @@ public class Controller {
         });
 
         // Eventlistener for when tabs change
-        tabPane.getSelectionModel().selectedIndexProperty().addListener((event, oldIndex, newIndex) -> {
-            // TODO Use enum for handling specific tab indexes
-            if ((int)newIndex == 0) {
+        tabPane.getSelectionModel().selectedItemProperty().addListener((event, oldTab, newTab) -> {
+            if (newTab == overviewTab) {
                 view.updateOverview(model.getAllProjectsForEmployee(model.getLoggedInEmployee()), model.getAllActivitiesForEmployee(model.getLoggedInEmployee()));
             }
         });
@@ -140,6 +140,13 @@ public class Controller {
         String inputResult = showDialogBox("Assign Employee", "Enter employee initials:");
         if (inputResult != null) {
             model.assignEmployeeToActivity(inputResult.strip());
+        }
+    }
+
+    public void setEstimatedTime() {
+        String inputResult = showDialogBox("Set Estimated Time", "Enter estimated time:");
+        if (inputResult != null) {
+            model.setEstimatedTime(inputResult);
         }
     }
 
@@ -210,6 +217,7 @@ public class Controller {
     public Button getAppointProjectLeaderButton() { return appointProjectLeaderButton; }
     public Button getCreateActivityButton() { return createActivityButton; }
     public Button getAssignEmployeeButton() { return assignEmployeeButton; }
+    public Button getSetEstimatedTimeButton() { return setEstimatedTimeButton; }
 
     // Getters for "My Overview" UI elements
     public ListView<Project> getOverviewProjectListView() { return overviewProjectListView; }
