@@ -74,11 +74,12 @@ public class Project {
 	} 
 
 	/**
-	 * Check if the given search string matches this Project 
-	 * @param searchText String to check if matches Project
-	 * @return True if searchText matches this Project. False otherwise
+	 * Check if the given search string matches this project.
+	 * Checks if searchText is contained in project name or ID. Ignores case.
+	 * @param searchText String to check if matches project.
+	 * @return True if searchText matches this project. False otherwise.
 	 */
 	public boolean match(String searchText) {
-		return projectName.contains(searchText);
+		return projectName.toLowerCase().contains(searchText.toLowerCase()) || Integer.toString(ID).contains(searchText);
 	}
 }
