@@ -55,7 +55,8 @@ public class Model {
 
     public void createProjectActivity(String activityName) {
         if (selectedProject == null) {
-            return; //TODO throw error
+            view.showError("No project selected!");
+            return;
         }
         // TODO Check if activity already exists
         selectedProject.addActivity(new ProjectActivity(activityName));
@@ -64,7 +65,7 @@ public class Model {
 
     public void assignEmployeeToActivity(String employeeInitials) {
     	if (selectedActivity == null) {
-            // TODO Handle
+            view.showError("No activity selected!");
     		return; 
     	}
         Employee e = projectmanager.getEmployee(employeeInitials);
@@ -82,7 +83,7 @@ public class Model {
 
     public void appointProjectLeader(String employeeInitials) {
         if (selectedProject == null) {
-            // TODO Handle
+            view.showError("No project selected!");
             return;
         }
         Employee e = projectmanager.getEmployee(employeeInitials);
