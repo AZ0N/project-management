@@ -60,8 +60,13 @@ public class Project {
 		return projectActivities;
 	} 
 
-	public boolean isEmployeeInProject(Employee e) {
-		return getActivitiesForEmployee(e).size() > 0;
+	/**
+	 * Checks if a given employee is in the project
+	 * @param employee The employee to check
+	 * @return True if the employee is the project leader or assigned to a activity in the project
+	 */
+	public boolean isEmployeeInProject(Employee employee) {
+		return employee == projectLeader || getActivitiesForEmployee(employee).size() > 0;
 	}
 
 	public List<ProjectActivity> getActivitiesForEmployee(Employee e) {
