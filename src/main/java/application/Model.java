@@ -72,17 +72,22 @@ public class Model {
             view.showError("No activity selected!");
     		return; 
     	}
-        Employee e = projectmanager.getEmployee(employeeInitials);
-        if (e == null) {
+        Employee employee = projectmanager.getEmployee(employeeInitials);
+        if (employee == null) {
             view.showError("Employee with initals " + employeeInitials + " doesn't exist!");
             return;
         }
-        if (selectedActivity.getAssignedEmployees().contains(e)) {
+        if (selectedActivity.getAssignedEmployees().contains(employee)) {
             view.showError(employeeInitials + " is already assigned to this activity!");
             return;
         }
-    	selectedActivity.addEmployee(e);
-    	view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
+        try {
+            selectedActivity.assignEmployee(employee, loggedInEmployee);
+            view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
+        }
+        catch (Exception e) {
+            view.showError(e.getMessage());
+        }
 	}
 
     public void setEstimatedTime(String estimatedTime) {

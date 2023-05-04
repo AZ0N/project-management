@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
 import application.projectmanagement.ProjectManager;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -17,13 +16,6 @@ public class RegisterTimeOnActivity {
 	public RegisterTimeOnActivity(ProjectManager projectManager, ErrorMessageHolder errorMessageHolder) {
 		this.projectManager = projectManager;
 		this.errorMessageHolder = errorMessageHolder;
-	}
-
-	@Given("the employee {string} is assigned to the activity {string} on project with ID {int}")
-	public void theEmployeeIsAssignedToTheActivityOnProjectWithID(String employeeInitials, String activityName, int projectID) {
-		Project project = projectManager.getProjectByID(projectID);
-		ProjectActivity projectActivity = project.getProjectActivity(activityName);
-		projectActivity.addEmployee(projectManager.getEmployee(employeeInitials));
 	}
 
 	@When("the employee {string} adds {int} hours used on activity {string} on project with ID {int}")

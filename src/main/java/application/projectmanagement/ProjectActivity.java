@@ -58,8 +58,11 @@ public class ProjectActivity implements Activities {
     }
     
     //add employee to the activity
-    public void addEmployee(Employee employee) {
-        this.assignedEmployees.add(employee);
+    public void assignEmployee(Employee toAssign, Employee assignedBy) throws Exception {
+        if (project.hasProjectLeader() && project.getProjectLeader() != assignedBy) {
+            throw new Exception("Only project leader can assign employees!");
+        }
+        this.assignedEmployees.add(toAssign);
     }
     
     public void addTimeUsedByEmployee(Employee employee, int time) throws Exception {
