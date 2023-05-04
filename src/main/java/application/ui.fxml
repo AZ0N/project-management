@@ -189,6 +189,9 @@
                                                 <Button fx:id="createActivityButton" mnemonicParsing="false" onAction="#createProjectActivity" text="Create Activity" />
                                                 <ListView fx:id="selectedProjectActivityListView" VBox.vgrow="ALWAYS" />
                                              </children>
+                                             <HBox.margin>
+                                                <Insets top="30.0" />
+                                             </HBox.margin>
                                           </VBox>
                                           <VBox spacing="5.0" HBox.hgrow="ALWAYS">
                                              <children>
@@ -198,6 +201,7 @@
                                                       <Button fx:id="setEstimatedTimeButton" mnemonicParsing="false" onAction="#setEstimatedTime" text="Set Estimated Time" />
                                                    </children>
                                                 </HBox>
+                                                <Button fx:id="addTimeUsedButton" mnemonicParsing="false" onAction="#addTimeUsed" prefWidth="106.4" text="Add Time Used" />
                                                 <ListView fx:id="selectedProjectActivityEmployeesListView" VBox.vgrow="ALWAYS" />
                                              </children>
                                           </VBox>

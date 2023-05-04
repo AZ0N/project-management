@@ -49,6 +49,7 @@ public class Controller {
     @FXML private Button createActivityButton;
     @FXML private Button assignEmployeeButton;
     @FXML private Button setEstimatedTimeButton;
+    @FXML private Button addTimeUsedButton;
 
     // "My Overview" tab
     @FXML private Tab overviewTab;
@@ -150,6 +151,13 @@ public class Controller {
         }
     }
 
+    public void addTimeUsed() {
+        String inputResult = showDialogBox("Add Time Used", "Enter hours used: ");
+        if (inputResult != null) {
+            model.addTimeUsed(inputResult);
+        }
+    }
+
     public void appointProjectLeader() {
         String inputResult = showDialogBox("Appoint Project Leader", "Enter employee initials:");
         if (inputResult != null) {
@@ -218,6 +226,7 @@ public class Controller {
     public Button getCreateActivityButton() { return createActivityButton; }
     public Button getAssignEmployeeButton() { return assignEmployeeButton; }
     public Button getSetEstimatedTimeButton() { return setEstimatedTimeButton; }
+    public Button getAddTimeUsedButton() { return addTimeUsedButton; }
 
     // Getters for "My Overview" UI elements
     public ListView<Project> getOverviewProjectListView() { return overviewProjectListView; }

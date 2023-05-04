@@ -83,7 +83,8 @@ public class Model {
         }
         try {
             selectedActivity.assignEmployee(employee, loggedInEmployee);
-            view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
+            view.updateProjectDetails(selectedProject);
+            //view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
         }
         catch (Exception e) {
             view.showError(e.getMessage());
@@ -99,6 +100,26 @@ public class Model {
         try {
             time = Integer.parseInt(estimatedTime);
             selectedActivity.setEstimatedTime(time, loggedInEmployee);
+        }
+        catch (NumberFormatException e) {
+            view.showError("Please enter a valid number!");
+            return;
+        }
+        catch (Exception e) {
+            view.showError(e.getMessage());
+        }
+        view.updateProjectDetails(selectedProject);
+    }
+
+        public void addTimeUsed(String timeUsed) {
+    	if (selectedActivity == null) {
+            view.showError("No activity selected!");
+    		return; 
+    	}
+        int time;
+        try {
+            time = Integer.parseInt(timeUsed);
+            selectedActivity.addTimeUsedByEmployee(loggedInEmployee, time);
         }
         catch (NumberFormatException e) {
             view.showError("Please enter a valid number!");

@@ -153,6 +153,7 @@ public class View extends Application {
 			controller.getAssignEmployeeButton().setDisable(true);
 			controller.getSetEstimatedTimeButton().setDisable(true);
 		}
+		controller.getAddTimeUsedButton().setDisable(model.getSelectedProjectActivity() == null || !model.getSelectedActivityEmployees().contains(model.getLoggedInEmployee()));
 	}
 
 	public void clearEmployeeTab() {

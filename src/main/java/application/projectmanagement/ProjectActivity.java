@@ -69,6 +69,9 @@ public class ProjectActivity implements Activities {
         if (!hasEmployee(employee)) {
             throw new Exception("Only employees assigned to activity can add time used!");
         }
+        if (time <= 0) {
+            throw new IllegalArgumentException("Only positive amount of time can be added!");
+        }
         timeUsed += time;
     }
 
