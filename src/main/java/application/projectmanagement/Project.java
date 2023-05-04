@@ -8,7 +8,6 @@ public class Project {
 	
 	private int ID;
 	private String projectName;
-	private String initials;
 	private Employee projectLeader;
 	private ArrayList<ProjectActivity> projectActivities;
 	
@@ -28,10 +27,6 @@ public class Project {
 		projectLeader = employee;
 	}
 	
-	public String getInitials() {
-		return initials;
-	}
-
 	public int getID() {
 		return ID;
 	}
@@ -48,10 +43,20 @@ public class Project {
 		return projectLeader != null;
 	}
 	
+	public List<ProjectActivity> getProjectActivities(){
+		return projectActivities;
+	}
+	
 	public String toString() {
 		return ID + " - " + projectName;
 	}
 
+	/**
+	 * Adds a project activity to the project.
+	 * @param projectActivity to be added.
+	 * @param employee adding the activity.
+	 * @throws Exception if the project has a project leader different from employee.
+	 */
 	public void addActivity(ProjectActivity projectActivity, Employee employee) throws Exception {
 		if (hasProjectLeader() && employee != projectLeader) {
 			throw new Exception("Only project leader can create activities!");
@@ -60,25 +65,31 @@ public class Project {
 		projectActivities.add(projectActivity);
 	}
 
+	/**
+	 * Get project activity with given name.
+	 * @param activityName to get.
+	 * @return project activity with given name, or null if it doesn't exist in project.
+	 */
 	public ProjectActivity getProjectActivity(String activityName) {
 		return projectActivities.stream().filter(e -> e.getName().equals(activityName)).findFirst().orElse(null);
 	}
 
-	public List<ProjectActivity> getProjectActivities(){
-		return projectActivities;
-	} 
-
 	/**
-	 * Checks if a given employee is in the project
-	 * @param employee The employee to check
-	 * @return True if the employee is the project leader or assigned to a activity in the project
+	 * Checks if a given employee is in the project.
+	 * @param employee The employee to check.
+	 * @return True if the employee is the project leader or assigned to a activity in the project.
 	 */
 	public boolean isEmployeeInProject(Employee employee) {
 		return employee == projectLeader || getActivitiesForEmployee(employee).size() > 0;
 	}
 
-	public List<ProjectActivity> getActivitiesForEmployee(Employee e) {
-		return projectActivities.stream().filter(projectActivity -> projectActivity.hasEmployee(e)).collect(Collectors.toList());
+	/**
+	 * Returns all activities in project which has the employee assigned to them.
+	 * @param employee to get activities for.
+	 * @return list of activities with employee assigned to.
+	 */
+	public List<ProjectActivity> getActivitiesForEmployee(Employee employee) {
+		return projectActivities.stream().filter(projectActivity -> projectActivity.hasEmployee(employee)).collect(Collectors.toList());
 	} 
 
 	/**
