@@ -11,6 +11,7 @@ public class ProjectActivity implements Activities {
     private int timeUsed;
     private Date startDate;
     private Date endDate;
+    private Project project;
 
     //method for ProjectActivities
     public ProjectActivity(String name) {
@@ -37,12 +38,15 @@ public class ProjectActivity implements Activities {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
     
     //add employee to the activity
     public void addEmployee(Employee employee) {
         this.assignedEmployees.add(employee);
     }
-
     
     // Adds time to the activity used by the employee
     public void addTimeUsedByEmployee(Employee employee, int time) {
@@ -61,7 +65,7 @@ public class ProjectActivity implements Activities {
 	}
 	
 	public String toString() {
-		return name;
+		return project.getID() + " - " + name;
 	}
 
     public boolean hasEmployee(Employee employee) {

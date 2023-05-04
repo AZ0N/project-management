@@ -53,6 +53,7 @@ public class Project {
 	}
 
 	public void addActivity(ProjectActivity projectActivity) {
+		projectActivity.setProject(this);
 		projectActivities.add(projectActivity);
 	}
 
