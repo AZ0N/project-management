@@ -18,6 +18,7 @@ public class Controller {
     private Model model;
     private View view;
 
+    //region UI element fields
     // Login screen
     @FXML private VBox logInScreen;
     @FXML private TextField loginTextField;
@@ -60,12 +61,21 @@ public class Controller {
     @FXML private VBox mainScreen;
     @FXML private TabPane tabPane;
     @FXML private Label currentUserLabel;
+    //endregion
 
-    public void setModelAndView(Model model, View view) {
+    public void initialize(Model model, View view) {
         this.model = model;
         this.view = view;
 
-        // Initialize eventhandlers for listviews
+        // Initialize event handlers for ListViews and search fields
+        initializeEmployeeTab();
+        initializeProjectTab();
+        initializeProjectDetailsTab();
+        initializeTabpane();
+    }
+
+    //region Initialize event listeners
+    private void initializeEmployeeTab() {
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
             	employeeInitialsLabel.setText("Initials: " + newValue.getInitials());
@@ -74,6 +84,12 @@ public class Controller {
             }
         });
 
+        employeeSearchField.textProperty().addListener((e) -> {
+            view.updateEmployeeList(model.searchEmployees(employeeSearchField.getText().strip()));
+        });
+    }
+
+    private void initializeProjectTab() {
         projectListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             model.selectedProject(newValue);
             selectedProjectTab.setDisable(newValue == null);
@@ -89,7 +105,13 @@ public class Controller {
                 view.clearProjectDetails();
             }
         });
-        
+
+        projectSearchField.textProperty().addListener((e) -> {
+            view.updateProjectList(model.searchProjects(projectSearchField.getText().strip()));
+        });
+    }
+
+    private void initializeProjectDetailsTab() {
         selectedProjectActivityListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             model.selectedActivity(newValue);
             if (newValue != null) {
@@ -97,25 +119,18 @@ public class Controller {
                 view.updateSelectedActivityButtons();
             }
         });
+    }
 
-        // Add eventlisterner to search fields for Employees and Projects
-        employeeSearchField.textProperty().addListener((e) -> {
-            view.updateEmployeeList(model.searchEmployees(employeeSearchField.getText().strip()));
-        });
-
-        projectSearchField.textProperty().addListener((e) -> {
-            view.updateProjectList(model.searchProjects(projectSearchField.getText().strip()));
-        });
-
-        // Eventlistener for when tabs change
+    private void initializeTabpane() {
         tabPane.getSelectionModel().selectedItemProperty().addListener((event, oldTab, newTab) -> {
             if (newTab == overviewTab) {
                 view.updateOverview(model.getAllProjectsForEmployee(model.getLoggedInEmployee()), model.getAllActivitiesForEmployee(model.getLoggedInEmployee()));
             }
         });
     }
-   
-    // Button events
+    //endregion
+
+    //region Button events
     public void addEmployee() {
         String inputResult = showDialogBox("Add Employee", "Enter employee initials:");
         if (inputResult != null) {
@@ -157,20 +172,12 @@ public class Controller {
             model.addTimeUsed(inputResult);
         }
     }
-
+    
     public void appointProjectLeader() {
         String inputResult = showDialogBox("Appoint Project Leader", "Enter employee initials:");
         if (inputResult != null) {
             model.appointProjectLeader(inputResult.strip());
         }
-    }
-
-    private String showDialogBox(String title, String header) {
-        TextInputDialog textInputDialog = new TextInputDialog();
-        textInputDialog.setTitle(title);
-        textInputDialog.setHeaderText(header);
-        textInputDialog.showAndWait();
-        return textInputDialog.getResult();
     }
 
     public void closeApplication() {
@@ -198,7 +205,17 @@ public class Controller {
     public void editProjectButton() {
     	view.toSelectedProject();
     }
+    //endregion
+    
+    private String showDialogBox(String title, String header) {
+        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setTitle(title);
+        textInputDialog.setHeaderText(header);
+        textInputDialog.showAndWait();
+        return textInputDialog.getResult();
+    }
 
+    //region Getters for UI elements
     // Getters for "Login Screen" UI elements
     public VBox getLogInScreen() { return logInScreen; }
     public TextField getLogInTextField() { return loginTextField; }
@@ -236,4 +253,5 @@ public class Controller {
     public VBox getMainScreen() { return mainScreen; }
     public TabPane getTabPane() { return tabPane; }
     public Label getCurrentUserLabel() { return currentUserLabel; }
+    //endregion
 }

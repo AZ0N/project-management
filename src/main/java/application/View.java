@@ -39,7 +39,7 @@ public class View extends Application {
 		}
 
 		model = new Model(this);
-		controller.setModelAndView(model, this);
+		controller.initialize(model, this);
 
 		// Add admin employee
 		try {
