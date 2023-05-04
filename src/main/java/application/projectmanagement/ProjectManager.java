@@ -25,7 +25,7 @@ public class ProjectManager {
         this.lastUsedYear = -1;
     }
 
-    public void createProject(String projectName) throws IllegalArgumentException, Exception {
+    public void createProject(String projectName) throws IllegalArgumentException {
         // If the year changed since we last created a project the Project numbering should start over
         int currentYear = timeServer.getYear();
         if (lastUsedYear != currentYear) {
@@ -36,7 +36,8 @@ public class ProjectManager {
         projects.add(p);
         projectsCreated += 1;
     }
-    
+   
+    // TODO Add GUI method to delete project
     public void deleteProject(String projectName) throws Exception {
     	var projectToDelete = getProject(projectName);
     	if (projectToDelete != null) {
