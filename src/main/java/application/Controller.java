@@ -22,7 +22,7 @@ public class Controller {
     @FXML private VBox logInScreen;
     @FXML private TextField loginTextField;
 
-    // "Employees" tab 
+    // "Employees" tab
     @FXML private TextField employeeSearchField;
     @FXML private ListView<Employee> employeeListView;
     @FXML private ListView<Project> employeeProjectListView;
@@ -106,9 +106,8 @@ public class Controller {
         });
 
         // Eventlistener for when tabs change
-        tabPane.getSelectionModel().selectedIndexProperty().addListener((event, oldIndex, newIndex) -> {
-            // TODO Use enum for handling specific tab indexes
-            if ((int)newIndex == 0) {
+        tabPane.getSelectionModel().selectedItemProperty().addListener((event, oldTab, newTab) -> {
+            if (newTab == overviewTab) {
                 view.updateOverview(model.getAllProjectsForEmployee(model.getLoggedInEmployee()), model.getAllActivitiesForEmployee(model.getLoggedInEmployee()));
             }
         });
