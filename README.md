@@ -7,7 +7,7 @@ The program also allows the user to appoint project leaders on projects and set 
 
 Usage:
 
-When you run the program, you will see a graphical user interface. You will first need to login using your initials. 
+When you run the program, you will see a graphical user interface. You will first need to login using your initials (adm). 
 Once logged in you will be able to create new project, add employees, create activities, assign employees to activities and appoint project leaders.
 You can use the menu bar to navigate between the different sections of the program, such as My Overview, Employees, Projects and Selected Projects.
 
