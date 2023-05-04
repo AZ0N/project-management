@@ -52,9 +52,16 @@ public class Project {
 		return ID + " - " + projectName;
 	}
 
-	public void addActivity(ProjectActivity projectActivity) {
+	public void addActivity(ProjectActivity projectActivity, Employee employee) throws Exception {
+		if (hasProjectLeader() && employee != projectLeader) {
+			throw new Exception("Only project leader can create activities!");
+		}
 		projectActivity.setProject(this);
 		projectActivities.add(projectActivity);
+	}
+
+	public ProjectActivity getProjectActivity(String activityName) {
+		return projectActivities.stream().filter(e -> e.getName().equals(activityName)).findFirst().orElse(null);
 	}
 
 	public List<ProjectActivity> getProjectActivities(){

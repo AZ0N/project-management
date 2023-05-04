@@ -3,43 +3,39 @@ package example.cucumber;
 
 import static org.junit.Assert.assertTrue;
 
+import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
-import io.cucumber.java.en.Given;
+import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class CreateActivitySteps {
 	
-    private Project project;
-    private ProjectActivity projectActivity;
-	
-	@Given("there is a Project named {string} with Project leader {string}")
-	public void thereIsAProjectNamedWithProjectLeader(String projectName, String projectLeader) {
-		// TODO Change to match new way of creating projects
-		project = new Project(1, projectName);
+	private ProjectManager projectManager;
+	private ErrorMessageHolder errorMessageHolder;
+
+	public CreateActivitySteps(ProjectManager projectManager, ErrorMessageHolder errorMessageHolder) {
+		this.projectManager = projectManager;
+		this.errorMessageHolder = errorMessageHolder;
+	}
+
+	@When("the employee {string} creates and activity named {string} on project with ID {int}")
+	public void theEmployeeCreatesAndActivityNamedOnProjectWithID(String employeeInitials, String activityName, int projectID) {
+		Employee employee = projectManager.getEmployee(employeeInitials);
+		Project project = projectManager.getProjectByID(projectID);
 		try {
-			//project.appointProjectLeader(projectLeader);
-		} catch (Exception e) {
-			// TODO: handle exception
+			project.addActivity(new ProjectActivity(activityName), employee);
+		}
+		catch (Exception e) {
+			errorMessageHolder.setErrorMessage(e.getMessage());
 		}
 	}
-	
-	@Given("{string} has no Activity named {string}")
-	public void hasNoActivityNamed(String projectName, String activityName) {
-		assertTrue(project.getProjectActivities().stream().filter(e -> e.getName().equals(activityName)).findAny().orElse(null) == null);
+
+	@Then("the project with ID {int} has an activity named {string}")
+	public void theProjectWithIDHasAnActivityNamed(int projectID, String activityName) {
+		Project project = projectManager.getProjectByID(projectID);
+		assertTrue(project.getProjectActivity(activityName).getName().equals(activityName));
 	}
-	
-	@When("the Project leader {string} creates the Activity named {string}")
-	public void theProjectLeaderCreatesTheActivityNamed(String projectName, String activityName) {
-	    projectActivity = new ProjectActivity(activityName);
-	    project.addActivity(projectActivity); 
-	}
-	
-	@Then("{string} has an Activity named {string}")
-	public void hasAnActivityNamed(String projectName, String activityName) {
-		assertTrue(project.getProjectActivities().stream().filter(e -> e.getName().equals(activityName)).findAny().orElse(null) != null);
-	}
-	
 }
 

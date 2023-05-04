@@ -42,6 +42,20 @@ public class ProjectActivity implements Activities {
     public void setProject(Project project) {
         this.project = project;
     }
+
+    public void setEstimatedTime(int estimatedTime, Employee employee) throws Exception {
+        if (project.hasProjectLeader() && employee != project.getProjectLeader()) {
+            throw new Exception("Only project leader can set estimated time!");
+        }
+        if (estimatedTime <= 0) {
+            throw new Exception("Estimated time must be positive!");
+        }
+        this.estimatedTime = estimatedTime;
+    }
+
+    public int getEstimatedTime() {
+        return estimatedTime;
+    }
     
     //add employee to the activity
     public void addEmployee(Employee employee) {
@@ -65,7 +79,7 @@ public class ProjectActivity implements Activities {
 	}
 	
 	public String toString() {
-		return project.getID() + " - " + name;
+		return project.getID() + " - " + name + " - " + timeUsed + "/" + estimatedTime;
 	}
 
     public boolean hasEmployee(Employee employee) {

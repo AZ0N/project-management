@@ -59,8 +59,12 @@ public class Model {
             return;
         }
         // TODO Check if activity already exists
-        selectedProject.addActivity(new ProjectActivity(activityName));
-        view.updateProjectDetails(selectedProject);
+        try {
+            selectedProject.addActivity(new ProjectActivity(activityName), loggedInEmployee);
+            view.updateProjectDetails(selectedProject);
+        } catch (Exception e) {
+            view.showError(e.getMessage());
+        }
     }
 
     public void assignEmployeeToActivity(String employeeInitials) {
@@ -80,6 +84,26 @@ public class Model {
     	selectedActivity.addEmployee(e);
     	view.updateSelectedActivityEmployeeListView(getSelectedActivityEmployees());
 	}
+
+    public void setEstimatedTime(String estimatedTime) {
+    	if (selectedActivity == null) {
+            view.showError("No activity selected!");
+    		return; 
+    	}
+        int time;
+        try {
+            time = Integer.parseInt(estimatedTime);
+            selectedActivity.setEstimatedTime(time, loggedInEmployee);
+        }
+        catch (NumberFormatException e) {
+            view.showError("Please enter a valid number!");
+            return;
+        }
+        catch (Exception e) {
+            view.showError(e.getMessage());
+        }
+        view.updateProjectDetails(selectedProject);
+    }
 
     public void appointProjectLeader(String employeeInitials) {
         if (selectedProject == null) {

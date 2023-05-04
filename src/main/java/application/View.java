@@ -119,7 +119,7 @@ public class View extends Application {
 			controller.getAppointProjectLeaderButton().setDisable(false);
 		}
 
-		updateAssignEmployeeButton();
+		updateSelectedActivityButtons();
 
 		if (project.getProjectLeader() == null || project.getProjectLeader() == model.getLoggedInEmployee()) {
 			controller.getCreateActivityButton().setDisable(false);
@@ -144,12 +144,14 @@ public class View extends Application {
 		controller.getSelectedProjectActivityEmployeesListView().getItems().clear();
 	}
 
-	public void updateAssignEmployeeButton() {
+	public void updateSelectedActivityButtons() {
 		if (!model.getSelectedProject().hasProjectLeader() || model.getSelectedProject().getProjectLeader() == model.getLoggedInEmployee()) {
 			controller.getAssignEmployeeButton().setDisable(model.getSelectedProjectActivity() == null);
+			controller.getSetEstimatedTimeButton().setDisable(model.getSelectedProjectActivity() == null);
 		}
 		else {
 			controller.getAssignEmployeeButton().setDisable(true);
+			controller.getSetEstimatedTimeButton().setDisable(true);
 		}
 	}
 
