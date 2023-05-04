@@ -68,6 +68,7 @@ public class Controller {
         this.view = view;
 
         // Initialize event handlers for ListViews and search fields
+        initializeOverviewTab();
         initializeEmployeeTab();
         initializeProjectTab();
         initializeProjectDetailsTab();
@@ -75,6 +76,24 @@ public class Controller {
     }
 
     //region Initialize event listeners
+    private void initializeOverviewTab() {
+        overviewProjectListView.getSelectionModel().selectedItemProperty().addListener((event, oldProject, newProject) -> {
+            model.selectedProject(newProject);
+            selectedProjectTab.setDisable(newProject == null);
+            editProjectButton.setDisable(newProject == null);
+
+            if (newProject != null) {
+                selectedProjectTab.setText("Selected Project: " + newProject.getID());
+                view.updateProjectDetails(newProject); //Still needs ID and activity updates
+                view.updateSelectedProjectActivityListView(newProject.getProjectActivities());
+            }
+            else {
+                selectedProjectTab.setText("Selected Project");
+                view.clearProjectDetails();
+            }
+        });
+    }
+    
     private void initializeEmployeeTab() {
         employeeListView.getSelectionModel().selectedItemProperty().addListener((e, oldValue, newValue) -> {
             if (newValue != null) {
