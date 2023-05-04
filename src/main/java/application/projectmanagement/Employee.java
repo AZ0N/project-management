@@ -3,33 +3,25 @@ package application.projectmanagement;
 public class Employee {
 
 	private String initials;
-	private int timeUsed;
-	
+
+	/**
+	 * Create Employee with provided initials.
+	 * Initials must be 1-4 letters.
+	 * @param initials
+	 * @throws IllegalArgumentException
+	 */
 	public Employee(String initials) throws IllegalArgumentException {
 		// Verify initials
 		if (initials.length() == 0 || initials.length() > 4 || !initials.chars().allMatch(Character::isLetter)) {
 			throw new IllegalArgumentException("Initials " + initials + " not valid. Only 1-4 letters allowed.");
 		}
 		this.initials = initials.toLowerCase();
-		this.timeUsed = 0;
     }
 	
 	public String getInitials() {
 		return initials;
 	}
 
-	public int getTimeUsed() {
-	    return timeUsed;
-	}
-
-	public void setTimeUsed(int timeUsed) {
-	    this.timeUsed = timeUsed;
-	}
-	    
-	public void addTimeUsed(int time) {
-	    this.timeUsed += time;
-	}
-	    
 	public String toString() {
 		return initials;
 	}
