@@ -12,19 +12,20 @@ public class Project {
 	private ArrayList<ProjectActivity> projectActivities;
 	
 	public Project(int projectID, String projectName) throws IllegalArgumentException {
-		if (projectName.length() == 0 || projectName.length() > 30) {
-			throw new IllegalArgumentException("Project name " + projectName + " is not valid.");
-		}
 		this.ID = projectID;
 		this.projectName = projectName;
 		this.projectActivities = new ArrayList<ProjectActivity>();
 	}
 	
 	public void appointProjectLeader (Employee employee) throws Exception {
+		assert employee != null;
+
 		if (projectLeader != null) {
 			throw new Exception("This projects already has a project leader!");
 		}
 		projectLeader = employee;
+
+		assert projectLeader == employee;
 	}
 	
 	public int getID() {
