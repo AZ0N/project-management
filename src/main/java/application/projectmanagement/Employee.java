@@ -19,7 +19,7 @@ public class Employee {
 	}
 
 	public String toString() {
-		return initials;
+		return getInitials();
 	}
 
 	/**
