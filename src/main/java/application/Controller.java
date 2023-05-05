@@ -88,6 +88,7 @@ public class Controller {
             model.selectedProject(newProject);
             selectedProjectTab.setDisable(newProject == null);
             editProjectButton.setDisable(newProject == null);
+            deleteProjectButton.setDisable(newProject == null);
 
             if (newProject != null) {
                 selectedProjectTab.setText("Selected Project: " + newProject.getID());
