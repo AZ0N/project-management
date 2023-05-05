@@ -53,9 +53,10 @@ public class Model {
         view.updateProjectList(projectmanager.getProjects());
     }
     
-    public void deleteProject(String projectName) {
+    public void deleteProject(int projectID) {
+    	projectmanager.getProjectByID(projectID);
     	try {
-    		projectmanager.deleteProject(projectName);
+    		projectmanager.deleteProject(projectID);
     	} catch (Exception e) {
     		view.showError(e.getMessage());
     		return;

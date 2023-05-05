@@ -172,15 +172,13 @@ public class Controller {
     
     public void deleteProject() {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setTitle("Confirmation Dialog");
-    	alert.setHeaderText("Look, a Confirmation Dialog");
-    	alert.setContentText("Are you ok with this?");
+    	alert.setTitle("Delete Project");
+    	alert.setHeaderText("You are about to delete project \"" + model.getSelectedProject() + "\"!");
+    	alert.setContentText("Click OK to proceed");
 
     	Optional<ButtonType> result = alert.showAndWait();
     	if (result.get() == ButtonType.OK){
-    	    model.deleteProject(model.getSelectedProject().toString());
-    	} else {
-    	    // ... user chose CANCEL or closed the dialog
+    	    model.deleteProject(model.getSelectedProject().getID());
     	}
     }
 

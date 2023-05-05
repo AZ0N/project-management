@@ -47,10 +47,9 @@ public class ProjectManager {
         assert projects.size() == numberOfProjects + 1  && projects.stream().anyMatch(pr -> pr.getProjectName().equals(projectName));
     }
    
-    // TODO Add GUI method to delete project
-    public void deleteProject(String projectName) throws Exception {
-        assert projectName != null && !projectName.isBlank();
-    	var projectToDelete = getProject(projectName);
+    public void deleteProject(int projectID) throws Exception {
+        // TODO assert 
+    	var projectToDelete = getProjectByID(projectID);
     	if (projectToDelete != null) {
     		projects.remove(projectToDelete);
     	} else {
