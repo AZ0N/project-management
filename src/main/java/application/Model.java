@@ -1,7 +1,6 @@
 package application;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
@@ -197,11 +196,11 @@ public class Model {
    }
 
     public List<Employee> searchEmployees(String searchText) {
-        return projectmanager.getEmployees().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
+        return projectmanager.searchEmployees(searchText);
     }
 
     public List<Project> searchProjects(String searchText) {
-        return projectmanager.getProjects().stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
+        return projectmanager.searchProjects(searchText);
     }
     
     public List<ProjectActivity> getAllActivitiesForEmployee(Employee e) {

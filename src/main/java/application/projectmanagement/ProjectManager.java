@@ -2,6 +2,7 @@ package application.projectmanagement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import application.timemanagement.TimeServer;
 
@@ -105,5 +106,13 @@ public class ProjectManager {
 
     public List<Project> getAllProjectsForEmployee(Employee e) {
         return projects.stream().filter(p -> p.isEmployeeInProject(e)).toList();
+    }
+
+    public List<Employee> searchEmployees(String searchText) {
+        return employees.stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
+    }
+
+    public List<Project> searchProjects(String searchText) {
+        return projects.stream().filter(e -> e.match(searchText)).collect(Collectors.toList());
     }
 }
