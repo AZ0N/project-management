@@ -69,7 +69,6 @@ public class Model {
             view.showError("No project selected!");
             return;
         }
-        // TODO Check if activity already exists
         try {
             selectedProject.addActivity(new ProjectActivity(activityName), loggedInEmployee);
             view.updateProjectDetails(selectedProject);

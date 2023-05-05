@@ -59,12 +59,17 @@ public class Project {
 	 * @throws Exception if the project has a project leader different from employee.
 	 */
 	public void addActivity(ProjectActivity projectActivity, Employee employee) throws Exception {
-		// Pre-conditions
-		assert employee != null;
-		assert projectActivity != null;
+		// Defensive programming
+		if (projectActivities.stream().anyMatch(e -> e.getName().equals(projectActivity.getName()))) {
+			throw new Exception("Project activity with name already exists!");
+		}
 		if (hasProjectLeader() && employee != projectLeader) {
 			throw new Exception("Only project leader can create activities!");
 		}
+		// Pre-conditions
+		assert employee != null && projectActivity != null;
+		assert !projectActivities.stream().anyMatch(e -> e.getName().equals(projectActivity.getName()));
+		
 		projectActivity.setProject(this);
 		projectActivities.add(projectActivity);
 		
