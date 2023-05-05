@@ -48,13 +48,12 @@ public class ProjectManager {
     }
    
     public void deleteProject(int projectID) throws Exception {
-        // TODO assert 
-    	var projectToDelete = getProjectByID(projectID);
-    	if (projectToDelete != null) {
-    		projects.remove(projectToDelete);
-    	} else {
-    		throw new Exception ("The Project doesn't exist!");
+        var projectToDelete = getProjectByID(projectID);
+    	if (projectToDelete == null) {
+            throw new Exception ("The Project doesn't exist!");
     	}
+        assert getProjectByID(projectID) != null;
+        projects.remove(projectToDelete);
         assert projectToDelete == null || !projects.contains(projectToDelete);
     }
     
