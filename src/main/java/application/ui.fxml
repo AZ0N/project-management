@@ -133,7 +133,7 @@
                               </HBox>
                            </content>
                         </Tab>
-                        <Tab closable="false" text="Projects">
+                        <Tab fx:id="projectsTab" closable="false" text="Projects">
                            <content>
                               <HBox>
                                  <children>

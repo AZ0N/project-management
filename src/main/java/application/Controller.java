@@ -36,6 +36,7 @@ public class Controller {
     @FXML private Label employeeInitialsLabel;
 
     // "Projects" tab
+    @FXML private Tab projectsTab;
     @FXML private TextField projectSearchField;
     @FXML private ListView<Project> projectListView;
     @FXML private Label projectIDLabel;
@@ -151,6 +152,9 @@ public class Controller {
         tabPane.getSelectionModel().selectedItemProperty().addListener((event, oldTab, newTab) -> {
             if (newTab == overviewTab) {
                 view.updateOverview(model.getAllProjectsForEmployee(model.getLoggedInEmployee()), model.getAllActivitiesForEmployee(model.getLoggedInEmployee()));
+            }
+            else if (newTab == projectsTab) {
+                projectListView.getSelectionModel().clearSelection();
             }
         });
     }
