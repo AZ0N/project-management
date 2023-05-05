@@ -17,7 +17,7 @@ public class Project {
 		this.projectActivities = new ArrayList<ProjectActivity>();
 	}
 	
-	public void appointProjectLeader (Employee employee) throws Exception {
+	public void appointProjectLeader(Employee employee) throws Exception {
 		assert employee != null;
 
 		if (projectLeader != null) {
