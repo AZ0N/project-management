@@ -1,7 +1,6 @@
 package application.projectmanagement;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ProjectActivity implements Activity {
 
@@ -9,33 +8,11 @@ public class ProjectActivity implements Activity {
     private ArrayList<Employee> assignedEmployees;
     private int estimatedTime;
     private int timeUsed;
-    private Date startDate;
-    private Date endDate;
     private Project project;
 
     public ProjectActivity(String name) {
         this.name = name;
         assignedEmployees = new ArrayList<Employee>();
-    }
-
-    @Override
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    @Override
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    @Override
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    @Override
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public void setProject(Project project) {
@@ -87,7 +64,8 @@ public class ProjectActivity implements Activity {
      * @throws IllegalArgumentException if time is non-positive.
      * @throws Exception if the project has a project leader different from employee.
      */
-    public void addTimeUsedByEmployee(Employee employee, int time) throws Exception {
+    @Override
+    public void addTimeUsed(Employee employee, int time) throws Exception {
         if (!hasEmployee(employee)) {
             throw new Exception("Only employees assigned to activity can add time used!");
         }
@@ -97,14 +75,17 @@ public class ProjectActivity implements Activity {
         timeUsed += time;
     }
 
+    @Override
     public int getTimeUsed() {
         return timeUsed;
     }
 
+    @Override
 	public String getName() {
 		return name;
 	}
 	
+    @Override
 	public String toString() {
 		return project.getID() + " - " + name + " - " + timeUsed + "/" + estimatedTime;
 	}

@@ -1,12 +1,10 @@
 package application.projectmanagement;
 
-import java.util.Date;
-
 public interface Activity {
 	
-    public Date getStartDate();
-    public void setStartDate(Date startDate);
+    public void addTimeUsed(Employee employee, int timeUsed) throws Exception;
+    public int getTimeUsed();
 
-    public Date getEndDate();
-    public void setEndDate(Date endDate);
+    public String getName();
+    public String toString();
 }

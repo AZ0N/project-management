@@ -23,7 +23,7 @@ public class RegisterTimeOnActivity {
 		Project project = projectManager.getProjectByID(projectID);
 		ProjectActivity projectActivity = project.getProjectActivity(activityName);
 		try {
-			projectActivity.addTimeUsedByEmployee(projectManager.getEmployee(employeeInitials), timeUsed);
+			projectActivity.addTimeUsed(projectManager.getEmployee(employeeInitials), timeUsed);
 		}
 		catch (Exception e) {
 			errorMessageHolder.setErrorMessage(e.getMessage());

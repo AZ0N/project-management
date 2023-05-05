@@ -128,7 +128,7 @@ public class Model {
         int time;
         try {
             time = Integer.parseInt(timeUsed);
-            selectedActivity.addTimeUsedByEmployee(loggedInEmployee, time);
+            selectedActivity.addTimeUsed(loggedInEmployee, time);
         }
         catch (NumberFormatException e) {
             view.showError("Please enter a valid number!");
