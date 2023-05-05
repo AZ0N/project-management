@@ -95,10 +95,6 @@ public class ProjectManager {
     public Employee getEmployee(String initials) {
         return employees.stream().filter(e -> e.getInitials().equals(initials)).findFirst().orElse(null);
     }
-    
-    public Project getProject(String projectName) {
-        return projects.stream().filter(e -> e.getProjectName().equals(projectName)).findFirst().orElse(null);
-    }
 
     public Project getProjectByID(int ID) {
         return projects.stream().filter(p -> p.getID() == ID).findFirst().orElse(null);
