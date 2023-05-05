@@ -41,6 +41,10 @@ public class ProjectActivity implements Activity {
     public void setProject(Project project) {
         this.project = project;
     }
+
+    public Project getProject() {
+        return project;
+    }
     
     public int getEstimatedTime() {
         return estimatedTime;

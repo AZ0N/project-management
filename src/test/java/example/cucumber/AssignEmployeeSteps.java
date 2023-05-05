@@ -2,6 +2,8 @@ package example.cucumber;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
@@ -36,5 +38,15 @@ public class AssignEmployeeSteps {
         Employee employee = projectManager.getEmployee(employeeInitials);
         ProjectActivity projectActivity = projectManager.getProjectByID(projectID).getProjectActivity(activityName);
         assertTrue(projectActivity.getAssignedEmployees().contains(employee));
+    }
+
+    @Then("the employee {string} has {string} from project {int} as assigned activities")
+    public void theEmployeeHasFromProjectAsAssignedActivities(String initials, String activityName, int projectID) {
+        Employee employee = projectManager.getEmployee(initials);
+        List<ProjectActivity> activities = projectManager.getAllActivitiesForEmployee(employee);
+
+        ProjectActivity projectActivity = activities.stream().filter(e -> e.getName().equals(activityName)).findFirst().orElse(null);
+        assertTrue(projectActivity != null);
+        assertTrue(projectActivity.getProject().getID() == projectID);
     }
 }

@@ -9,6 +9,7 @@ Scenario: An employee is assigned to an activity
     And the employee "test" creates and activity named "First Activity" on project with ID 23001
     When the employee "test" is assigned to the activity "First Activity" on project with ID 23001 by "test"
     Then the activity "First Activity" on project with ID 23001 has "test" assigned
+    And the employee "test" has "First Activity" from project 23001 as assigned activities
 
 # Alternate Scenario 1
 Scenario: Project Leader assigns an employee an activity
