@@ -51,7 +51,7 @@ public class Project {
 	public String toString() {
 		return ID + " - " + projectName;
 	}
-
+	
 	/**
 	 * Adds a project activity to the project.
 	 * @param projectActivity to be added.
@@ -59,11 +59,17 @@ public class Project {
 	 * @throws Exception if the project has a project leader different from employee.
 	 */
 	public void addActivity(ProjectActivity projectActivity, Employee employee) throws Exception {
+		// Pre-conditions
+		assert employee != null;
+		assert projectActivity != null;
 		if (hasProjectLeader() && employee != projectLeader) {
 			throw new Exception("Only project leader can create activities!");
 		}
 		projectActivity.setProject(this);
 		projectActivities.add(projectActivity);
+		
+		// Post-conditions
+		assert projectActivities.contains(projectActivity);
 	}
 
 	/**
