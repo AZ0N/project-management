@@ -58,42 +58,31 @@ public class View extends Application {
 	public void updateEmployeeList(List<Employee> employees) {
 		var items = controller.getEmployeeListView().getItems();
 		items.clear();
-
-		for (Employee employee : employees) {
-			items.add(employee);
-		}
+		items.addAll(employees);
 	}
 
 	public void updateProjectActivityList(List<ProjectActivity> projectActivities) {
 		var items = controller.getProjectActivityListView().getItems();
 		items.clear();
-		for (ProjectActivity projectActivity : projectActivities) {
-			items.add(projectActivity);
-		}
+		items.addAll(projectActivities);
 	}
 
 	public void updateEmployeeActivityList(List<ProjectActivity> projectActivities) {
 		var items = controller.getEmployeeActivityListView().getItems();
 		items.clear();
-		for (ProjectActivity projectActivity : projectActivities) {
-			items.add(projectActivity);
-		}
+		items.addAll(projectActivities);
 	}
 
 	public void updateEmployeeProjectList(List<Project> projects) {
 		var items = controller.getEmployeeProjectListView().getItems();
 		items.clear();
-		for (Project project : projects) {
-			items.add(project);
-		}
+		items.addAll(projects);
 	}
 
 	public void updateProjectList(List<Project> projects) {
 		var items = controller.getProjecListView().getItems();
 		items.clear();
-		for (Project project : projects) {
-			items.add(project);
-		}
+		items.addAll(projects);
 	}
 
 	public void updateProjectDetails(Project project) {
