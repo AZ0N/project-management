@@ -31,3 +31,12 @@ Scenario: An employee who isn't project leader tries to set estimated time on ac
     And the employee "bob" creates and activity named "First Activity" on project with ID 23001
     When the employee "test" sets the estimated time for activity "First Activity" on project 23001 to 200
     Then the system provides the error message "Only project leader can set estimated time!"
+
+# Alternate Scenario 3
+Scenario: An employee tries to set estimated time on activity to negative amount
+    Given the year is 2023
+    And an employee with initials "test" is added to the system
+    And a Project called "Project 1" is added to the system
+    And the employee "test" creates and activity named "First Activity" on project with ID 23001
+    When the employee "test" sets the estimated time for activity "First Activity" on project 23001 to -50
+    Then the system provides the error message "Estimated time must be positive!"
