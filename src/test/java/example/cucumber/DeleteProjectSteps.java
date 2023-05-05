@@ -35,9 +35,7 @@ public class DeleteProjectSteps {
 	@Then("the project with ID {int} and name {string} is not in the system")
 	public void theProjectWithIDAndNameIsNotInTheSystem(int projectID, String projectName) {
 		Project project = projectManager.getProjectByID(projectID);
-		if (project != null) {
-			assertTrue(!project.getProjectName().equals(projectName));
-		}
+		assertTrue(project == null || !project.getProjectName().equals(projectName));
 	}
 
 	@Given("there isn't a Project with ID {int}")
