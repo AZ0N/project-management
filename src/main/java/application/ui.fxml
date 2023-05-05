@@ -13,6 +13,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -162,8 +163,8 @@
                                           <HBox>
                                              <children>
                                                 <Button fx:id="editProjectButton" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#editProjectButton" text="Edit Project" />
-                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" visible="false" HBox.hgrow="ALWAYS" />
-                                                <Button fx:id="deleteProjectButton" mnemonicParsing="false" onAction="#deleteProject" text="Delete Project" />
+                                                <Pane HBox.hgrow="ALWAYS" />
+                                                <Button fx:id="deleteProjectButton" disable="true" mnemonicParsing="false" onAction="#deleteProject" text="Delete Project" />
                                              </children>
                                           </HBox>
                                           <Label fx:id="projectIDLabel" text="Project ID:" />
