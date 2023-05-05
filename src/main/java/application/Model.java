@@ -52,6 +52,16 @@ public class Model {
         }
         view.updateProjectList(projectmanager.getProjects());
     }
+    
+    public void deleteProject(String projectName) {
+    	try {
+    		projectmanager.deleteProject(projectName);
+    	} catch (Exception e) {
+    		view.showError(e.getMessage());
+    		return;
+    	}
+    	view.updateProjectList(projectmanager.getProjects());
+    }
 
     public void createProjectActivity(String activityName) {
         if (selectedProject == null) {

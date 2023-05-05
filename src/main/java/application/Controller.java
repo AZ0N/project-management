@@ -1,10 +1,15 @@
 package application;
 
+import java.util.Optional;
+
 import application.projectmanagement.Employee;
 import application.projectmanagement.Project;
 import application.projectmanagement.ProjectActivity;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
@@ -38,6 +43,7 @@ public class Controller {
     @FXML private Label projectLeaderLabel;
     @FXML private ListView<ProjectActivity> projectActivityListView;
     @FXML private Button editProjectButton;
+    @FXML private Button deleteProjectButton;
 
     // "Selected Project" tab
     @FXML private Tab selectedProjectTab;
@@ -162,6 +168,20 @@ public class Controller {
         if (inputResult != null) {
             model.addProject(inputResult.strip());
         }
+    }
+    
+    public void deleteProject() {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Confirmation Dialog");
+    	alert.setHeaderText("Look, a Confirmation Dialog");
+    	alert.setContentText("Are you ok with this?");
+
+    	Optional<ButtonType> result = alert.showAndWait();
+    	if (result.get() == ButtonType.OK){
+    	    model.deleteProject(model.getSelectedProject().toString());
+    	} else {
+    	    // ... user chose CANCEL or closed the dialog
+    	}
     }
 
     public void createProjectActivity() {

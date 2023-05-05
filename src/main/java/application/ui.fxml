@@ -159,7 +159,13 @@
                                     </VBox>
                                     <VBox prefWidth="250.0" spacing="10.0" HBox.hgrow="ALWAYS">
                                        <children>
-                                          <Button fx:id="editProjectButton" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#editProjectButton" text="Edit Project" />
+                                          <HBox>
+                                             <children>
+                                                <Button fx:id="editProjectButton" alignment="CENTER_RIGHT" disable="true" mnemonicParsing="false" onAction="#editProjectButton" text="Edit Project" />
+                                                <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" visible="false" HBox.hgrow="ALWAYS" />
+                                                <Button fx:id="deleteProjectButton" mnemonicParsing="false" onAction="#deleteProject" text="Delete Project" />
+                                             </children>
+                                          </HBox>
                                           <Label fx:id="projectIDLabel" text="Project ID:" />
                                           <Label fx:id="projectNameLabel" layoutX="10.0" layoutY="10.0" text="Project name:" />
                                           <Label fx:id="projectLeaderLabel" text="Project leader:" />
