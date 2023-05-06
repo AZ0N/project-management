@@ -16,5 +16,4 @@ public class SystemErrorSteps {
 	public void theSystemProvidesTheErrorMessage(String expectedErrorMessage) {
 		assertEquals(expectedErrorMessage, errorMessageHolder.getErrorMessage());
 	}
-
 }
