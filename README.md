@@ -45,3 +45,9 @@ The ``Cucumber`` tests can be run using the following ``Maven`` command:
 ```maven
 mvn clean test
 ```
+
+# JAR File
+We have built the project as a JAR file given in [ProjectManagement.jar](ProjectManagement.jar). It includes both the compiled .class files and the source .java files. It has to be run using a java installation with JavaFX:
+```powershell
+path\to\javafx\bin\java -jar ProjectManagement.jar
+```
