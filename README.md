@@ -5,6 +5,8 @@ This is a java program that helps users manage their employees and projects.
 The program allows users to add employees, create new projects, assign employees to activities and register hours spent on them
 The program also allows the user to appoint project leaders on projects and set estimated time on how long an activity should take.
 
+![Example screen](images/example_screen.png)
+
 # Running the program
 You can run the program with the following ``Maven`` command:
 ```maven
@@ -13,7 +15,10 @@ mvn javafx:run
 The project uses ``JavaFX``, and can not be run without it.
 
 # Usage
+## Login
 When you run the program, you will see a graphical user interface. You will first need to login using your employee initials. By default, there is added an employee with initials "adm" which can be logged in as.
+
+![Example of login screen](images/login_example.png)
 
 Once logged in you will be able to create new projects, add employees, create activities, assign employees to activities and appoint project leaders.
 You can use the menu bar to navigate between the different sections of the program, My Overview, Employees, Projects and Selected Projects.
