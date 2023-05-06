@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class View extends Application {
@@ -28,9 +29,12 @@ public class View extends Application {
 		this.stage = stage;
 		Scene scene;
 
+		// Load icon
+        stage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("application/icon.png")));
+
 		try {
 			// Load outer scene and controller using FXML
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ui.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(ClassLoader.getSystemResource("application/ui.fxml"));
 			scene = fxmlLoader.load();
 			controller = (Controller) fxmlLoader.getController();
 		} catch (Exception e) {

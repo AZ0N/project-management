@@ -220,6 +220,7 @@ public class Controller {
     	alert.setTitle("Delete Project");
     	alert.setHeaderText("You are about to delete project \"" + model.getSelectedProject() + "\"!");
     	alert.setContentText("Click OK to proceed");
+        alert.initOwner(tabPane.getScene().getWindow());
 
     	Optional<ButtonType> result = alert.showAndWait();
     	if (result.get() == ButtonType.OK){
@@ -259,6 +260,7 @@ public class Controller {
     // and return the string provided.
     private String showDialogBox(String title, String header) {
         TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.initOwner(tabPane.getScene().getWindow());
         textInputDialog.setTitle(title);
         textInputDialog.setHeaderText(header);
         textInputDialog.showAndWait();
