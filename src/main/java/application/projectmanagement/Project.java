@@ -16,15 +16,20 @@ public class Project {
 		this.projectName = projectName;
 		this.projectActivities = new ArrayList<ProjectActivity>();
 	}
-	
-	public void appointProjectLeader(Employee employee) throws Exception {
-		assert employee != null;
 
+	/**
+	 * Appoints a project leader to a project.
+	 * @param employee The employee to appoint to project leader.
+	 * @throws Exception If the project already has a project leader.
+	 */
+	public void appointProjectLeader(Employee employee) throws Exception {
+		// Pre-condition
+		assert employee != null;
 		if (projectLeader != null) {
 			throw new Exception("This projects already has a project leader!");
 		}
 		projectLeader = employee;
-
+		// Post-condition
 		assert projectLeader == employee;
 	}
 	
@@ -89,7 +94,7 @@ public class Project {
 	/**
 	 * Checks if a given employee is in the project.
 	 * @param employee The employee to check.
-	 * @return True if the employee is the project leader or assigned to a activity in the project.
+	 * @return True if the employee is the project leader or assigned to an activity in the project. Otherwise false.
 	 */
 	public boolean isEmployeeInProject(Employee employee) {
 		return employee == projectLeader || getActivitiesForEmployee(employee).size() > 0;

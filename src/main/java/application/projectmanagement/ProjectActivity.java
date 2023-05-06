@@ -26,6 +26,27 @@ public class ProjectActivity implements Activity {
     public int getEstimatedTime() {
         return estimatedTime;
     }
+    
+    @Override
+    public int getTimeUsed() {
+        return timeUsed;
+    }
+    
+    @Override
+    public String getName() {
+        return name;
+    }
+
+	public ArrayList<Employee> getAssignedEmployees() {
+		return assignedEmployees;
+	}
+
+    // An activity is represented by "projectname - activityname - timeused/estimatedTime",
+    // eg. "23001 - First Activity - 12/30". Used by ListView<ProjectActivity>.
+    @Override
+	public String toString() {
+		return project.getID() + " - " + name + " - " + timeUsed + "/" + estimatedTime;
+	}
 
     /**
      * Sets the estimated time for this activity.
@@ -75,26 +96,12 @@ public class ProjectActivity implements Activity {
         timeUsed += time;
     }
 
-    @Override
-    public int getTimeUsed() {
-        return timeUsed;
-    }
-
-    @Override
-	public String getName() {
-		return name;
-	}
-	
-    @Override
-	public String toString() {
-		return project.getID() + " - " + name + " - " + timeUsed + "/" + estimatedTime;
-	}
-
+    /**
+     * Determines if a given employee is assigned to this project activity.
+     * @param employee The employee to check for.
+     * @return True if the employee has been assigned to this project activity. Otherwise false.
+     */
     public boolean hasEmployee(Employee employee) {
         return assignedEmployees.contains(employee);
     }
-
-	public ArrayList<Employee> getAssignedEmployees() {
-		return assignedEmployees;
-	}
 }

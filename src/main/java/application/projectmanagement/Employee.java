@@ -18,6 +18,7 @@ public class Employee {
 		return initials;
 	}
 
+	// An Employee is represented by initials. Used with ListView<Employee>.
 	public String toString() {
 		return getInitials();
 	}
