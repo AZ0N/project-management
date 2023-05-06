@@ -23,7 +23,7 @@ public class Controller {
     private Model model;
     private View view;
 
-    //region UI element fields
+    //region UI element fields. Populated by ui.fxml
     // Login screen
     @FXML private VBox logInScreen;
     @FXML private TextField loginTextField;
@@ -85,16 +85,20 @@ public class Controller {
     //region Initialize event listeners
     private void initializeOverviewTab() {
         overviewProjectListView.getSelectionModel().selectedItemProperty().addListener((event, oldProject, newProject) -> {
+            // Select the selected project
             model.selectedProject(newProject);
+            // Update UI buttons to be enabled/disabled based on if the selected project is null
             selectedProjectTab.setDisable(newProject == null);
             editProjectButton.setDisable(newProject == null);
             deleteProjectButton.setDisable(newProject == null);
 
+            // If the selected project isn't null, update the UI
             if (newProject != null) {
                 selectedProjectTab.setText("Selected Project: " + newProject.getID());
                 view.updateProjectDetails(newProject); //Still needs ID and activity updates
                 view.updateSelectedProjectActivityListView(newProject.getProjectActivities());
             }
+            // Else clear the selected project tab
             else {
                 selectedProjectTab.setText("Selected Project");
                 view.clearProjectDetails();
@@ -163,19 +167,54 @@ public class Controller {
 
     //region Button events
     public void addEmployee() {
-        String inputResult = showDialogBox("Add Employee", "Enter employee initials:");
-        if (inputResult != null) {
-            model.addEmployee(inputResult.strip());
+        String employeeInitials = showDialogBox("Add Employee", "Enter employee initials:");
+        if (employeeInitials != null) {
+            model.addEmployee(employeeInitials.strip());
         }
     }
     
     public void createProject() {
-        String inputResult = showDialogBox("Create Project", "Enter project name:");
-        if (inputResult != null) {
-            model.addProject(inputResult.strip());
+        String projectName = showDialogBox("Create Project", "Enter project name:");
+        if (projectName != null) {
+            model.addProject(projectName.strip());
+        }
+    }
+
+    public void createProjectActivity() {
+        String activityName = showDialogBox("Create Activity", "Enter activity name:");
+        if (activityName != null) {
+            model.createProjectActivity(activityName.strip());
         }
     }
     
+    public void assignEmployeeToActivity() {
+        String employeeInitials = showDialogBox("Assign Employee", "Enter employee initials:");
+        if (employeeInitials != null) {
+            model.assignEmployeeToActivity(employeeInitials.strip());
+        }
+    }
+
+    public void setEstimatedTime() {
+        String estimatedTime = showDialogBox("Set Estimated Time", "Enter estimated time:");
+        if (estimatedTime != null) {
+            model.setEstimatedTime(estimatedTime);
+        }
+    }
+
+    public void addTimeUsed() {
+        String timeUsed = showDialogBox("Add Time Used", "Enter hours used: ");
+        if (timeUsed != null) {
+            model.addTimeUsed(timeUsed);
+        }
+    }
+    
+    public void appointProjectLeader() {
+        String employeeInitials = showDialogBox("Appoint Project Leader", "Enter employee initials:");
+        if (employeeInitials != null) {
+            model.appointProjectLeader(employeeInitials.strip());
+        }
+    }
+        
     public void deleteProject() {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
     	alert.setTitle("Delete Project");
@@ -188,41 +227,6 @@ public class Controller {
     	}
     }
 
-    public void createProjectActivity() {
-        String inputResult = showDialogBox("Create Activity", "Enter activity name:");
-        if (inputResult != null) {
-            model.createProjectActivity(inputResult.strip());
-        }
-    }
-    
-    public void assignEmployeeToActivity() {
-        String inputResult = showDialogBox("Assign Employee", "Enter employee initials:");
-        if (inputResult != null) {
-            model.assignEmployeeToActivity(inputResult.strip());
-        }
-    }
-
-    public void setEstimatedTime() {
-        String inputResult = showDialogBox("Set Estimated Time", "Enter estimated time:");
-        if (inputResult != null) {
-            model.setEstimatedTime(inputResult);
-        }
-    }
-
-    public void addTimeUsed() {
-        String inputResult = showDialogBox("Add Time Used", "Enter hours used: ");
-        if (inputResult != null) {
-            model.addTimeUsed(inputResult);
-        }
-    }
-    
-    public void appointProjectLeader() {
-        String inputResult = showDialogBox("Appoint Project Leader", "Enter employee initials:");
-        if (inputResult != null) {
-            model.appointProjectLeader(inputResult.strip());
-        }
-    }
-
     public void closeApplication() {
         view.close();
     }
@@ -232,6 +236,7 @@ public class Controller {
     }
 
     public void logoutButton() {
+        // Show login screen
         view.toLoginScreen();
 
         // Clear selected employee
@@ -250,6 +255,8 @@ public class Controller {
     }
     //endregion
     
+    // Utility method used to easily show a text dialog box with a given title and header,
+    // and return the string provided.
     private String showDialogBox(String title, String header) {
         TextInputDialog textInputDialog = new TextInputDialog();
         textInputDialog.setTitle(title);
