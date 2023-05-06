@@ -1,7 +1,7 @@
 package example.cucumber;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import application.projectmanagement.Employee;
 import application.projectmanagement.ProjectManager;
