@@ -23,14 +23,10 @@ public class Project {
 	 * @throws Exception If the project already has a project leader.
 	 */
 	public void appointProjectLeader(Employee employee) throws Exception {
-		// Pre-condition
-		assert employee != null;
-		if (projectLeader != null) {
-			throw new Exception("This projects already has a project leader!");
+		if (projectLeader != null) {												//1
+			throw new Exception("This projects already has a project leader!");		//2
 		}
-		projectLeader = employee;
-		// Post-condition
-		assert projectLeader == employee;
+		projectLeader = employee;													//3
 	}
 	
 	public int getID() {
@@ -65,21 +61,14 @@ public class Project {
 	 */
 	public void addActivity(ProjectActivity projectActivity, Employee employee) throws Exception {
 		// Defensive programming
-		if (projectActivities.stream().anyMatch(e -> e.getName().equals(projectActivity.getName()))) {
-			throw new Exception("Project activity with name already exists!");
+		if (projectActivities.stream().anyMatch(e -> e.getName().equals(projectActivity.getName()))) {	//1
+			throw new Exception("Project activity with name already exists!");							//2
 		}
-		if (hasProjectLeader() && employee != projectLeader) {
-			throw new Exception("Only project leader can create activities!");
+		if (hasProjectLeader() && employee != projectLeader) {											//3
+			throw new Exception("Only project leader can create activities!");							//4
 		}
-		// Pre-conditions
-		assert employee != null && projectActivity != null;
-		assert !projectActivities.stream().anyMatch(e -> e.getName().equals(projectActivity.getName()));
-		
-		projectActivity.setProject(this);
-		projectActivities.add(projectActivity);
-		
-		// Post-conditions
-		assert projectActivities.contains(projectActivity);
+		projectActivity.setProject(this);																//5
+		projectActivities.add(projectActivity);															//6
 	}
 
 	/**

@@ -33,28 +33,22 @@ public class ProjectManager {
      */
     public void createProject(String projectName) throws IllegalArgumentException {
         // Defensive programming
-        if (projectName.length() == 0 || projectName.length() > 30 || projectName.isBlank() || projectName == null) {
-			throw new IllegalArgumentException("Project name " + projectName + " is not valid.");
+        if (projectName.length() == 0 || projectName.length() > 30 ||
+            projectName.isBlank() || projectName == null) {                                         //1
+			throw new IllegalArgumentException(
+                "Project name " + projectName + " is not valid.");                                  //2
 		}
-        // Pre-condition
-        assert projectName != null && !projectName.isBlank() && projectName.length() > 0 && projectName.length() <= 30;
-        int previousProjectsCreated = projectsCreated;
-        int numberOfProjects = projects.size();
-
         // If the year changed since we last created a project,
         // the project numbering should start over
-        int currentYear = timeServer.getYear();
-        if (lastUsedYear != currentYear) {
-            lastUsedYear = currentYear;
-            projectsCreated = 0;
+        int currentYear = timeServer.getYear();                                                     //3
+        if (lastUsedYear != currentYear) {                                                          //4
+            lastUsedYear = currentYear;                                                             //5
+            projectsCreated = 0;                                                                    //6
         }
         // Create a new project with the correct ID and add it to the list of projects
-        Project p = new Project((currentYear % 100) * 1000 + projectsCreated + 1, projectName);
-        projects.add(p);
-        projectsCreated += 1;
-        // Post-condition
-        assert lastUsedYear == currentYear || projectsCreated == previousProjectsCreated + 1;
-        assert projects.size() == numberOfProjects + 1  && projects.stream().anyMatch(pr -> pr.getProjectName().equals(projectName));
+        Project p = new Project((currentYear % 100) * 1000 + projectsCreated + 1, projectName);     //7
+        projects.add(p);                                                                            //8
+        projectsCreated += 1;                                                                       //9
     }
    
     /**
@@ -64,15 +58,11 @@ public class ProjectManager {
      */
     public void deleteProject(int projectID) throws Exception {
         // Defensive programming
-        var projectToDelete = getProjectByID(projectID);
-    	if (projectToDelete == null) {
-            throw new Exception ("The Project doesn't exist!");
+        var projectToDelete = getProjectByID(projectID);            //1
+    	if (projectToDelete == null) {                              //2
+            throw new Exception ("The Project doesn't exist!");     //3
     	}
-        // Pre-condition
-        assert getProjectByID(projectID) != null;
-        projects.remove(projectToDelete);
-        // Post-condition
-        assert projectToDelete == null || !projects.contains(projectToDelete);
+        projects.remove(projectToDelete);                           //4
     }
     
     /**
@@ -83,22 +73,17 @@ public class ProjectManager {
      */
     public void addEmployee(String initials) throws IllegalArgumentException, Exception {
         // Defensive programming
-		if (initials.length() == 0 || initials.length() > 4 || !initials.chars().allMatch(Character::isLetter)) {
-			throw new IllegalArgumentException("Initials " + initials + " not valid. Only 1-4 letters allowed.");
+		if (initials.length() == 0 || initials.length() > 4 ||
+            !initials.chars().allMatch(Character::isLetter)) {                                  //1
+			throw new IllegalArgumentException
+            ("Initials " + initials + " not valid. Only 1-4 letters allowed.");                 //2
 		}
-        if (getEmployee(initials) != null) {
-            throw new Exception("Employee with initials " + initials + " already exists!");
+        if (getEmployee(initials) != null) {                                                    //3
+            throw new Exception("Employee with initials " + initials + " already exists!");     //4
         }
-        // Pre-condition
-        assert initials != null && !initials.isBlank();
-        assert initials.length() > 0 && initials.length() <= 4;
-        assert initials.chars().allMatch(Character::isLetter);
-        assert !employees.stream().anyMatch(e -> e.getInitials().equals(initials));
         // Create new employee and add it to the system
-        Employee e = new Employee(initials);
-        employees.add(e);
-        // Post-condition
-        assert getEmployee(initials) != null;
+        Employee e = new Employee(initials);                                                    //5
+        employees.add(e);                                                                       //6
     }
     
     public List<Project> getProjects() {
