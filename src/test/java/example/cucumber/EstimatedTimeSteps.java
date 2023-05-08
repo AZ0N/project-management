@@ -9,6 +9,9 @@ import application.timemanagement.ManualTimeServer;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Oscar Svenstrup Nielsen - s224812
+ */
 public class EstimatedTimeSteps {
     
     private ProjectManager projectManager;

@@ -2,6 +2,9 @@ package application.projectmanagement;
 
 import java.util.ArrayList;
 
+/**
+ * @author Melissa Safari - 224818
+ */
 public class ProjectActivity implements Activity {
 
     private String name;

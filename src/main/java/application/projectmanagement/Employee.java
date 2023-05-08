@@ -1,5 +1,8 @@
 package application.projectmanagement;
 
+/**
+ * @author Jonathan Victor Flint - s224770
+ */
 public class Employee {
 
 	private String initials;

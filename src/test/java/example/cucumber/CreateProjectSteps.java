@@ -9,6 +9,9 @@ import application.timemanagement.ManualTimeServer;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Christian Brix Saksager - s224777
+ */
 public class CreateProjectSteps {
 
 	private ProjectManager projectmanager;

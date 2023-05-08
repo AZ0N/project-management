@@ -18,6 +18,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
 
+/**
+ * @author Christian Brix Saksager - s224777
+ */
 public class Controller {
 
     private Model model;

@@ -8,6 +8,9 @@ import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Oscar Svenstrup Nielsen - s224812
+ */
 public class EmployeeSteps {
 
 	private ProjectManager projectmanager;

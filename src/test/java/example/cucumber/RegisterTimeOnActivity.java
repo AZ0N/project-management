@@ -8,6 +8,9 @@ import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Jonathan Victor Flint - s224770
+ */
 public class RegisterTimeOnActivity {
 	
 	private ProjectManager projectManager;

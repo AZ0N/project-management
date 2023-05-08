@@ -9,6 +9,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Christian Brix Saksager - s224777
+ */
 public class DeleteProjectSteps {
 	
 	private ProjectManager projectManager;

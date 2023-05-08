@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author Christian Brix Saksager - s224777
+ */
 public class Project {
 	
 	private int ID;

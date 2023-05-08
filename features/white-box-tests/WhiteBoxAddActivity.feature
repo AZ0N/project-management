@@ -1,3 +1,4 @@
+# Mads Christian Wrang Nielsen - s224784
 Feature: White Box: addActivity() 
 
 Scenario: addActivity() Set A 

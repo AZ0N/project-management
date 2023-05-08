@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import io.cucumber.java.en.Then;
 
+/**
+ * @author Mads Christian Wrang Nielsen - s224784
+ */
 public class SystemErrorSteps {
 	
 	private ErrorMessageHolder errorMessageHolder;

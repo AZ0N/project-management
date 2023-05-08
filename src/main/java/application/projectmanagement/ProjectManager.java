@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 
 import application.timemanagement.TimeServer;
 
+/**
+ * @author Mads Christian Wrang Nielsen - s224784
+ */
 public class ProjectManager {
     
     private ArrayList<Employee> employees;

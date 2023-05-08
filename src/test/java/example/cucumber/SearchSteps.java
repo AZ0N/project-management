@@ -10,6 +10,9 @@ import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Mads Christian Wrang Nielsen - s224784
+ */
 public class SearchSteps {
     
     private ProjectManager projectManager;

@@ -13,6 +13,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * @author Mads Christian Wrang Nielsen - s224784
+ */
 public class View extends Application {
 
 	Model model;

@@ -7,6 +7,9 @@ import application.timemanagement.ManualTimeServer;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Jonathan Victor Flint - s224770
+ */
 public class ProjectLeaderSteps {
 
 	private ProjectManager projectManager;

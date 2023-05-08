@@ -1,3 +1,4 @@
+# Jonathan Victor Flint - s224770
 Feature: Register hours spent on Activity
     Description: An Employee can register his time spent (hours) on an Activity
     Actor: Employee

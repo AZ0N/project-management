@@ -8,6 +8,9 @@ import application.projectmanagement.ProjectActivity;
 import application.projectmanagement.ProjectManager;
 import application.timemanagement.SystemTimeServer;
 
+/**
+ * @author Mads Christian Wrang Nielsen - s224784
+ */
 public class Model {
     
     private View view;

@@ -1,3 +1,4 @@
+# Oscar Svenstrup Nielsen - s224812
 Feature: Set estimated time on activity 
     Description: An Employee/Project leader sets estimated time on activity 
     Actor: Employee/Project leader

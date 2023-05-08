@@ -9,6 +9,9 @@ import application.projectmanagement.ProjectManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+/**
+ * @author Melissa Safari - 224818
+ */
 public class CreateActivitySteps {
 	
 	private ProjectManager projectManager;
